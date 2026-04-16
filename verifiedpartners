@@ -1,0 +1,1021 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+<title>Brandname Money — Partners Directory</title>
+<link href="https://fonts.googleapis.com/css2?family=Kanit:wght@200;300;400;500;600;700&display=swap" rel="stylesheet"/>
+<script crossorigin src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
+<script crossorigin src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+::-webkit-scrollbar { width: 4px; height: 4px; }
+::-webkit-scrollbar-thumb { background: rgba(0,0,0,.1); border-radius: 4px; }
+
+:root {
+  --bg-dark: #8C6A4F;
+  --bg-mid: #9E7D5F;
+  --bg-light: #B89B78;
+  --pri: #A27B52;
+  --text-dark: #2D2D2D;
+  --text-gray: #7A7A7A;
+  --light-bg: #F8F8F8;
+  --white: #FFFFFF;
+  --ease-smooth: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+body {
+  font-family: 'Kanit', sans-serif;
+  background: linear-gradient(135deg, var(--bg-dark) 0%, var(--bg-mid) 50%, var(--bg-light) 100%);
+  background-attachment: fixed;
+  color: var(--text-dark);
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+}
+
+/* Force Kanit Font everywhere */
+button, input, textarea, select {
+  font-family: 'Kanit', sans-serif !important;
+}
+
+.layout { max-width: 1140px; margin: 0 auto; padding: 40px 24px 100px; }
+
+/* HERO */
+.hero-wrap { display: flex; flex-direction: column; justify-content: space-between; align-items: flex-start; gap: 32px; margin-bottom: 32px; }
+@media (min-width: 900px) { .hero-wrap { flex-direction: row; align-items: center; } }
+.hero-txt { color: var(--white); max-width: 500px; }
+.h-badge { display: inline-flex; align-items: center; gap: 6px; background: var(--white); color: var(--text-dark); font-size: 12px; font-weight: 600; padding: 6px 16px; border-radius: 20px; margin-bottom: 16px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
+.h-title { font-size: 40px; font-weight: 600; margin-bottom: 8px; letter-spacing: -0.5px; line-height: 1.2; color: #FFFBF5; text-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+.h-sub { font-size: 16px; font-weight: 300; opacity: 0.9; line-height: 1.5; color: #EFE6DA; }
+
+/* HERO STATS */
+.hero-stats { background: rgba(255,255,255,0.15); backdrop-filter: blur(10px); border-radius: 18px; padding: 4px; display: flex; align-items: stretch; gap: 4px; border: 1px solid rgba(255,255,255,0.2); }
+.hs-blk { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; padding: 12px 16px; border-radius: 14px; cursor: pointer; transition: all 0.5s var(--ease-smooth); min-width: 90px; position: relative; }
+.hs-ic { color: rgba(255,255,255,0.4); transform: scale(0.9); transition: all 0.5s var(--ease-smooth); }
+.hs-v { font-size: 24px; font-weight: 700; line-height: 1; color: rgba(255,255,255,0.5); transition: all 0.5s var(--ease-smooth); }
+.hs-l { font-size: 12px; font-weight: 500; color: rgba(255,255,255,0.4); text-transform: uppercase; letter-spacing: 0.5px; transition: all 0.5s var(--ease-smooth); white-space: nowrap; }
+.hs-blk.on { background: var(--white); box-shadow: 0 8px 20px rgba(0,0,0,0.12); transform: scale(1.05); }
+.hs-blk.on .hs-ic { color: var(--pri); transform: scale(1.1); }
+.hs-blk.on .hs-v { color: var(--text-dark); }
+.hs-blk.on .hs-l { color: var(--pri); font-weight: 600; }
+.hs-blk:not(.on):hover { background: rgba(255,255,255,0.1); }
+.hs-blk:not(.on):hover .hs-v { color: rgba(255,255,255,0.8); }
+
+/* TOOLBAR */
+.tbar { background: var(--white); border-radius: 40px; padding: 8px 12px 8px 16px; display: flex; align-items: center; box-shadow: 0 8px 32px rgba(0,0,0,0.08); margin-bottom: 24px; gap: 12px; flex-wrap: wrap; }
+.tb-tabs { display: flex; gap: 6px; }
+
+/* LUXURY GRADIENT TABS */
+.t-tab {
+  background: #F8F6F3;
+  color: #7A7A7A;
+  padding: 8px 22px;
+  border-radius: 30px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.4s var(--ease-bounce);
+  white-space: nowrap;
+  border: none;
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+}
+.t-tab::after {
+  content: ''; position: absolute; inset: 0; border-radius: 30px;
+  background: linear-gradient(135deg, rgba(162,123,82,0.1) 0%, rgba(140,106,79,0.05) 100%);
+  opacity: 0; transition: opacity 0.4s ease; z-index: -1;
+}
+.t-tab:hover::after { opacity: 1; }
+.t-tab:hover { transform: translateY(-2px); color: #5A4A3D; }
+.t-tab.on {
+  background: linear-gradient(135deg, #B28E6A 0%, #8C6A4F 100%);
+  color: #FFFFFF;
+  box-shadow: 0 8px 20px rgba(162, 123, 82, 0.4);
+  font-weight: 600;
+  transform: translateY(-2px);
+}
+
+.tb-sep { width: 1px; height: 24px; background: #EAEAEA; margin: 0 4px; }
+
+/* SEARCH BAR NO BORDER + GLOW */
+.tb-src { 
+  flex: 1; min-width: 200px; background: #F8F6F3; border-radius: 30px; height: 44px; 
+  display: flex; align-items: center; padding: 0 16px; gap: 10px; 
+  transition: all 0.4s var(--ease-bounce); border: 2px solid transparent; 
+}
+.tb-src:focus-within { 
+  background: #FFFFFF; 
+  border-color: transparent; 
+  box-shadow: 0 8px 24px rgba(162,123,82,0.15); 
+  transform: translateY(-2px); 
+}
+.tb-src input { flex: 1; border: none; background: transparent; font-size: 14px; color: var(--text-dark); outline: none; font-weight: 400; width: 100%; }
+.tb-src input::placeholder { color: #A0A0A0; }
+
+.tb-mic { width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #A0A0A0; cursor: pointer; transition: all 0.35s var(--ease-smooth); flex-shrink: 0; background: transparent; border: none; }
+.tb-mic:hover { color: var(--pri); background: #F0E9DF; transform: scale(1.1); }
+.tb-vws { display: flex; gap: 4px; padding-right: 4px; }
+.t-vw { width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; color: #B0B0B0; background: transparent; transition: all 0.4s var(--ease-bounce); flex-shrink: 0; border: none; }
+.t-vw:hover { background: #F5F5F5; color: var(--text-dark); transform: translateY(-2px); }
+.t-vw.on { background: linear-gradient(135deg, rgba(162,123,82,0.15) 0%, rgba(140,106,79,0.05) 100%); color: var(--pri); box-shadow: 0 4px 12px rgba(162,123,82,0.1); }
+
+/* FILTERS */
+.f-row { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 24px; flex-wrap: wrap; gap: 16px; }
+.f-wrap { background: var(--white); border-radius: 40px; padding: 6px; display: inline-flex; gap: 4px; box-shadow: 0 4px 12px rgba(0,0,0,0.03); flex-wrap: wrap; }
+.f-pill { padding: 8px 18px; border-radius: 30px; font-size: 13px; font-weight: 500; cursor: pointer; color: #7A7A7A; display: flex; align-items: center; gap: 6px; transition: all 0.45s var(--ease-smooth); background: transparent; border: none; }
+.f-pill:hover { background: #F6F4F0; color: var(--text-dark); }
+.f-pill.on { background: linear-gradient(180deg, #FFFFFF 0%, #FFF9F2 100%); color: #8F6D44; box-shadow: 0 2px 8px rgba(162,123,82,0.1); border: 1px solid #FAF5ED; font-weight: 600; }
+.f-right { text-align: right; display: flex; flex-direction: column; gap: 4px; }
+.f-clear { color: rgba(255,255,255,0.85); font-size: 13px; cursor: pointer; font-weight: 300; transition: color 0.2s; background: none; border: none; }
+.f-clear:hover { color: var(--white); text-decoration: underline; }
+.f-total { color: var(--white); font-size: 13px; font-weight: 500; }
+
+/* SECTION HEADER */
+.s-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; border-bottom: 2px solid rgba(255,255,255,0.1); padding-bottom: 16px; }
+.sh-t { font-size: 24px; font-weight: 500; color: var(--white); display: flex; align-items: center; gap: 10px; text-shadow: 0 2px 8px rgba(0,0,0,0.1); margin: 0; }
+.sh-sub { font-size: 13px; background: rgba(255,255,255,0.2); padding: 4px 12px; border-radius: 20px; font-weight: 400; color: #FFF; display: flex; align-items: center; }
+
+/* GRID & LIST */
+.grid { display: grid; gap: 16px; grid-template-columns: 1fr; align-items: stretch; margin-bottom: 24px; }
+@media (min-width: 600px) { .grid { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 1024px) { .grid { grid-template-columns: repeat(3, 1fr); } }
+.list-layout { display: flex; flex-direction: column; gap: 16px; margin-bottom: 24px; }
+
+/* CARD */
+.card { background: var(--white); border-radius: 20px; padding: 18px; display: flex; flex-direction: column; transition: transform 0.5s var(--ease-smooth), box-shadow 0.5s var(--ease-smooth), border-color 0.5s var(--ease-smooth); position: relative; cursor: pointer; border: 1px solid transparent; overflow: hidden; }
+.card:hover { transform: translateY(-4px) scale(1.01); box-shadow: 0 24px 50px rgba(90,60,30,0.18), 0 8px 20px rgba(90,60,30,0.08); border-color: #EFE4D8; z-index: 2; }
+
+/* LIST VIEW */
+.list-layout .card { flex-direction: row; align-items: center; padding: 18px 24px; box-shadow: 0 4px 16px rgba(162,123,82,0.05); border: 1px solid #F5F1E9; gap: 0; }
+.list-layout .card:hover { transform: translateY(-3px); }
+.list-layout .c-head { flex: 0 0 35%; min-width: 0; margin-bottom: 0; padding-right: 20px; display: flex; align-items: center; gap: 12px; }
+.list-layout .c-brs-wrap { flex: 0 0 40%; min-width: 0; margin: 0; display: flex; justify-content: center; align-items: center; border-left: 1px solid #F0F0F0; border-right: 1px solid #F0F0F0; padding: 0 20px; overflow: hidden; }
+.list-layout .c-brs { justify-content: center; flex-wrap: wrap; gap: 6px; }
+.list-layout .c-foot { flex: 0 0 25%; min-width: 0; margin-top: 0; padding: 0 0 0 20px; border-top: none; justify-content: flex-end; gap: 10px; }
+
+@media (max-width: 1024px) {
+  .list-layout .card { flex-direction: column; align-items: flex-start; padding: 18px; gap: 12px; }
+  .list-layout .c-head { flex: 1 1 auto; width: 100%; padding-right: 0; }
+  .list-layout .c-brs-wrap { flex: 1 1 auto; width: 100%; justify-content: flex-start; border: none; padding: 0; }
+  .list-layout .c-brs { justify-content: flex-start; }
+  .list-layout .c-foot { flex: 1 1 auto; width: 100%; justify-content: space-between; padding-left: 0; }
+}
+
+/* CARD INFO */
+.c-head { margin-bottom: 16px; display: flex; align-items: center; gap: 12px; min-width: 0; }
+.c-av { width: 48px; height: 48px; border-radius: 14px; background: #2D2D2D; color: #D6C2AC; display: flex; align-items: center; justify-content: center; font-size: 20px; font-weight: 600; flex-shrink: 0; box-shadow: 0 4px 10px rgba(0,0,0,0.08); }
+.c-info { flex: 1; display: flex; flex-direction: column; justify-content: center; gap: 3px; overflow: hidden; min-width: 0; }
+.c-nm { font-size: 16px; font-weight: 700; color: #2D2D2D; display: flex; align-items: center; gap: 6px; white-space: nowrap; overflow: hidden; line-height: 1.2; }
+.c-nm-txt { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; min-width: 0; }
+.c-nm-icons { display: inline-flex; align-items: center; gap: 4px; flex-shrink: 0; }
+.c-loc { font-size: 12px; color: #8F8F8F; font-weight: 400; display: flex; align-items: center; gap: 4px; white-space: nowrap; overflow: hidden; line-height: 1.3; }
+.c-loc-txt { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; min-width: 0; }
+.c-b-count { color: #8F6D44; font-weight: 600; font-size: 10px; padding: 2px 7px; border-radius: 10px; background: #FAF5EF; display: inline-flex; align-items: center; flex-shrink: 0; white-space: nowrap; }
+
+/* CARD BRANDS */
+.c-brs-wrap { margin-top: 2px; margin-bottom: 16px; display: flex; overflow: hidden; }
+.c-brs { display: flex; gap: 6px; align-items: center; flex-wrap: nowrap; overflow: hidden; width: 100%; }
+.c-br { padding: 4px 10px; background: #F9F7F5; border-radius: 16px; font-size: 11px; color: #5A4A3D; font-weight: 500; flex-shrink: 0; border: 1px solid #EFEDE8; white-space: nowrap; }
+.c-more { color: var(--pri); font-size: 11px; font-weight: 700; flex-shrink: 0; background: #FDF9F4; padding: 4px 8px; border-radius: 16px; border: 1px solid #FAF1E5; white-space: nowrap; }
+
+/* CARD FOOTER */
+.c-foot { display: flex; justify-content: space-between; align-items: center; margin-top: auto; padding-top: 14px; border-top: 1px solid #F8F4EE; gap: 8px; }
+.c-soc { display: flex; gap: 6px; align-items: center; }
+.c-btn { width: 36px; height: 36px; border-radius: 12px; background: #FAF8F5; display: flex; align-items: center; justify-content: center; transition: all 0.4s var(--ease-bounce); color: #A89D8F; border: 1px solid transparent; text-decoration: none; cursor: pointer; flex-shrink: 0; }
+.c-btn:hover { background: #FFFFFF; color: var(--pri); transform: translateY(-3px); box-shadow: 0 6px 16px rgba(162,123,82,0.15); border-color: #EFE4D8; }
+.c-btn.tel { background: linear-gradient(135deg, #B5977D 0%, #9E7D5F 100%); color: white; box-shadow: 0 4px 12px rgba(181,151,125,0.3); }
+.c-btn.tel:hover { background: linear-gradient(135deg, #A27B52 0%, #8C6A4F 100%); color: white; transform: translateY(-3px); box-shadow: 0 8px 20px rgba(162,123,82,0.4); }
+
+/* CTA */
+.c-cta { background: linear-gradient(135deg, #B29167 0%, #9E7D5F 100%); color: var(--white); padding: 0 18px; height: 40px; min-width: 130px; border-radius: 20px; font-size: 13px; font-weight: 600; display: inline-flex; align-items: center; justify-content: center; gap: 6px; border: none; cursor: pointer; transition: all 0.4s var(--ease-bounce); box-shadow: 0 6px 16px rgba(178,145,103,0.25); white-space: nowrap; }
+.c-cta:hover { background: linear-gradient(135deg, #A27B52 0%, #8C6A4F 100%); transform: translateY(-3px); box-shadow: 0 10px 24px rgba(178,145,103,0.4); }
+
+/* BRAND SHEET */
+.sh-sec-t { font-size: 13px; font-weight: 700; color: #5A4A3D; text-transform: uppercase; letter-spacing: 1px; margin: 20px 0 12px 4px; display: flex; align-items: center; gap: 10px; }
+.sh-sec-t::after { content:""; flex: 1; height: 1.5px; background: linear-gradient(90deg, #E6DCD0 0%, rgba(230,220,208,0) 100%); }
+.sh-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
+.sh-item { background: #FAF9F7; border: 1px solid #F0EBE5; padding: 10px 12px; border-radius: 12px; display: flex; align-items: center; gap: 10px; cursor: pointer; transition: all 0.4s var(--ease-bounce); }
+.sh-item:hover { background: #FFF; border-color: #DCCFB8; transform: translateY(-2px); box-shadow: 0 6px 18px rgba(162,123,82,0.08); }
+.sh-item.on { border-color: var(--pri); background: #FFFBF5; box-shadow: 0 4px 12px rgba(162,123,82,0.12); }
+.sh-item.on .sh-ic { background: var(--pri) !important; color: #FFF; }
+.sh-ic { width: 32px; height: 32px; border-radius: 8px; color: #FFF; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 600; flex-shrink: 0; }
+.sh-list { display: flex; flex-direction: column; gap: 20px; padding-bottom: 20px; }
+.sh-srch-bar { display: flex; align-items: center; gap: 12px; background: #F6F4F0; border-radius: 16px; padding: 4px 4px 4px 16px; margin-bottom: 8px; border: 2px solid transparent; transition: all 0.4s var(--ease-bounce); }
+.sh-srch-bar:focus-within { background: #FFF; border-color: #DCCFB8; box-shadow: 0 6px 16px rgba(162,123,82,0.1); transform: translateY(-1px); }
+.s-inp { flex: 1; display: flex; align-items: center; gap: 10px; color: #A09D98; }
+.s-inp input { border: none; background: transparent; height: 44px; flex: 1; outline: none; font-size: 14px; color: var(--text-dark); }
+.s-mic { width: 44px; height: 44px; border-radius: 12px; display: flex; align-items: center; justify-content: center; cursor: pointer; color: var(--pri); transition: all 0.35s var(--ease-smooth); background: transparent; border: none; }
+.s-mic:hover { background: #EFE9E2; transform: scale(1.05); }
+
+/* LOAD MORE */
+.btn-more { display: flex; margin: 0 auto 40px auto; background: var(--white); color: var(--pri); border: none; padding: 12px 28px; border-radius: 30px; font-size: 14px; font-weight: 500; align-items: center; gap: 8px; cursor: pointer; transition: all 0.4s var(--ease-bounce); box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
+.btn-more:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(162,123,82,0.15); background: linear-gradient(135deg, #FFFFFF 0%, #FFF9F2 100%); }
+
+/* MODALS */
+.ov { position: fixed; inset: 0; background: rgba(0,0,0,.5); backdrop-filter: blur(8px); z-index: 100; display: flex; align-items: center; justify-content: center; padding: 16px; animation: ovIn 0.3s var(--ease-smooth); }
+@keyframes ovIn { from { opacity: 0; } to { opacity: 1; } }
+.sh { width: 100%; max-width: 520px; max-height: 90vh; background: var(--white); border-radius: 24px; padding: 24px; overflow-y: auto; display: flex; flex-direction: column; gap: 16px; box-shadow: 0 20px 50px rgba(0,0,0,0.25); animation: shIn 0.5s var(--ease-bounce); }
+@keyframes shIn { from { transform: translateY(30px) scale(0.98); opacity: 0; } to { transform: translateY(0) scale(1); opacity: 1; } }
+.sh-bar { width: 40px; height: 5px; border-radius: 3px; background: #E6E6E6; margin: 0 auto 4px; flex-shrink: 0; }
+
+/* DETAIL MODAL */
+.d-hdr { display: flex; align-items: flex-start; gap: 16px; }
+.d-av { width: 68px; height: 68px; border-radius: 18px; background: #B59A76; color: white; display: flex; align-items: center; justify-content: center; font-size: 32px; font-weight: 600; flex-shrink: 0; box-shadow: 0 6px 16px rgba(0,0,0,0.1); }
+.d-info { display: flex; flex-direction: column; gap: 4px; flex: 1; min-width: 0; }
+.d-nm { font-size: 20px; font-weight: 700; color: #2D2D2D; display: flex; align-items: center; gap: 6px; line-height: 1.2; flex-wrap: wrap; }
+.d-loc { font-size: 13px; color: #888; display: flex; align-items: center; gap: 4px; font-weight: 400; }
+.d-tags { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 6px; }
+.t-cond { padding: 4px 12px; border-radius: 10px; font-size: 11px; font-weight: 600; display: inline-flex; align-items: center; line-height: 1; border: none; height: 24px; }
+.t-cond.new { background: #E8F5E9; color: #2E7D32; }
+.t-cond.pre { background: #FFF3E0; color: #E65100; }
+.t-cond.rdy { background: #E8F5E9; color: #2E7D32; }
+.t-cond.ask { background: #F5F5F5; color: #616161; }
+.t-cond.po { background: #FCE4EC; color: #C2185B; }
+
+.d-socs { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin: 16px 0; }
+.d-soc { display: flex; align-items: center; gap: 12px; background: #FFFFFF; border-radius: 16px; padding: 12px; text-decoration: none; border: 1px solid #EBE4DA; transition: all 0.4s var(--ease-bounce); box-shadow: 0 4px 10px rgba(0,0,0,0.02); cursor: pointer; }
+.d-soc:hover { border-color: transparent; transform: translateY(-3px); box-shadow: 0 8px 24px rgba(162,123,82,0.15); }
+.d-s-ic { width: 44px; height: 44px; border-radius: 12px; background: #F9F7F5; display: flex; align-items: center; justify-content: center; flex-shrink: 0; color: #8F6D44; transition: all 0.4s var(--ease-smooth); }
+.d-soc:hover .d-s-ic { background: linear-gradient(135deg, #B28E6A 0%, #8C6A4F 100%); color: #FFF; transform: scale(1.05); }
+.d-s-txt { flex: 1; display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.d-s-lbl { font-size: 13px; font-weight: 600; color: #2D2D2D; }
+.d-s-val { font-size: 11px; color: #9A9A9A; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+.d-sec { margin-bottom: 20px; }
+.d-st { font-size: 15px; font-weight: 600; color: #111; display: flex; align-items: center; gap: 8px; margin-bottom: 12px; }
+.d-tag-wrap { display: flex; flex-wrap: wrap; gap: 8px; }
+.m-tag { padding: 8px 16px; background: #FFFFFF; border: 1px solid #EBE4DA; border-radius: 20px; font-size: 13px; color: #5A4A3D; font-weight: 500; box-shadow: 0 2px 8px rgba(0,0,0,0.02); transition: all 0.4s var(--ease-bounce); }
+.m-tag:hover { background: linear-gradient(135deg, #FFFFFF 0%, #FFF9F2 100%); border-color: #DCCFB8; transform: translateY(-2px); box-shadow: 0 6px 16px rgba(162,123,82,0.1); }
+
+.d-acts { display: flex; gap: 10px; margin-top: 12px; }
+.d-a { height: 50px; border-radius: 25px; font-size: 15px; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; border: none; transition: all 0.4s var(--ease-bounce); }
+.d-a.sec { background: #F4F4F4; color: var(--text-dark); flex: 1; }
+.d-a.sec:hover { background: #EBEBEB; transform: translateY(-2px); }
+.d-a.pri { background: linear-gradient(135deg, #A2805A 0%, #8A6846 100%); color: white; flex: 1.5; box-shadow: 0 6px 16px rgba(162,128,90,0.25); }
+.d-a.pri:hover { background: linear-gradient(135deg, #91704B 0%, #7A593A 100%); box-shadow: 0 8px 24px rgba(162,128,90,0.35); transform: translateY(-2px); }
+
+/* ═══════════════════════════════════════
+   VOICE SEARCH — LUXURY ANIMATIONS
+   ═══════════════════════════════════════ */
+.voice-ov {
+  position: fixed; inset: 0;
+  background: radial-gradient(circle at center, rgba(140,106,79,0.95) 0%, rgba(45,30,20,0.98) 100%);
+  z-index: 300;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  padding: 24px;
+  animation: voiceIn 0.5s var(--ease-bounce);
+}
+@keyframes voiceIn { from { opacity: 0; transform: scale(1.05); } to { opacity: 1; transform: scale(1); } }
+
+.voice-close {
+  position: absolute; top: 20px; right: 20px;
+  width: 48px; height: 48px; border-radius: 50%;
+  background: rgba(255,255,255,0.15); border: none; color: white;
+  cursor: pointer; display: flex; align-items: center; justify-content: center;
+  font-size: 22px; transition: all 0.4s var(--ease-bounce);
+}
+.voice-close:hover { background: rgba(255,255,255,0.3); transform: rotate(90deg) scale(1.1); }
+
+.voice-inner {
+  display: flex; flex-direction: column; align-items: center; gap: 16px;
+  max-width: 460px; width: 100%; text-align: center;
+}
+.voice-status {
+  color: rgba(255,255,255,0.8); font-size: 14px; font-weight: 600;
+  letter-spacing: 2px; text-transform: uppercase;
+}
+.voice-mic-wrap {
+  position: relative; width: 200px; height: 200px;
+  display: flex; align-items: center; justify-content: center;
+  margin: 20px 0 10px;
+}
+.voice-pulse {
+  position: absolute; width: 150px; height: 150px;
+  border-radius: 50%; background: linear-gradient(135deg, rgba(255,255,255,0.3), rgba(255,255,255,0));
+  animation: voicePulse 2.4s cubic-bezier(0.25, 1, 0.5, 1) infinite;
+}
+.voice-pulse:nth-child(2) { animation-delay: 0.8s; }
+.voice-pulse:nth-child(3) { animation-delay: 1.6s; }
+@keyframes voicePulse {
+  0% { transform: scale(0.5); opacity: 0.8; }
+  100% { transform: scale(2.6); opacity: 0; }
+}
+.voice-mic-btn {
+  width: 100px; height: 100px; border-radius: 50%;
+  background: linear-gradient(135deg, #FFFFFF 0%, #F5F1E9 100%);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--pri); box-shadow: 0 16px 40px rgba(0,0,0,0.3), inset 0 -4px 10px rgba(0,0,0,0.05);
+  position: relative; z-index: 2; cursor: pointer; border: none;
+  animation: voiceBreath 2s ease-in-out infinite;
+  transition: transform 0.3s var(--ease-bounce);
+}
+.voice-mic-btn:hover { transform: scale(1.05); }
+.voice-mic-btn:active { transform: scale(0.95); }
+@keyframes voiceBreath {
+  0%, 100% { transform: scale(1); box-shadow: 0 16px 40px rgba(0,0,0,0.3); }
+  50% { transform: scale(1.08); box-shadow: 0 24px 50px rgba(255,255,255,0.2); }
+}
+.voice-mic-btn.idle { animation: none; }
+
+.voice-text {
+  color: white; font-size: 26px; font-weight: 500;
+  line-height: 1.4; min-height: 70px; padding: 0 16px;
+  word-break: break-word; text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+}
+.voice-text.placeholder { color: rgba(255,255,255,0.5); font-weight: 400; font-size: 20px; }
+
+.voice-hint {
+  color: rgba(255,255,255,0.6); font-size: 14px; font-weight: 300;
+  line-height: 1.6; margin-top: 4px; padding: 0 20px;
+}
+
+/* 9-Bar Luxury Waveform */
+.voice-waveform {
+  display: flex; align-items: center; justify-content: center;
+  gap: 8px; height: 60px; margin: 16px 0;
+}
+.voice-bar {
+  width: 6px; 
+  background: linear-gradient(180deg, #FFFFFF, #DCCFB8);
+  border-radius: 4px; 
+  animation: soundWave 1.2s ease-in-out infinite;
+  box-shadow: 0 0 12px rgba(255,255,255,0.3);
+}
+@keyframes soundWave {
+  0%, 100% { height: 10px; opacity: 0.6; }
+  50% { height: 50px; opacity: 1; }
+}
+.voice-bar:nth-child(1) { animation-delay: 0.0s; }
+.voice-bar:nth-child(2) { animation-delay: -0.2s; }
+.voice-bar:nth-child(3) { animation-delay: -0.4s; }
+.voice-bar:nth-child(4) { animation-delay: -0.6s; }
+.voice-bar:nth-child(5) { animation-delay: -0.8s; }
+.voice-bar:nth-child(6) { animation-delay: -0.6s; }
+.voice-bar:nth-child(7) { animation-delay: -0.4s; }
+.voice-bar:nth-child(8) { animation-delay: -0.2s; }
+.voice-bar:nth-child(9) { animation-delay: 0.0s; }
+
+.voice-actions { display: flex; gap: 12px; margin-top: 24px; }
+.voice-btn {
+  padding: 14px 32px; border-radius: 30px;
+  font-size: 15px; font-weight: 600; cursor: pointer;
+  transition: all 0.4s var(--ease-bounce);
+  display: inline-flex; align-items: center; gap: 8px;
+}
+.voice-btn.ghost {
+  background: rgba(255,255,255,0.12); color: white;
+  border: 1px solid rgba(255,255,255,0.25);
+}
+.voice-btn.ghost:hover { background: rgba(255,255,255,0.25); transform: translateY(-2px); }
+.voice-btn.primary {
+  background: linear-gradient(135deg, #FFFFFF 0%, #F5F1E9 100%); color: var(--pri); border: none;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+}
+.voice-btn.primary:hover { transform: translateY(-3px); box-shadow: 0 12px 32px rgba(0,0,0,0.3); }
+
+.voice-err {
+  color: #FFD4D4; font-size: 14px; margin-top: 8px;
+  background: rgba(255,80,80,0.15); padding: 10px 20px; border-radius: 20px;
+  border: 1px solid rgba(255,100,100,0.3);
+}
+
+/* TOAST */
+.toast {
+  position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%);
+  background: #2D2D2D; color: white; padding: 14px 24px; border-radius: 30px;
+  font-size: 14px; font-weight: 500; z-index: 500;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.3);
+  display: flex; align-items: center; gap: 12px;
+  animation: toastIn 0.5s var(--ease-bounce);
+}
+@keyframes toastIn {
+  from { transform: translate(-50%, 40px); opacity: 0; }
+  to { transform: translate(-50%, 0); opacity: 1; }
+}
+.toast-ic { width: 24px; height: 24px; border-radius: 50%; background: #4CAF50; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script>
+const e = React.createElement;
+const { useState, useMemo, useCallback, useRef, useEffect } = React;
+
+const WB = ["Patek Philippe","Rolex","Audemars Piguet","Richard Mille","Franck Muller","Hublot","Panerai","Omega","Piaget","Corum","Chopard","Breguet","Bvlgari","Cartier","Tiffany & Co.","Van Cleef & Arpels"];
+const BB = ["Hermès","Chanel","Louis Vuitton","Yves Saint Laurent","Christian Dior","Goyard","Gucci","Balenciaga","Celine","Valentino","Fendi","Prada","Bottega Veneta","Loewe","Givenchy","Delvaux"];
+const ALL_BR = [...new Set([...WB, ...BB])];
+
+// STORES
+const STORES = [
+  { id: 1, n: "Pendulum", w: ["Rolex","Omega","Patek Philippe"], b: [], a: "สยามพารากอน, ปทุมวัน", c:["new","pre"], stock:"ready",
+    soc:{tel:"02-610-9500", line:"@pendulum", ig:"pendulum_th", fb:"PendulumTH", tiktok:"pendulum.th"},
+    branches: [
+      {id:11, n:"พารากอน", a:"ปทุมวัน, กทม.", soc:{tel:"02-610-9500", line:"@pendulum_paragon"}},
+      {id:12, n:"เอ็มควอเทียร์", a:"วัฒนา, กทม.", soc:{tel:"02-269-1000", line:"@pendulum_emq"}},
+      {id:13, n:"เซ็นทรัล เชียงใหม่", a:"เมือง, เชียงใหม่", soc:{tel:"053-211-123", line:"@pendulum_cm"}}
+    ], models:["126710BLRO","Patek 5711","Omega Speedmaster"] },
+  { id: 2, n: "The Hour Glass", w: ["Patek Philippe","Audemars Piguet","Hublot"], b: [], a: "เซ็นทรัลเวิลด์, ปทุมวัน", c:["new"], stock:"ready",
+    soc:{tel:"02-255-9898", line:"@thehourglass", ig:"thehourglass_th", fb:"TheHourGlassThailand"},
+    branches:[
+      {id:21, n:"เซ็นทรัลเวิลด์", a:"ปทุมวัน, กทม.", soc:{tel:"02-255-9898", line:"@thg_ctw"}},
+      {id:22, n:"เกษรวิลเลจ", a:"ปทุมวัน, กทม.", soc:{tel:"02-656-1234", line:"@thg_gaysorn"}}
+    ], models:["15400","15500","Big Bang"] },
+  { id: 3, n: "Siam Swiss", w: ["Omega","Chopard","Panerai"], b: [], a: "เอ็มควอเทียร์, วัฒนา", c:["new"], stock:"preorder",
+    soc:{tel:"02-269-1000", line:"@siamswiss", ig:"siamswiss", tiktok:"siamswiss.official"}, models:["Speedmaster","Luminor","PAM"] },
+  { id: 4, n: "PMT The Hour Glass", w: ["Rolex","Richard Mille","Cartier"], b: [], a: "สยามพารากอน, ปทุมวัน", c:["pre"], stock:"ready",
+    soc:{tel:"02-664-8888", line:"@pmthg", ig:"pmt_thehourglass", fb:"PMTTheHourGlass"}, models:["Submariner","RM","Tank"] },
+  { id: 5, n: "TKI", w: ["Patek Philippe","Audemars Piguet","Franck Muller"], b: [], a: "ไอคอนสยาม, คลองสาน", c:["pre"], stock:"ask",
+    soc:{tel:"02-255-6789", line:"@tki", ig:"tki_bkk", fb:"TKIBangkok"}, models:["Nautilus","Royal Oak","Vanguard"] },
+  { id: 6, n: "Cortina Watch Bangkok", w: ["Rolex","Bvlgari","Corum"], b: [], a: "เซ็นทรัลเอ็มบาสซี, ปทุมวัน", c:["pre"], stock:"ready",
+    soc:{tel:"02-255-1234", line:"@cortinawatch", ig:"cortinawatch", fb:"CortinaWatchTH", tiktok:"cortinawatch"}, models:["Datejust","Octo","Admiral"] },
+  { id: 7, n: "THONG PATEK", w: ["Patek Philippe","Hublot","Breguet"], b: [], a: "สาทร, กรุงเทพฯ", c:["new"], stock:"preorder",
+    soc:{tel:"02-255-1234", line:"@thongpatek", fb:"ThongPatek", tiktok:"thongpatek"},
+    branches:[
+      {id:71, n:"สาขาสาทร", a:"เขตสาทร, กรุงเทพฯ", soc:{tel:"02-255-1234", line:"@tp_sathorn"}},
+      {id:72, n:"สาขาภูเก็ต", a:"อ.เมือง, ภูเก็ต", soc:{tel:"076-211-123", line:"@tp_phuket"}}
+    ], models:["Aquanaut","Classic"] },
+  { id: 8, n: "Time Midas", w: ["Rolex","Omega","Panerai"], b: [], a: "เซ็นทรัลลาดพร้าว, จตุจักร", c:["pre"], stock:"ready",
+    soc:{tel:"02-937-8888", line:"@timemidas", ig:"timemidas_th"}, models:["Daytona","Seamaster"] },
+  { id: 9, n: "Luxe Gallery Bangkok", w: ["Rolex","Cartier","Omega"], b: ["Hermès","Louis Vuitton","Chanel"], a: "เอ็มโพเรียม, วัฒนา", c:["new","pre"], stock:"ready",
+    soc:{tel:"02-664-1234", line:"@luxegallery", ig:"luxegallery_th", fb:"LuxeGalleryBKK", tiktok:"luxegallery"},
+    branches:[
+      {id:91, n:"เอ็มโพเรียม", a:"วัฒนา, กทม.", soc:{tel:"02-664-1234", line:"@lg_empo"}},
+      {id:92, n:"ไอคอนสยาม", a:"คลองสาน, กทม.", soc:{tel:"02-495-7000", line:"@lg_icon"}}
+    ], models:["Submariner","Birkin 25","Tank Solo"] },
+  { id: 14, n: "Maison Prestige Siam", w: ["Patek Philippe","Audemars Piguet"], b: ["Hermès","Celine"], a: "เซ็นทรัลชิดลม, ปทุมวัน", c:["new"], stock:"preorder",
+    soc:{tel:"02-793-7777", line:"@maisonprestige", ig:"maison_prestige", fb:"MaisonPrestigeBKK", tiktok:"maisonprestige"},
+    models:["Nautilus","Royal Oak","Kelly 28"] },
+  { id: 10, n: "KOMEHYO", w: [], b: ["Hermès","Chanel","Louis Vuitton","Christian Dior"], a: "เซ็นทรัลเวิลด์, ปทุมวัน", c:["new","pre"], stock:"ready",
+    soc:{tel:"02-288-0088", line:"@komehyo", ig:"komehyo_thailand", fb:"KomehyoThailand", tiktok:"komehyo.th"}, models:["Birkin","Kelly","Boy","Neverfull"] },
+  { id: 11, n: "Brandname Exchange", w: [], b: ["Prada","Celine","Gucci","Goyard"], a: "สยามสแควร์, ปทุมวัน", c:["new","pre"], stock:"ask",
+    soc:{tel:"02-656-1234", line:"@bne", ig:"brandname.exchange", fb:"BrandnameExchange"}, models:["Cleo","Triomphe","Marmont"] },
+  { id: 12, n: "SF Brandname", w: [], b: ["Louis Vuitton","Hermès","Balenciaga"], a: "MBK Center, ปทุมวัน", c:["new","pre"], stock:"ready",
+    soc:{tel:"02-610-9777", line:"@sfbrandname", ig:"sfbrandname_th", tiktok:"sfbrandname"}, models:["Capucines","City","Speedy"] }
+];
+
+const MODELS = [
+  {ref:"126710BLRO", brand:"Rolex", name:"GMT-Master II Pepsi", stores:[1,4,6,9]},
+  {ref:"126610LN", brand:"Rolex", name:"Submariner Date", stores:[1,4,6,9]},
+  {ref:"5711/1A", brand:"Patek Philippe", name:"Nautilus", stores:[2,5,7,14]},
+  {ref:"15500ST", brand:"Audemars Piguet", name:"Royal Oak", stores:[2,5,14]},
+  {ref:"Classic Flap", brand:"Chanel", name:"Classic Flap Medium", stores:[9,10]},
+  {ref:"Birkin 30", brand:"Hermès", name:"Birkin 30", stores:[9,10,12,14]},
+];
+
+function hue(n) { let v=0; for(let i=0;i<n.length;i++) v=n.charCodeAt(i)+((v<<5)-v); return `hsl(${[34,28,40,32,38,24,42,30][Math.abs(v)%8]}, 35%, 45%)`; }
+
+function socUrl(k, v) {
+  if (!v) return '#';
+  switch(k) {
+    case 'tel': return `tel:${v.replace(/[^0-9+]/g, '')}`;
+    case 'line': return `https://line.me/R/ti/p/${encodeURIComponent(v)}`;
+    case 'ig': return `https://www.instagram.com/${v}`;
+    case 'fb': return `https://www.facebook.com/${v}`;
+    case 'x': return `https://x.com/${v}`;
+    case 'tiktok': return `https://www.tiktok.com/@${v}`;
+    default: return '#';
+  }
+}
+
+const SOC = {
+  tel: { label: "โทร", d: "M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z", str: true },
+  line: { label: "LINE", d: "M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63h2.386c.346 0 .627.285.627.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596a.629.629 0 01-.709-.219l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.271.173-.508.43-.595a.63.63 0 01.689.221l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63.346 0 .628.285.628.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.282.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314" },
+  ig: { label: "Instagram", d: "M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919C8.416 2.175 8.796 2.163 12 2.163zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12s.014 3.668.072 4.948c.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24s3.668-.014 4.948-.072c4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948s-.014-3.667-.072-4.947c-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" },
+  fb: { label: "Facebook", d: "M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" },
+  x: { label: "X", d: "M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" },
+  tiktok: { label: "TikTok", d: "M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z" }
+};
+
+function Ico({ k, s=16, color }) {
+  const p = SOC[k]; if (!p) return null;
+  if(p.str) return e('svg', {width:s, height:s, viewBox:"0 0 24 24", fill:"none", stroke:color, strokeWidth:2, strokeLinecap:"round", strokeLinejoin:"round"}, e('path', {d:p.d}));
+  return e('svg', {width:s, height:s, viewBox:"0 0 24 24", fill:color}, e('path', {d:p.d}));
+}
+function CertIc({s=13}) { return e('svg', {width:s, height:s, viewBox:"0 0 24 24", fill:"#3B82F6"}, e('path', {d:"M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"})); }
+function WatchIc({s=14, c="#B29167"}) { return e('svg', {width:s, height:s, viewBox:"0 0 24 24", fill:"none", stroke:c, strokeWidth:1.5}, e('rect',{x:7,y:2,width:10,height:4,rx:1}), e('rect',{x:7,y:18,width:10,height:4,rx:1}), e('circle',{cx:12,cy:12,r:6}), e('polyline',{points:"12 9 12 12 14 12"})); }
+function BagIc({s=14, c="#B29167"}) { return e('svg', {width:s, height:s, viewBox:"0 0 24 24", fill:"none", stroke:c, strokeWidth:1.5}, e('path',{d:"M16 7V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v3"}), e('rect',{x:3,y:7,width:18,height:14,rx:2}), e('circle',{cx:12,cy:12,r:2}), e('path',{d:"M3 14h18"})); }
+function SearchIc({s=18}) { return e('svg', {width:s, height:s, viewBox:"0 0 24 24", fill:"none", stroke:"currentColor", strokeWidth:2, strokeLinecap:"round"}, e('circle',{cx:11,cy:11,r:8}), e('path',{d:"m21 21-4.3-4.3"})); }
+function GlobeIc({s=16}) { return e('svg',{width:s,height:s,viewBox:"0 0 24 24",fill:"none",stroke:"currentColor",strokeWidth:1.5}, e('circle',{cx:12,cy:12,r:10}), e('line',{x1:2,y1:12,x2:22,y2:12}), e('path',{d:"M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"})); }
+function ListIc({s=16}) { return e('svg',{width:s,height:s,viewBox:"0 0 24 24",fill:"none",stroke:"currentColor",strokeWidth:2}, e('line',{x1:8,y1:6,x2:21,y2:6}), e('line',{x1:8,y1:12,x2:21,y2:12}), e('line',{x1:8,y1:18,x2:21,y2:18}), e('circle',{cx:3,cy:6,r:1}), e('circle',{cx:3,cy:12,r:1}), e('circle',{cx:3,cy:18,r:1})); }
+function GridIc({s=16}) { return e('svg',{width:s,height:s,viewBox:"0 0 24 24",fill:"none",stroke:"currentColor",strokeWidth:2}, e('rect',{x:3,y:3,width:7,height:7,rx:1}), e('rect',{x:14,y:3,width:7,height:7,rx:1}), e('rect',{x:3,y:14,width:7,height:7,rx:1}), e('rect',{x:14,y:14,width:7,height:7,rx:1})); }
+function MicIc({s=16}) { return e('svg',{width:s,height:s,viewBox:"0 0 24 24",fill:"none",stroke:"currentColor",strokeWidth:2,strokeLinecap:"round",strokeLinejoin:"round"}, e('path',{d:"M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"}), e('path',{d:"M19 10v2a7 7 0 0 1-14 0v-2"}), e('line',{x1:12,y1:19,x2:12,y2:22})); }
+function ChevRightIc({s=14}) { return e('svg',{width:s,height:s,viewBox:"0 0 24 24",fill:"none",stroke:"currentColor",strokeWidth:2}, e('polyline',{points:"9 18 15 12 9 6"})); }
+function TimeIc({s=16}) { return e('svg',{width:s,height:s,viewBox:"0 0 24 24",fill:"none",stroke:"currentColor",strokeWidth:2}, e('circle',{cx:12,cy:12,r:10}), e('polyline',{points:"12 6 12 12 16 14"})); }
+function UsersIc({s=16}) { return e('svg',{width:s,height:s,viewBox:"0 0 24 24",fill:"none",stroke:"currentColor",strokeWidth:2}, e('path',{d:"M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"}), e('circle',{cx:9,cy:7,r:4}), e('path',{d:"M23 21v-2a4 4 0 0 0-3-3.87"}), e('circle',{cx:17,cy:4,r:3})); }
+function FolderIc({s=16}) { return e('svg',{width:s,height:s,viewBox:"0 0 24 24",fill:"none",stroke:"currentColor",strokeWidth:2}, e('path',{d:"M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"})); }
+function LocIc({s=11, c="currentColor"}) { return e('svg',{width:s,height:s,viewBox:"0 0 24 24",fill:"none",stroke:c,strokeWidth:2,style:{flexShrink:0}}, e('path',{d:"M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"}), e('circle',{cx:12,cy:10,r:3})); }
+function CheckIc({s=14}) { return e('svg',{width:s,height:s,viewBox:"0 0 24 24",fill:"none",stroke:"currentColor",strokeWidth:3,strokeLinecap:"round"}, e('polyline',{points:"20 6 9 17 4 12"})); }
+
+const NUM_ALL = STORES.length;
+const NUM_WATCH = STORES.filter(s => s.w.length > 0).length;
+const NUM_BAG = STORES.filter(s => s.b.length > 0).length;
+
+function Card({ store, type, bf, onOpen, onToast }) {
+  const brands = type === "watch" ? store.w : type === "bag" ? store.b : [...store.w, ...store.b];
+  if (bf.length > 0 && !bf.some(x => brands.includes(x))) return null;
+
+  const show = brands.slice(0, 2);
+  const extra = brands.length > 2 ? brands.length - 2 : 0;
+  const branchCount = (store.branches || []).length + 1;
+  const socKeys = ["tel","line","ig","fb","tiktok","x"].filter(k => store.soc[k]).slice(0, 4);
+
+  return e('div', { className: 'card', onClick: () => onOpen(store, type) },
+    e('div', { className: 'c-head' },
+      e('div', { className: 'c-av', style:{background:hue(store.n)} }, store.n.charAt(0)),
+      e('div', { className: 'c-info' },
+        e('div', { className: 'c-nm', title: store.n },
+          e('span', { className: 'c-nm-txt' }, store.n),
+          e('span', { className: 'c-nm-icons' },
+            e(CertIc, {s:14}),
+            store.w.length > 0 && e(WatchIc, {s:14, c:"#B5977D"}),
+            store.b.length > 0 && e(BagIc, {s:14, c:"#B5977D"})
+          )
+        ),
+        e('div', { className: 'c-loc', title: store.a },
+          e(LocIc, {s:11}),
+          e('span', { className: 'c-loc-txt' }, store.a),
+          branchCount > 1 && e('span', { className: 'c-b-count' }, `${branchCount} สาขา`)
+        )
+      )
+    ),
+    e('div', { className: 'c-brs-wrap' },
+      e('div', { className: 'c-brs' },
+        show.map(b => e('span', { key:b, className:'c-br', title:b }, b)),
+        extra > 0 && e('span', { className:'c-more' }, `+${extra}`)
+      )
+    ),
+    e('div', { className: 'c-foot', onClick: ev => ev.stopPropagation() },
+      e('div', { className: 'c-soc' },
+        socKeys.map(k => e('a', {
+          key: k,
+          className: `c-btn ${k==='tel'?'tel':''}`,
+          href: socUrl(k, store.soc[k]),
+          target: k !== 'tel' ? '_blank' : undefined,
+          rel: k !== 'tel' ? 'noopener noreferrer' : undefined,
+          title: SOC[k].label,
+          onClick: (ev) => { ev.stopPropagation(); if (k !== 'tel') onToast(`กำลังเปิด ${SOC[k].label} ของ ${store.n}`); }
+        }, e(Ico, { k, s: 14, color: k==='tel' ? "#FFF" : "currentColor" })))
+      ),
+      e('button', {
+        className: 'c-cta',
+        onClick: (ev) => { ev.stopPropagation(); onOpen(store, type); }
+      }, "สมัครสินเชื่อ", e(ChevRightIc, {s:14}))
+    )
+  );
+}
+
+function RenderSection({ title, count, stores, type, bf, view, onOpen, onToast, isAllView }) {
+  const [lim, setLim] = useState(6);
+  if (stores.length === 0) return null;
+  const show = isAllView ? stores.slice(0, lim) : stores;
+  return e('div', { style: { marginBottom: 24 } },
+    e('div', { className: 's-head' }, e('h2', { className: 'sh-t' }, title, e('span', { className: 'sh-sub' }, `${count} ร้าน`))),
+    e('div', { className: view === 'grid' ? 'grid' : 'list-layout' },
+      show.map(s => e(Card, { key: s.id, store: s, type, bf, onOpen, onToast }))
+    ),
+    (isAllView && stores.length > lim) && e('button', { className: 'btn-more', onClick: () => setLim(p => p + 6) },
+      `ดู${title}เพิ่มเติม (${stores.length - lim} ร้าน)`, e(ChevRightIc, {s:16})
+    )
+  );
+}
+
+function App() {
+  const [tab, setTab] = useState("all");
+  const [view, setView] = useState("grid");
+  const [q, setQ] = useState("");
+  const [cond, setCond] = useState("all");
+  const [selBr, setSelBr] = useState([]);
+  const [sheet, setSheet] = useState(false);
+  const [sheetQ, setSheetQ] = useState("");
+  const [det, setDet] = useState(null);
+  const [selBranchId, setSelBranchId] = useState(null);
+  const [mR, setMR] = useState(null);
+  const [brQ, setBrQ] = useState("");
+  const [toast, setToast] = useState(null);
+
+  const [voiceOpen, setVoiceOpen] = useState(false);
+  const [voiceText, setVoiceText] = useState("");
+  const [voiceListening, setVoiceListening] = useState(false);
+  const [voiceError, setVoiceError] = useState(null);
+  const recogRef = useRef(null);
+  const voiceTargetRef = useRef("search"); 
+
+  const showToast = useCallback((msg) => {
+    setToast(msg);
+    setTimeout(() => setToast(null), 2600);
+  }, []);
+
+  // === VOICE LOGIC ===
+  const startListening = useCallback(() => {
+    const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+    if (!SR) {
+      setVoiceError("เบราว์เซอร์นี้ไม่รองรับการค้นหาด้วยเสียง");
+      return;
+    }
+    setVoiceError(null);
+    setVoiceText("");
+    try {
+      const r = new SR();
+      r.lang = "th-TH";
+      r.continuous = false;
+      r.interimResults = true;
+      r.onstart = () => setVoiceListening(true);
+      r.onresult = (ev) => {
+        let text = "";
+        for (let i = 0; i < ev.results.length; i++) text += ev.results[i][0].transcript;
+        setVoiceText(text);
+      };
+      r.onerror = (ev) => {
+        setVoiceListening(false);
+        if (ev.error === 'not-allowed') setVoiceError("กรุณาอนุญาตให้ใช้งานไมโครโฟนบนเบราว์เซอร์");
+        else if (ev.error === 'no-speech') setVoiceError("ไม่ได้ยินเสียง กรุณากดพูดอีกครั้ง");
+        else if (ev.error === 'network') setVoiceError("การเชื่อมต่อเครือข่ายผิดพลาด");
+        else setVoiceError("เกิดข้อผิดพลาด กรุณาลองใหม่");
+      };
+      r.onend = () => setVoiceListening(false);
+      recogRef.current = r;
+      r.start();
+    } catch (err) {
+      setVoiceError("ไม่สามารถเริ่มการรับเสียงได้ กรุณาตรวจสอบสิทธิ์ไมโครโฟน");
+      setVoiceListening(false);
+    }
+  }, []);
+
+  const openVoice = useCallback((target = "search") => {
+    voiceTargetRef.current = target;
+    setVoiceText("");
+    setVoiceError(null);
+    setVoiceOpen(true);
+    setTimeout(() => startListening(), 300);
+  }, [startListening]);
+
+  const closeVoice = useCallback(() => {
+    if (recogRef.current) { try { recogRef.current.stop(); } catch(e){} }
+    setVoiceOpen(false);
+    setVoiceListening(false);
+    setVoiceText("");
+    setVoiceError(null);
+  }, []);
+
+  const submitVoice = useCallback(() => {
+    if (!voiceText.trim()) return;
+    const text = voiceText.trim();
+    if (voiceTargetRef.current === "sheet") setSheetQ(text);
+    else { setQ(text); setMR(null); }
+    closeVoice();
+    showToast(`ค้นหา: "${text}"`);
+  }, [voiceText, closeVoice, showToast]);
+
+  const openMap = (address, e) => {
+    if (e) e.stopPropagation();
+    window.open(`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address)}`, '_blank');
+  };
+
+  const applyLoan = (store, e) => {
+    if (e) e.stopPropagation();
+    showToast(`✓ กำลังเริ่มสมัครสินเชื่อที่ ${store.n}`);
+  };
+
+  const models = useMemo(() => {
+    if (!q || q.length < 2) return [];
+    const x = q.toLowerCase();
+    return MODELS.filter((m) => m.ref.toLowerCase().includes(x) || m.name.toLowerCase().includes(x));
+  }, [q]);
+
+  const isModelMode = models.length > 0 && !mR;
+
+  const getList = useCallback((t) => {
+    return STORES.filter((s) => {
+      if (mR && !mR.stores.includes(s.id)) return false;
+      if (t === "watch" && s.w.length === 0) return false;
+      if (t === "bag" && s.b.length === 0) return false;
+      if (cond === "new" && !s.c.includes("new")) return false;
+      if (cond === "pre" && !s.c.includes("pre")) return false;
+      const br = t === "watch" ? s.w : t === "bag" ? s.b : [...s.w, ...s.b];
+      if (!mR) {
+        if (selBr.length > 0 && !selBr.some((x) => br.includes(x))) return false;
+        if (q) {
+          const x = q.toLowerCase();
+          return s.n.toLowerCase().includes(x) || s.a.toLowerCase().includes(x) ||
+                 br.some((b) => b.toLowerCase().includes(x)) ||
+                 (s.models && s.models.some((m) => m.toLowerCase().includes(x)));
+        }
+      }
+      return true;
+    });
+  }, [cond, selBr, q, mR]);
+
+  const ws = useMemo(() => getList("watch"), [getList]);
+  const bs = useMemo(() => getList("bag"), [getList]);
+  const modelS = useMemo(() => (mR ? STORES.filter((s) => mR.stores.includes(s.id)) : []), [mR]);
+  const dispCount = tab === "watch" ? ws.length : tab === "bag" ? bs.length : ws.length + bs.length;
+
+  const detStore = det ? det.store : null;
+  const activeBranch = (detStore && selBranchId) ? detStore.branches.find(b => b.id === selBranchId) : null;
+  const activeSoc = activeBranch ? activeBranch.soc : (detStore ? detStore.soc : {});
+  const dSocKeys = ["tel","line","fb","ig","x","tiktok"].filter(k => activeSoc[k]);
+  const otherBranches = detStore && detStore.branches ? detStore.branches : [];
+
+  useEffect(() => { setSelBranchId(null); setBrQ(""); }, [det]);
+
+  return e('div', { className: 'layout' },
+    e('div', { className: 'hero-wrap' },
+      e('div', { className: 'hero-txt' },
+        e('div', { className: 'h-badge' }, e(CertIc, {s:15}), "BM's Partners"),
+        e('h1', { className: 'h-title' }, "ร้านค้าพาร์ตเนอร์"),
+        e('div', { className: 'h-sub' }, "เลือกชมร้านค้าที่ผ่านการตรวจสอบ พร้อมบริการแบ่งชำระได้อย่างมั่นใจ")
+      ),
+      e('div', { className: 'hero-stats' },
+        e('div', { className: `hs-blk ${tab==='all'?'on':''}`, onClick: () => setTab('all') },
+          e('div', {className:'hs-ic'}, e(GlobeIc,{s:24})), e('div',{className:'hs-v'},NUM_ALL), e('div',{className:'hs-l'},"ทั้งหมด")),
+        e('div', { className: `hs-blk ${tab==='watch'?'on':''}`, onClick: () => setTab('watch') },
+          e('div', {className:'hs-ic'}, e(WatchIc,{s:24,c:"currentColor"})), e('div',{className:'hs-v'},NUM_WATCH), e('div',{className:'hs-l'},"นาฬิกา")),
+        e('div', { className: `hs-blk ${tab==='bag'?'on':''}`, onClick: () => setTab('bag') },
+          e('div', {className:'hs-ic'}, e(BagIc,{s:24,c:"currentColor"})), e('div',{className:'hs-v'},NUM_BAG), e('div',{className:'hs-l'},"กระเป๋า"))
+      )
+    ),
+
+    e('div', { className: 'tbar' },
+      e('div', { className: 'tb-tabs' },
+        e('button', { className: `t-tab ${tab==='all'?'on':''}`, onClick:()=>setTab('all') }, e(GlobeIc,{s:16}), "ทั้งหมด"),
+        e('button', { className: `t-tab ${tab==='watch'?'on':''}`, onClick:()=>setTab('watch') }, e(WatchIc,{s:16,c:"currentColor"}), "นาฬิกา"),
+        e('button', { className: `t-tab ${tab==='bag'?'on':''}`, onClick:()=>setTab('bag') }, e(BagIc,{s:16,c:"currentColor"}), "กระเป๋า")
+      ),
+      e('div', { className: 'tb-sep' }),
+      e('div', { className: 'tb-src' },
+        e(SearchIc, {s:18}),
+        e('input', { placeholder:"ค้นหาร้านค้า, แบรนด์, รุ่น ...", value:q, onChange: ev => {setQ(ev.target.value); setMR(null);} }),
+        q && e('button', { style:{cursor:'pointer', color:'#A0A0A0', padding:'0 8px', background:'none', border:'none', fontSize:18}, onClick:()=>{setQ(''); setMR(null);}, title:"ล้างค้นหา" }, "✕"),
+        e('button', { className:'tb-mic', onClick:()=>openVoice("search"), title:"ค้นหาด้วยเสียง" }, e(MicIc,{s:18}))
+      ),
+      e('div', { className: 'tb-vws' },
+        e('button', { className: `t-vw ${view==='grid'?'on':''}`, onClick:()=>setView('grid'), title:"Grid view" }, e(GridIc,{s:20})),
+        e('button', { className: `t-vw ${view==='list'?'on':''}`, onClick:()=>setView('list'), title:"List view" }, e(ListIc,{s:20}))
+      )
+    ),
+
+    e('div', { className: 'f-row' },
+      e('div', { className: 'f-wrap' },
+        e('button', { className: `f-pill ${cond==='all'?'on':''}`, onClick:()=>setCond('all') }, "ทั้งหมด"),
+        e('button', { className: `f-pill ${cond==='new'?'on':''}`, onClick:()=>setCond('new') }, e(TimeIc,{s:15}), "มือ 1"),
+        e('button', { className: `f-pill ${cond==='pre'?'on':''}`, onClick:()=>setCond('pre') }, e(UsersIc,{s:15}), "มือ 2"),
+        e('button', { className: `f-pill ${selBr.length>0?'on':''}`, onClick:()=>setSheet(true) },
+          e(FolderIc,{s:15}), "เลือกแบรนด์",
+          selBr.length > 0 && e('span', {style:{background:'#8F6D44',color:'white',padding:'2px 8px',borderRadius:12,fontSize:11,marginLeft:4}}, selBr.length))
+      ),
+      e('div', { className: 'f-right' },
+        (cond!=="all" || selBr.length>0 || q) && e('button', {
+          className: 'f-clear',
+          onClick:()=>{setSelBr([]);setCond("all");setQ("");setMR(null);showToast("ล้างตัวกรองแล้ว");}
+        }, "ล้างทั้งหมด"),
+        e('div', { className: 'f-total' }, `ทั้งหมด ${dispCount} ร้านค้า`)
+      )
+    ),
+
+    isModelMode && e('div', { style:{display:'flex',flexDirection:'column',gap:10,marginBottom:20} },
+      e('div', { style:{fontSize:14,color:'#FFF',fontWeight:300,marginBottom:4} }, `พบโมเดล/รุ่นที่ตรงกัน (${models.length})`),
+      models.map((m,i) => e('div', {
+        key:i, className:'m-c', style:{background:'white',borderRadius:16,padding:'16px',display:'flex',alignItems:'center',gap:16,cursor:'pointer',boxShadow:'0 4px 16px rgba(0,0,0,0.05)',transition:'all 0.3s ease'},
+        onClick:()=>{setMR(m); setTab("all"); showToast(`แสดงร้านที่มี ${m.brand} ${m.ref}`);}
+      },
+        e('div', {className:'m-ic', style:{width:48,height:48,borderRadius:12,color:'white',display:'flex',alignItems:'center',justifyContent:'center',fontSize:22,fontWeight:600,background:hue(m.brand)}}, m.brand.charAt(0)),
+        e('div', {style:{flex:1, minWidth:0}},
+          e('div', {style:{fontSize:16,fontWeight:600,color:'#2D2D2D'}}, `${m.brand} ${m.ref}`),
+          e('div', {style:{fontSize:13,color:'#7A7A7A'}}, m.name)
+        ),
+        e('div', {style:{fontSize:14,color:'var(--pri)',fontWeight:600,display:'flex',alignItems:'center',gap:4,flexShrink:0}}, `${m.stores.length} ร้าน`, e(ChevRightIc,{s:16}))
+      ))
+    ),
+    mR && e('div', { className:'m-c', style:{background:'white',borderRadius:16,padding:'16px',display:'flex',alignItems:'center',gap:16,marginBottom:24,boxShadow:'0 4px 16px rgba(0,0,0,0.05)'} },
+      e('div', {className:'m-ic', style:{width:48,height:48,borderRadius:12,color:'white',display:'flex',alignItems:'center',justifyContent:'center',fontSize:22,fontWeight:600,background:hue(mR.brand)}}, mR.brand.charAt(0)),
+      e('div', {style:{flex:1, minWidth:0}},
+        e('div', {style:{fontSize:16,fontWeight:600}}, `${mR.brand} ${mR.ref}`),
+        e('div', {style:{fontSize:13,color:'var(--pri)'}}, `${mR.name} · ${modelS.length} ร้าน`)
+      ),
+      e('button', {style:{cursor:'pointer',color:'#A0A0A0',fontSize:22,background:'none',border:'none'},onClick:()=>setMR(null)}, "✕")
+    ),
+
+    tab === "all" ? e('div', null,
+      e(RenderSection, { title:"ร้านนาฬิกา", count:ws.length, stores:ws, type:"watch", bf:mR?[mR.brand]:selBr, view, onOpen:(st,ty)=>setDet({store:st,type:ty}), onToast:showToast, isAllView:true }),
+      e(RenderSection, { title:"ร้านกระเป๋า", count:bs.length, stores:bs, type:"bag", bf:mR?[mR.brand]:selBr, view, onOpen:(st,ty)=>setDet({store:st,type:ty}), onToast:showToast, isAllView:true }),
+      ws.length === 0 && bs.length === 0 && e('div', {style:{color:'white',padding:40,textAlign:'center',fontSize:16}}, "ไม่พบร้านค้าที่ตรงกับเงื่อนไข")
+    ) : e('div', null,
+      e(RenderSection, { title: tab==="watch"?"ร้านนาฬิกา":"ร้านกระเป๋า", count:(tab==="watch"?ws:bs).length, stores:(tab==="watch"?ws:bs), type:tab, bf:mR?[mR.brand]:selBr, view, onOpen:(st,ty)=>setDet({store:st,type:ty}), onToast:showToast, isAllView:false })
+    ),
+
+    // BRAND SHEET
+    sheet && e('div', { className:'ov', onClick:()=>setSheet(false) },
+      e('div', { className:'sh', onClick:ev=>ev.stopPropagation() },
+        e('div', { className:'sh-bar' }),
+        e('div', { style:{display:'flex',justifyContent:'space-between',alignItems:'center',marginBottom:12} },
+          e('div', {style:{fontSize:22,color:'#5A4A3D',fontWeight:700}}, "เลือกแบรนด์"),
+          selBr.length > 0 && e('button', {style:{color:'var(--pri)',fontSize:14,cursor:'pointer',background:'none',border:'none'}, onClick:()=>setSelBr([])}, "ล้างทั้งหมด")
+        ),
+        e('div', { className:'sh-srch-bar' },
+          e('div', {className:'s-inp'}, e(SearchIc,{s:20}), e('input', {placeholder:"พิมพ์ชื่อแบรนด์...", value:sheetQ, onChange:ev=>setSheetQ(ev.target.value)})),
+          e('button', {className:'s-mic', onClick:()=>openVoice("sheet"), title:"ค้นหาด้วยเสียง"}, e(MicIc,{s:20}))
+        ),
+        e('div', { className:'sh-list' },
+          e('div', null,
+            e('div', {className:'sh-sec-t'}, "แบรนด์ยอดนิยม"),
+            e('div', {className:'sh-grid', style:{gridTemplateColumns:'repeat(3, 1fr)', gap:8}},
+              ["Rolex","Hermès","Patek Philippe","Chanel","Audemars Piguet","Louis Vuitton"]
+                .filter(b => !sheetQ || b.toLowerCase().includes(sheetQ.toLowerCase()))
+                .map(brand => {
+                  const sel = selBr.includes(brand);
+                  return e('div', {
+                    key:brand, className:`sh-item ${sel?"on":""}`,
+                    style:{padding:'8px 10px',borderRadius:12},
+                    onClick:()=>setSelBr(p => p.includes(brand) ? p.filter(x=>x!==brand) : [...p, brand])
+                  },
+                    e('div', {className:'sh-ic', style:{width:24,height:24,fontSize:11,background:hue(brand)}}, brand.charAt(0)),
+                    e('div', {style:{fontSize:13,fontWeight:500,flex:1}}, brand)
+                  );
+                })
+            ),
+            e('div', {className:'sh-sec-t'}, "นาฬิกา (Watches)"),
+            e('div', {className:'sh-grid'},
+              WB.filter(b => !["Rolex","Patek Philippe","Audemars Piguet"].includes(b))
+                .filter(b => !sheetQ || b.toLowerCase().includes(sheetQ.toLowerCase()))
+                .map(brand => {
+                  const sel = selBr.includes(brand);
+                  return e('div', {
+                    key:brand, className:`sh-item ${sel?"on":""}`,
+                    onClick:()=>setSelBr(p => p.includes(brand) ? p.filter(x=>x!==brand) : [...p, brand])
+                  },
+                    e('div', {className:'sh-ic', style:{background:hue(brand)}}, brand.charAt(0)),
+                    e('div', {style:{fontSize:14,fontWeight:500}}, brand)
+                  );
+                })
+            ),
+            e('div', {className:'sh-sec-t'}, "กระเป๋า (Bags)"),
+            e('div', {className:'sh-grid'},
+              BB.filter(b => !["Hermès","Chanel","Louis Vuitton"].includes(b))
+                .filter(b => !sheetQ || b.toLowerCase().includes(sheetQ.toLowerCase()))
+                .map(brand => {
+                  const sel = selBr.includes(brand);
+                  return e('div', {
+                    key:brand, className:`sh-item ${sel?"on":""}`,
+                    onClick:()=>setSelBr(p => p.includes(brand) ? p.filter(x=>x!==brand) : [...p, brand])
+                  },
+                    e('div', {className:'sh-ic', style:{background:hue(brand)}}, brand.charAt(0)),
+                    e('div', {style:{fontSize:14,fontWeight:500}}, brand)
+                  );
+                })
+            )
+          )
+        ),
+        e('button', {
+          className:'c-cta',
+          style:{width:"100%",height:54,justifyContent:"center",fontSize:16, borderRadius:27},
+          onClick:()=>setSheet(false)
+        }, `ดูร้านค้า${selBr.length > 0 ? ` (${selBr.length})` : ""}`, e(ChevRightIc,{s:18}))
+      )
+    ),
+
+    // DETAIL MODAL
+    detStore && e('div', { className:'ov', onClick:()=>setDet(null) },
+      e('div', { className:'sh', onClick:ev=>ev.stopPropagation() },
+        e('div', { className:'sh-bar' }),
+        e('div', { className:'d-hdr' },
+          e('div', {className:'d-av', style:{background:hue(detStore.n)}}, detStore.n.charAt(0)),
+          e('div', {className:'d-info'},
+            e('div', {className:'d-nm'},
+              detStore.n,
+              e(CertIc,{s:18}),
+              detStore.w.length > 0 && e(WatchIc,{s:18,c:"#A07850"}),
+              detStore.b.length > 0 && e(BagIc,{s:18,c:"#A07850"})
+            ),
+            e('div', {className:'d-loc'}, e(LocIc,{s:14}), activeBranch ? activeBranch.a : detStore.a),
+            e('div', {className:'d-tags'},
+              detStore.c && detStore.c.map(c => e('span', {key:c, className:`t-cond ${c}`}, c==="new"?"New":"Pre-owned")),
+              e('span', {className:`t-cond ${detStore.stock==='ready'?'rdy':detStore.stock==='preorder'?'po':'ask'}`},
+                detStore.stock==='ready'?'พร้อมส่ง':detStore.stock==='preorder'?'Pre-Order':'สอบถามสต็อก')
+            )
+          )
+        ),
+
+        e('div', { className:'d-socs' },
+          dSocKeys.map(k => e('a', {
+            key:k, className:'d-soc',
+            href: socUrl(k, activeSoc[k]),
+            target: k !== 'tel' ? '_blank' : undefined,
+            rel: k !== 'tel' ? 'noopener noreferrer' : undefined,
+            onClick: () => { if (k !== 'tel') showToast(`กำลังเปิด ${SOC[k].label}`); }
+          },
+            e('div', {className:'d-s-ic'}, e(Ico, {k, s:22, color:"currentColor"})),
+            e('div', {className:'d-s-txt'},
+              e('div', {className:'d-s-lbl'}, SOC[k].label),
+              e('div', {className:'d-s-val'}, activeSoc[k])
+            )
+          ))
+        ),
+
+        detStore.w.length > 0 && e('div', {className:'d-sec'},
+          e('div', {className:'d-st'}, e(WatchIc,{s:18,c:"currentColor"}), `แบรนด์นาฬิกาที่ขอสินเชื่อได้ (${detStore.w.length})`),
+          e('div', {className:'d-tag-wrap'}, detStore.w.map(b => e('span',{key:b,className:'m-tag'},b)))
+        ),
+        detStore.b.length > 0 && e('div', {className:'d-sec'},
+          e('div', {className:'d-st'}, e(BagIc,{s:18,c:"currentColor"}), `แบรนด์กระเป๋าที่ขอสินเชื่อได้ (${detStore.b.length})`),
+          e('div', {className:'d-tag-wrap'}, detStore.b.map(b => e('span',{key:b,className:'m-tag'},b)))
+        ),
+
+        otherBranches.length > 0 && e('div', {className:'d-sec', style:{borderTop:'1px solid #EBEBEB',paddingTop:20}},
+          e('div', {className:'d-st'}, e(FolderIc,{s:16,c:"currentColor"}), "สาขาอื่น ๆ ให้บริการ"),
+          e('div', {className:'d-br-srch', style:{background:'#F9F7F3', padding:'12px 16px', borderRadius:16, display:'flex', alignItems:'center', gap:10, marginBottom:12, border:'1px solid #EBE4DA'}},
+            e(SearchIc,{s:16}),
+            e('input', {placeholder:"ค้นหาสาขาหรือที่ตั้ง...", value:brQ, onChange:ev=>setBrQ(ev.target.value), style:{flex:1, border:'none', background:'transparent', outline:'none', fontSize:14}})
+          ),
+          e('div', {className:'d-br-list', style:{display:'flex', flexDirection:'column', gap:8, maxHeight:220, overflowY:'auto'}},
+            otherBranches
+              .filter(br => !brQ || br.n.toLowerCase().includes(brQ.toLowerCase()) || br.a.toLowerCase().includes(brQ.toLowerCase()))
+              .map(br => e('div', {
+                key:br.id,
+                className:'d-brn',
+                style: {
+                  background:'#FAFAFA', border:'1px solid #EAEAEA', padding:'14px 16px', borderRadius:'14px', 
+                  display:'flex', justifyContent:'space-between', alignItems:'center', cursor:'pointer', transition:'all 0.3s ease',
+                  ...(selBranchId===br.id ? {borderColor:'var(--pri)', background:'#FFFBF5', boxShadow:'0 4px 12px rgba(162,123,82,0.1)'} : {})
+                },
+                onClick:()=>{ setSelBranchId(selBranchId===br.id ? null : br.id); showToast(selBranchId===br.id ? "ยกเลิกเลือกสาขา" : `เลือกสาขา: ${br.n}`); }
+              },
+                e('div', {style:{flex:1}},
+                  e('div', {className:'d-brn-name', style:{fontSize:14, fontWeight:600, color:'#222'}}, br.n),
+                  e('div', {className:'d-brn-loc', style:{fontSize:12, color:'#888', display:'flex', alignItems:'center', gap:4, marginTop:4}}, e(LocIc,{s:12}), br.a)
+                ),
+                selBranchId===br.id && e('span', {style:{fontSize:12,color:'var(--pri)',fontWeight:600,display:'flex',alignItems:'center',gap:4}}, e(CheckIc,{s:14, stroke:"currentColor"}), "เลือกอยู่")
+              ))
+          )
+        ),
+
+        e('div', { className:'d-acts' },
+          e('button', {
+            className:'d-a sec',
+            onClick:(ev)=>openMap(activeBranch ? activeBranch.a : detStore.a, ev)
+          }, e(LocIc,{s:18}), "ดูแผนที่"),
+          e('button', {
+            className:'d-a pri',
+            onClick:(ev)=>applyLoan(detStore, ev)
+          }, "สมัครสินเชื่อ", e(ChevRightIc,{s:18}))
+        )
+      )
+    ),
+
+    // ═══ VOICE SEARCH ═══
+    voiceOpen && e('div', { className:'voice-ov' },
+      e('button', {className:'voice-close', onClick:closeVoice, title:"ปิด"}, "✕"),
+      e('div', {className:'voice-inner'},
+        e('div', {className:'voice-status'},
+          voiceError ? "เกิดข้อผิดพลาด" :
+          voiceListening ? "กำลังฟังเสียงของคุณ..." :
+          voiceText ? "พร้อมค้นหา" : "แตะไมค์เพื่อพูด"
+        ),
+        e('div', {className:'voice-mic-wrap'},
+          voiceListening && e('div', {className:'voice-pulse'}),
+          voiceListening && e('div', {className:'voice-pulse'}),
+          voiceListening && e('div', {className:'voice-pulse'}),
+          e('button', {
+            className:`voice-mic-btn ${voiceListening ? '' : 'idle'}`,
+            onClick: voiceListening ? null : startListening,
+            disabled: voiceListening
+          }, e(MicIc, {s:44}))
+        ),
+        e('div', {className:`voice-text ${voiceText ? '' : 'placeholder'}`},
+          voiceText || (voiceListening ? "กำลังฟังเสียงของคุณ..." : "กรุณาพูดชื่อแบรนด์ รุ่น หรือร้านค้า...")
+        ),
+        voiceListening && e('div', {className:'voice-waveform'},
+          [1,2,3,4,5,6,7,8,9].map(i => e('div', {key:i, className:'voice-bar'}))
+        ),
+        !voiceListening && !voiceText && !voiceError && e('div', {className:'voice-hint'},
+          'ตัวอย่างเช่น: "Rolex", "Hermès Birkin", หรือ "สยามพารากอน"'
+        ),
+        voiceError && e('div', {className:'voice-err'}, voiceError),
+        e('div', {className:'voice-actions'},
+          e('button', {className:'voice-btn ghost', onClick:closeVoice}, "ยกเลิก"),
+          voiceText && !voiceListening && e('button', {className:'voice-btn primary', onClick:submitVoice},
+            "ค้นหาเลย", e(ChevRightIc,{s:18})
+          ),
+          !voiceText && !voiceListening && voiceError && e('button', {className:'voice-btn primary', onClick:startListening},
+            e(MicIc,{s:18}), "ลองพูดอีกครั้ง"
+          )
+        )
+      )
+    ),
+
+    toast && e('div', {className:'toast'},
+      e('div', {className:'toast-ic'}, e(CheckIc,{s:14, stroke:"white"})),
+      toast
+    )
+  );
+}
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(e(App));
+</script>
+</body>
+</html>
