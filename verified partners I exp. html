@@ -34,9 +34,7 @@ body {
   min-height: 100vh;
 }
 
-button, input, textarea, select {
-  font-family: 'Kanit', sans-serif !important;
-}
+button, input, textarea, select { font-family: 'Kanit', sans-serif !important; }
 
 .layout { max-width: 1140px; margin: 0 auto; padding: 40px 24px 100px; }
 
@@ -110,10 +108,49 @@ button, input, textarea, select {
 .f-pill { padding: 8px 18px; border-radius: 30px; font-size: 13px; font-weight: 500; cursor: pointer; color: #7A7A7A; display: flex; align-items: center; gap: 6px; transition: all 0.3s var(--ease-smooth); background: transparent; border: 1px solid transparent; }
 .f-pill:hover { background: #F6F4F0; color: var(--text-dark); }
 .f-pill.on { background: linear-gradient(180deg, #FFFFFF 0%, #FFF9F2 100%); color: #8F6D44; box-shadow: 0 2px 8px rgba(162,123,82,0.1); border: 1px solid #FAF5ED; text-shadow: 0 0 .5px #8F6D44; }
+
+/* Nearby pill special */
+.f-pill.nearby { color: #5B8A4A; }
+.f-pill.nearby:hover { background: #F0F7EE; color: #3E6B33; }
+.f-pill.nearby.on { background: linear-gradient(180deg, #FFFFFF 0%, #F2FAF0 100%); color: #3E7A2E; border-color: #D4EDCF; box-shadow: 0 2px 8px rgba(62,122,46,0.12); text-shadow: none; }
+.f-pill.nearby.locating { color: #A27B52; animation: locPulse 1.2s ease-in-out infinite; }
+@keyframes locPulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
+
 .f-right { display: flex; align-items: center; gap: 16px; margin-left: auto; height: 100%; }
 .f-clear { color: rgba(255,255,255,0.85); font-size: 13px; cursor: pointer; font-weight: 300; transition: color 0.2s; background: none; border: none; display: flex; align-items: center; }
 .f-clear:hover { color: var(--white); text-decoration: underline; text-underline-offset: 2px; }
 .f-total { color: var(--white); font-size: 13px; font-weight: 500; display: flex; align-items: center; }
+
+/* ══ MODEL MATCH BANNER ══ */
+.model-banner {
+  background: var(--white); border-radius: 16px; padding: 16px 20px;
+  display: flex; align-items: center; gap: 16px; margin-bottom: 24px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+  animation: bannerFadeIn 0.4s var(--ease-bounce);
+}
+@keyframes bannerFadeIn { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+.mb-av { width: 52px; height: 52px; border-radius: 12px; background: #A0815E; color: white; display: flex; align-items: center; justify-content: center; font-size: 22px; font-weight: 600; flex-shrink: 0; }
+.mb-info { flex: 1; min-width: 0; }
+.mb-name { font-size: 17px; font-weight: 700; color: #2D2D2D; margin-bottom: 2px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.mb-desc { font-size: 13px; color: #8F6D44; font-weight: 500; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.mb-close { background: none; border: none; cursor: pointer; color: #A0A0A0; padding: 8px; margin-right: -8px; transition: color 0.3s; display: flex; align-items: center; justify-content: center; }
+.mb-close:hover { color: #555; }
+
+/* NEARBY BANNER */
+.nearby-banner {
+  background: linear-gradient(135deg, #F2FAF0 0%, #FFFFFF 100%);
+  border: 1px solid #D4EDCF;
+  border-radius: 16px; padding: 14px 18px;
+  display: flex; align-items: center; gap: 14px; margin-bottom: 24px;
+  box-shadow: 0 4px 16px rgba(62,122,46,0.08);
+  animation: bannerFadeIn 0.4s var(--ease-bounce);
+}
+.nb-ic { width: 44px; height: 44px; border-radius: 12px; background: #D4EDCF; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.nb-info { flex: 1; min-width: 0; }
+.nb-title { font-size: 15px; font-weight: 700; color: #2D5A20; margin-bottom: 2px; }
+.nb-sub { font-size: 12px; color: #5B8A4A; font-weight: 400; }
+.nb-close { background: none; border: none; cursor: pointer; color: #A0B89A; padding: 8px; margin-right: -8px; transition: color 0.3s; display: flex; align-items: center; justify-content: center; }
+.nb-close:hover { color: #555; }
 
 /* SECTION HEADER */
 .s-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; border-bottom: 2px solid rgba(255,255,255,0.1); padding-bottom: 16px; }
@@ -129,6 +166,9 @@ button, input, textarea, select {
 /* CARD */
 .card { background: var(--white); border-radius: 20px; padding: 18px; display: flex; flex-direction: column; transition: transform 0.5s var(--ease-smooth), box-shadow 0.5s var(--ease-smooth), border-color 0.5s var(--ease-smooth); position: relative; cursor: pointer; border: 1px solid transparent; overflow: hidden; }
 .card:hover { transform: translateY(-4px) scale(1.01); box-shadow: 0 24px 50px rgba(90,60,30,0.18), 0 8px 20px rgba(90,60,30,0.08); border-color: #EFE4D8; z-index: 2; }
+
+/* Nearby badge on card */
+.card-dist { position: absolute; top: 12px; right: 12px; background: #D4EDCF; color: #2D5A20; font-size: 10px; font-weight: 700; padding: 3px 8px; border-radius: 10px; display: flex; align-items: center; gap: 3px; }
 
 /* LIST VIEW */
 .list-layout .card { flex-direction: row; align-items: center; padding: 18px 24px; box-shadow: 0 4px 16px rgba(162,123,82,0.05); border: 1px solid #F5F1E9; gap: 0; }
@@ -178,59 +218,49 @@ button, input, textarea, select {
 /* ═══════════════════════════════
    BRAND SHEET — FIXED SCROLLABLE
    ═══════════════════════════════ */
-
-/* Overlay */
 .ov { position: fixed; inset: 0; background: rgba(0,0,0,.6); backdrop-filter: blur(6px); z-index: 100; display: flex; align-items: center; justify-content: center; padding: 16px; animation: ovIn 0.3s var(--ease-smooth); }
 @keyframes ovIn { from { opacity: 0; } to { opacity: 1; } }
 
-/* Modal shell — fixed height with flex column */
 .sh {
   width: 100%; max-width: 720px;
-  height: 90vh; /* fixed height so inner scroll works */
+  height: 90vh;
   background: var(--white); border-radius: 24px;
-  display: flex; flex-direction: column; /* KEY: flex column */
+  display: flex; flex-direction: column;
   box-shadow: 0 24px 60px rgba(0,0,0,0.3);
   animation: shIn 0.5s var(--ease-bounce);
-  position: relative; overflow: hidden; /* clip rounded corners */
+  position: relative; overflow: hidden;
 }
 @keyframes shIn { from { transform: translateY(30px) scale(0.98); opacity: 0; } to { transform: translateY(0) scale(1); opacity: 1; } }
 
-/* ── Sticky modal header (shared by brand sheet & detail) ── */
+/* ── Sticky modal header ── */
 .modal-sticky-hdr {
   position: sticky; top: 0; z-index: 50;
   background: rgba(255,255,255,0.97);
   backdrop-filter: blur(16px);
   border-bottom: 1px solid #F0EBE5;
-  flex-shrink: 0; /* never shrink */
+  flex-shrink: 0;
   padding: 0;
 }
 
-/* Brand sheet header inner */
+/* Brand sheet header — TIGHTER */
 .bs-hdr-inner {
-  padding: 18px 24px 0;
-  display: flex; flex-direction: column; gap: 12px;
+  padding: 14px 20px 0;          /* ลดจาก 18px 24px */
+  display: flex; flex-direction: column; gap: 10px;
 }
 .bs-hdr-top {
   display: flex; align-items: center; justify-content: space-between;
 }
-.bs-hdr-title { font-size: 20px; font-weight: 700; color: #2D2D2D; }
+.bs-hdr-title { font-size: 18px; font-weight: 700; color: #2D2D2D; }
 .bs-hdr-meta { display: flex; align-items: center; gap: 8px; }
-.bs-hdr-count {
-  font-size: 12px; font-weight: 500; color: #8F6D44;
-  background: #FAF5EF; padding: 3px 10px; border-radius: 12px;
-}
-.bs-close {
-  width: 32px; height: 32px; border-radius: 50%; background: #F5F5F5; border: none;
-  display: flex; align-items: center; justify-content: center; cursor: pointer;
-  color: #555; transition: all 0.3s; font-size: 14px; flex-shrink: 0;
-}
+.bs-hdr-count { font-size: 12px; font-weight: 500; color: #8F6D44; background: #FAF5EF; padding: 3px 10px; border-radius: 12px; }
+.bs-close { width: 30px; height: 30px; border-radius: 50%; background: #F5F5F5; border: none; display: flex; align-items: center; justify-content: center; cursor: pointer; color: #555; transition: all 0.3s; font-size: 13px; flex-shrink: 0; }
 .bs-close:hover { background: #EAEAEA; color: #000; transform: scale(1.05); }
 
-/* Search bar inside header */
-.bs-srch-wrap { padding: 0 24px 14px; }
+/* Search bar — เพิ่ม top padding ให้ห่างจากปุ่มปิด */
+.bs-srch-wrap { padding: 10px 20px 12px; } /* เพิ่ม top จาก 0 → 10px */
 .sh-srch-bar {
   display: flex; align-items: center; gap: 12px;
-  background: #F6F4F0; border-radius: 16px; padding: 6px 6px 6px 18px;
+  background: #F6F4F0; border-radius: 14px; padding: 5px 5px 5px 16px;
   border: 2px solid transparent; transition: all 0.4s var(--ease-bounce);
 }
 .sh-srch-bar:focus-within {
@@ -238,18 +268,16 @@ button, input, textarea, select {
   box-shadow: 0 6px 16px rgba(162,123,82,0.1); transform: translateY(-1px);
 }
 .s-inp { flex: 1; display: flex; align-items: center; gap: 10px; color: #A09D98; }
-.s-inp input { border: none; background: transparent; height: 40px; flex: 1; outline: none; font-size: 14px; color: var(--text-dark); }
-.s-mic {
-  width: 40px; height: 40px; border-radius: 12px; display: flex; align-items: center;
-  justify-content: center; cursor: pointer; color: var(--pri);
-  transition: all 0.35s var(--ease-smooth); background: transparent; border: none;
-}
+.s-inp input { border: none; background: transparent; height: 36px; flex: 1; outline: none; font-size: 14px; color: var(--text-dark); }
+.s-mic { width: 36px; height: 36px; border-radius: 10px; display: flex; align-items: center; justify-content: center; cursor: pointer; color: var(--pri); transition: all 0.35s var(--ease-smooth); background: transparent; border: none; }
 .s-mic:hover { background: #EFE9E2; transform: scale(1.05); }
 
-/* ── Popular brands inline row (compact, starred) ── */
+/* ── Popular brands row — ชิดบน, label ชิดซ้าย ── */
 .bs-popular-row {
-  display: flex; align-items: center; gap: 8px;
-  padding: 10px 24px 12px;
+  display: flex;
+  align-items: flex-start;   /* เปลี่ยนจาก center → flex-start */
+  gap: 8px;
+  padding: 8px 20px 10px;    /* ลด padding เล็กน้อย */
   border-bottom: 1px solid #F5F0E8;
   flex-wrap: wrap;
   background: #FDFCFA;
@@ -259,80 +287,65 @@ button, input, textarea, select {
   font-size: 11px; font-weight: 600; color: #A27B52;
   text-transform: uppercase; letter-spacing: 0.6px;
   flex-shrink: 0; white-space: nowrap;
+  padding-top: 5px;          /* ให้ label กับ chips อยู่ระนาบเดียวกัน */
 }
 .bs-pop-brands { display: flex; flex-wrap: wrap; gap: 6px; flex: 1; }
 .bs-pop-chip {
   display: inline-flex; align-items: center; gap: 5px;
-  padding: 4px 12px; border-radius: 16px;
+  padding: 4px 11px; border-radius: 16px;
   font-size: 12px; font-weight: 500; cursor: pointer;
   background: #F5F1EB; color: #5A4A3D;
   border: 1px solid #E8E0D4;
-  transition: all 0.3s var(--ease-bounce);
-  white-space: nowrap;
+  transition: all 0.3s var(--ease-bounce); white-space: nowrap;
 }
 .bs-pop-chip:hover { background: #FFF8F0; border-color: #DCCFB8; transform: translateY(-1px); box-shadow: 0 3px 8px rgba(162,123,82,0.1); }
-.bs-pop-chip.on {
-  background: linear-gradient(135deg, #B28E6A 0%, #8C6A4F 100%);
-  color: #FFF; border-color: transparent;
-  box-shadow: 0 4px 12px rgba(162,123,82,0.25);
-}
+.bs-pop-chip.on { background: linear-gradient(135deg, #B28E6A 0%, #8C6A4F 100%); color: #FFF; border-color: transparent; box-shadow: 0 4px 12px rgba(162,123,82,0.25); }
 .bs-pop-star { font-size: 10px; }
 
-/* ── Scrollable body ── */
+/* ── Scrollable body — เพิ่ม padding น้อยลงให้เห็นเนื้อหามากขึ้น ── */
 .sh-body {
   flex: 1; overflow-y: auto;
-  padding: 20px 24px 16px;
+  padding: 12px 20px 16px;   /* ลดจาก 20px 24px */
   display: flex; flex-direction: column; gap: 4px;
 }
 
 /* Section titles */
 .sh-sec-t {
-  font-size: 12px; font-weight: 700; color: #5A4A3D;
+  font-size: 11px; font-weight: 700; color: #5A4A3D;
   text-transform: uppercase; letter-spacing: 1px;
-  margin: 16px 0 10px 2px;
+  margin: 10px 0 8px 2px;    /* ลดจาก 16px */
   display: flex; align-items: center; gap: 8px;
 }
 .sh-sec-t::after { content:""; flex: 1; height: 1.5px; background: linear-gradient(90deg, #E6DCD0 0%, rgba(230,220,208,0) 100%); }
-.sh-sec-count {
-  font-size: 11px; font-weight: 600; color: #A27B52;
-  background: #FAF5EF; padding: 1px 8px; border-radius: 10px;
-  text-transform: none; letter-spacing: 0;
-}
+.sh-sec-count { font-size: 11px; font-weight: 600; color: #A27B52; background: #FAF5EF; padding: 1px 8px; border-radius: 10px; text-transform: none; letter-spacing: 0; }
 
-/* Brand grid */
-.sh-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; }
-@media (min-width: 480px) { .sh-grid { grid-template-columns: repeat(3, 1fr); } }
+/* Brand grid — 3 cols default, 4 cols on wider */
+.sh-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 7px; }
+@media (min-width: 420px) { .sh-grid { grid-template-columns: repeat(3, 1fr); } }
+@media (min-width: 600px) { .sh-grid { grid-template-columns: repeat(4, 1fr); } }
 
+/* Brand items — เล็กลงเพื่อให้เห็นหลายรายการ */
 .sh-item {
-  background: #FAF9F7; border: 1px solid #F0EBE5; padding: 10px 14px; border-radius: 12px;
-  display: flex; align-items: center; gap: 10px; cursor: pointer;
+  background: #FAF9F7; border: 1px solid #F0EBE5; padding: 8px 10px; border-radius: 10px;
+  display: flex; align-items: center; gap: 8px; cursor: pointer;
   transition: all 0.4s var(--ease-bounce);
 }
 .sh-item:hover { background: #FFF; border-color: #DCCFB8; transform: translateY(-2px); box-shadow: 0 6px 18px rgba(162,123,82,0.08); }
 .sh-item.on { border-color: var(--pri); background: #FFFBF5; box-shadow: 0 4px 12px rgba(162,123,82,0.12); }
 .sh-item.on .sh-ic { background: var(--pri) !important; color: #FFF; }
-.sh-ic { width: 32px; height: 32px; border-radius: 10px; color: #FFF; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 600; flex-shrink: 0; }
-.sh-item-name { font-size: 13px; font-weight: 500; flex: 1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.sh-ic { width: 28px; height: 28px; border-radius: 8px; color: #FFF; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 600; flex-shrink: 0; }
+.sh-item-name { font-size: 12px; font-weight: 500; flex: 1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .sh-item-check { color: var(--pri); flex-shrink: 0; }
 
 /* Footer CTA */
 .sh-footer {
-  flex-shrink: 0;
-  padding: 12px 24px 20px;
+  flex-shrink: 0; padding: 10px 20px 16px;
   border-top: 1px solid #F5F0E8;
-  background: rgba(255,255,255,0.97);
-  backdrop-filter: blur(8px);
+  background: rgba(255,255,255,0.97); backdrop-filter: blur(8px);
 }
 
 /* DETAIL MODAL */
-.d-sticky-hdr {
-  position: sticky; top: 0; z-index: 50;
-  background: rgba(255,255,255,0.95); backdrop-filter: blur(12px);
-  border-bottom: 1px solid #F0EBE5;
-  display: flex; align-items: center; justify-content: space-between;
-  padding: 14px 24px;
-  flex-shrink: 0;
-}
+.d-sticky-hdr { position: sticky; top: 0; z-index: 50; background: rgba(255,255,255,0.95); backdrop-filter: blur(12px); border-bottom: 1px solid #F0EBE5; display: flex; align-items: center; justify-content: space-between; padding: 14px 24px; flex-shrink: 0; }
 .d-sh-left { display: flex; align-items: center; gap: 12px; }
 .d-sh-av { width: 40px; height: 40px; border-radius: 12px; display: flex; align-items: center; justify-content: center; color: white; font-weight: 700; font-size: 18px; flex-shrink: 0; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
 .d-sh-nm { font-size: 18px; font-weight: 700; color: #2D2D2D; display: flex; align-items: center; gap: 8px; }
@@ -384,12 +397,7 @@ button, input, textarea, select {
 .btn-more:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(162,123,82,0.15); background: linear-gradient(135deg, #FFFFFF 0%, #FFF9F2 100%); }
 
 /* VOICE SEARCH */
-.voice-ov {
-  position: fixed; inset: 0;
-  background: radial-gradient(circle at center, rgba(140,106,79,0.95) 0%, rgba(45,30,20,0.98) 100%);
-  z-index: 300; display: flex; flex-direction: column; align-items: center; justify-content: center;
-  padding: 24px; animation: voiceIn 0.5s var(--ease-bounce);
-}
+.voice-ov { position: fixed; inset: 0; background: radial-gradient(circle at center, rgba(140,106,79,0.95) 0%, rgba(45,30,20,0.98) 100%); z-index: 300; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 24px; animation: voiceIn 0.5s var(--ease-bounce); }
 @keyframes voiceIn { from { opacity: 0; transform: scale(1.05); } to { opacity: 1; transform: scale(1); } }
 .voice-close { position: absolute; top: 20px; right: 20px; width: 48px; height: 48px; border-radius: 50%; background: rgba(255,255,255,0.15); border: none; color: white; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 22px; transition: all 0.4s var(--ease-bounce); }
 .voice-close:hover { background: rgba(255,255,255,0.3); transform: rotate(90deg) scale(1.1); }
@@ -435,52 +443,63 @@ const { useState, useMemo, useCallback, useRef, useEffect } = React;
 const WB = ["Patek Philippe","Rolex","Audemars Piguet","Richard Mille","Franck Muller","Hublot","Panerai","Omega","Piaget","Corum","Chopard","Breguet","Bvlgari","Cartier","Tiffany & Co.","Van Cleef & Arpels"];
 const BB = ["Hermès","Chanel","Louis Vuitton","Yves Saint Laurent","Christian Dior","Goyard","Gucci","Balenciaga","Celine","Valentino","Fendi","Prada","Bottega Veneta","Loewe","Givenchy","Delvaux"];
 const ALL_BR = [...new Set([...WB, ...BB])];
-const POPULAR = ["Rolex","Hermès","Patek Philippe","Chanel","Audemars Piguet","Louis Vuitton"];
+// ── ตัด Audemars Piguet ออกจากยอดนิยม ──
+const POPULAR = ["Rolex","Hermès","Patek Philippe","Chanel","Louis Vuitton"];
 
+const KNOWN_MODELS = [
+  { id: "126710blro", n: "Rolex 126710BLRO", desc: "GMT-Master II Pepsi", br: "Rolex", initial: "R" },
+  { id: "126711chnr", n: "Rolex 126711CHNR", desc: "GMT-Master II Root Beer", br: "Rolex", initial: "R" },
+  { id: "116500ln", n: "Rolex 116500LN", desc: "Cosmograph Daytona", br: "Rolex", initial: "R" },
+  { id: "b25", n: "Hermès Birkin 25", desc: "Togo Leather Gold Hardware", br: "Hermès", initial: "H" },
+  { id: "b30", n: "Hermès Birkin 30", desc: "Epsom Leather", br: "Hermès", initial: "H" },
+  { id: "5711", n: "Patek Philippe 5711/1A", desc: "Nautilus Stainless Steel", br: "Patek Philippe", initial: "P" }
+];
+
+// เพิ่ม lat/lng สำหรับ Nearby feature
 const STORES = [
-  { id: 1, n: "Pendulum", w: ["Rolex","Omega","Patek Philippe"], b: [], a: "สยามพารากอน, ปทุมวัน", c:["new","pre"], stock:"ready",
-    soc:{tel:"02-610-9500", line:"@pendulum", ig:"pendulum_th", fb:"PendulumTH", tiktok:"pendulum.th"},
-    branches: [
-      {id:11, n:"พารากอน", a:"ปทุมวัน, กทม.", soc:{tel:"02-610-9500", line:"@pendulum_paragon"}},
-      {id:12, n:"เอ็มควอเทียร์", a:"วัฒนา, กทม.", soc:{tel:"02-269-1000", line:"@pendulum_emq"}},
-      {id:13, n:"เซ็นทรัล เชียงใหม่", a:"เมือง, เชียงใหม่", soc:{tel:"053-211-123", line:"@pendulum_cm"}}
-    ]},
-  { id: 2, n: "The Hour Glass", w: ["Patek Philippe","Audemars Piguet","Hublot"], b: [], a: "เซ็นทรัลเวิลด์, ปทุมวัน", c:["new"], stock:"ready",
-    soc:{tel:"02-255-9898", line:"@thehourglass", ig:"thehourglass_th", fb:"TheHourGlassThailand"},
-    branches:[
-      {id:21, n:"เซ็นทรัลเวิลด์", a:"ปทุมวัน, กทม.", soc:{tel:"02-255-9898", line:"@thg_ctw"}},
-      {id:22, n:"เกษรวิลเลจ", a:"ปทุมวัน, กทม.", soc:{tel:"02-656-1234", line:"@thg_gaysorn"}}
-    ]},
-  { id: 3, n: "Siam Swiss", w: ["Omega","Chopard","Panerai"], b: [], a: "เอ็มควอเทียร์, วัฒนา", c:["new"], stock:"preorder",
-    soc:{tel:"02-269-1000", line:"@siamswiss", ig:"siamswiss", tiktok:"siamswiss.official"} },
-  { id: 4, n: "PMT The Hour Glass", w: ["Rolex","Richard Mille","Cartier"], b: [], a: "สยามพารากอน, ปทุมวัน", c:["pre"], stock:"ready",
-    soc:{tel:"02-664-8888", line:"@pmthg", ig:"pmt_thehourglass", fb:"PMTTheHourGlass"} },
-  { id: 5, n: "TKI", w: ["Patek Philippe","Audemars Piguet","Franck Muller"], b: [], a: "ไอคอนสยาม, คลองสาน", c:["pre"], stock:"ask",
-    soc:{tel:"02-255-6789", line:"@tki", ig:"tki_bkk", fb:"TKIBangkok"} },
-  { id: 6, n: "Cortina Watch Bangkok", w: ["Rolex","Bvlgari","Corum"], b: [], a: "เซ็นทรัลเอ็มบาสซี, ปทุมวัน", c:["pre"], stock:"ready",
-    soc:{tel:"02-255-1234", line:"@cortinawatch", ig:"cortinawatch", fb:"CortinaWatchTH", tiktok:"cortinawatch"} },
-  { id: 7, n: "THONG PATEK", w: ["Patek Philippe","Hublot","Breguet"], b: [], a: "สาทร, กรุงเทพฯ", c:["new"], stock:"preorder",
-    soc:{tel:"02-255-1234", line:"@thongpatek", fb:"ThongPatek", tiktok:"thongpatek"},
-    branches:[
-      {id:71, n:"สาขาสาทร", a:"เขตสาทร, กรุงเทพฯ", soc:{tel:"02-255-1234", line:"@tp_sathorn"}},
-      {id:72, n:"สาขาภูเก็ต", a:"อ.เมือง, ภูเก็ต", soc:{tel:"076-211-123", line:"@tp_phuket"}}
-    ] },
-  { id: 8, n: "Time Midas", w: ["Rolex","Omega","Panerai"], b: [], a: "เซ็นทรัลลาดพร้าว, จตุจักร", c:["pre"], stock:"ready",
-    soc:{tel:"02-937-8888", line:"@timemidas", ig:"timemidas_th"} },
-  { id: 9, n: "Luxe Gallery Bangkok", w: ["Rolex","Cartier","Omega"], b: ["Hermès","Louis Vuitton","Chanel"], a: "เอ็มโพเรียม, วัฒนา", c:["new","pre"], stock:"ready",
-    soc:{tel:"02-664-1234", line:"@luxegallery", ig:"luxegallery_th", fb:"LuxeGalleryBKK", tiktok:"luxegallery"},
-    branches:[
-      {id:91, n:"เอ็มโพเรียม", a:"วัฒนา, กทม.", soc:{tel:"02-664-1234", line:"@lg_empo"}},
-      {id:92, n:"ไอคอนสยาม", a:"คลองสาน, กทม.", soc:{tel:"02-495-7000", line:"@lg_icon"}}
-    ] },
-  { id: 14, n: "Maison Prestige Siam", w: ["Patek Philippe","Audemars Piguet"], b: ["Hermès","Celine"], a: "เซ็นทรัลชิดลม, ปทุมวัน", c:["new"], stock:"preorder",
-    soc:{tel:"02-793-7777", line:"@maisonprestige", ig:"maison_prestige", fb:"MaisonPrestigeBKK", tiktok:"maisonprestige"} },
-  { id: 10, n: "KOMEHYO", w: [], b: ["Hermès","Chanel","Louis Vuitton","Christian Dior"], a: "เซ็นทรัลเวิลด์, ปทุมวัน", c:["new","pre"], stock:"ready",
-    soc:{tel:"02-288-0088", line:"@komehyo", ig:"komehyo_thailand", fb:"KomehyoThailand", tiktok:"komehyo.th"} },
-  { id: 11, n: "Brandname Exchange", w: [], b: ["Prada","Celine","Gucci","Goyard"], a: "สยามสแควร์, ปทุมวัน", c:["new","pre"], stock:"ask",
-    soc:{tel:"02-656-1234", line:"@bne", ig:"brandname.exchange", fb:"BrandnameExchange"} },
-  { id: 12, n: "SF Brandname", w: [], b: ["Louis Vuitton","Hermès","Balenciaga"], a: "MBK Center, ปทุมวัน", c:["new","pre"], stock:"ready",
-    soc:{tel:"02-610-9777", line:"@sfbrandname", ig:"sfbrandname_th", tiktok:"sfbrandname"} }
+  { id: 1, n: "Pendulum", w: ["Rolex","Omega","Patek Philippe"], b: [], m: ["126710blro","126711chnr","116500ln"],
+    a: "สยามพารากอน, ปทุมวัน", lat: 13.7465, lng: 100.5347, c:["new","pre"], stock:"ready",
+    soc:{tel:"02-610-9500",line:"@pendulum",ig:"pendulum_th",fb:"PendulumTH",tiktok:"pendulum.th"},
+    branches:[{id:11,n:"พารากอน",a:"ปทุมวัน, กทม.",soc:{tel:"02-610-9500",line:"@pendulum_paragon"}},{id:12,n:"เอ็มควอเทียร์",a:"วัฒนา, กทม.",soc:{tel:"02-269-1000",line:"@pendulum_emq"}},{id:13,n:"เซ็นทรัล เชียงใหม่",a:"เมือง, เชียงใหม่",soc:{tel:"053-211-123",line:"@pendulum_cm"}}]},
+  { id: 2, n: "The Hour Glass", w: ["Patek Philippe","Audemars Piguet","Hublot"], b: [], m: ["5711"],
+    a: "เซ็นทรัลเวิลด์, ปทุมวัน", lat: 13.7469, lng: 100.5393, c:["new"], stock:"ready",
+    soc:{tel:"02-255-9898",line:"@thehourglass",ig:"thehourglass_th",fb:"TheHourGlassThailand"},
+    branches:[{id:21,n:"เซ็นทรัลเวิลด์",a:"ปทุมวัน, กทม.",soc:{tel:"02-255-9898",line:"@thg_ctw"}},{id:22,n:"เกษรวิลเลจ",a:"ปทุมวัน, กทม.",soc:{tel:"02-656-1234",line:"@thg_gaysorn"}}]},
+  { id: 3, n: "Siam Swiss", w: ["Omega","Chopard","Panerai"], b: [], m: [],
+    a: "เอ็มควอเทียร์, วัฒนา", lat: 13.7303, lng: 100.5693, c:["new"], stock:"preorder",
+    soc:{tel:"02-269-1000",line:"@siamswiss",ig:"siamswiss",tiktok:"siamswiss.official"}},
+  { id: 4, n: "PMT The Hour Glass", w: ["Rolex","Richard Mille","Cartier"], b: [], m: ["126710blro","116500ln"],
+    a: "สยามพารากอน, ปทุมวัน", lat: 13.7464, lng: 100.5350, c:["pre"], stock:"ready",
+    soc:{tel:"02-664-8888",line:"@pmthg",ig:"pmt_thehourglass",fb:"PMTTheHourGlass"}},
+  { id: 5, n: "TKI", w: ["Patek Philippe","Audemars Piguet","Franck Muller"], b: [], m: ["5711"],
+    a: "ไอคอนสยาม, คลองสาน", lat: 13.7248, lng: 100.5092, c:["pre"], stock:"ask",
+    soc:{tel:"02-255-6789",line:"@tki",ig:"tki_bkk",fb:"TKIBangkok"}},
+  { id: 6, n: "Cortina Watch Bangkok", w: ["Rolex","Bvlgari","Corum"], b: [], m: ["126710blro","126711chnr"],
+    a: "เซ็นทรัลเอ็มบาสซี, ปทุมวัน", lat: 13.7437, lng: 100.5476, c:["pre"], stock:"ready",
+    soc:{tel:"02-255-1234",line:"@cortinawatch",ig:"cortinawatch",fb:"CortinaWatchTH",tiktok:"cortinawatch"}},
+  { id: 7, n: "THONG PATEK", w: ["Patek Philippe","Hublot","Breguet"], b: [], m: ["5711"],
+    a: "สาทร, กรุงเทพฯ", lat: 13.7214, lng: 100.5228, c:["new"], stock:"preorder",
+    soc:{tel:"02-255-1234",line:"@thongpatek",fb:"ThongPatek",tiktok:"thongpatek"},
+    branches:[{id:71,n:"สาขาสาทร",a:"เขตสาทร, กรุงเทพฯ",soc:{tel:"02-255-1234",line:"@tp_sathorn"}},{id:72,n:"สาขาภูเก็ต",a:"อ.เมือง, ภูเก็ต",soc:{tel:"076-211-123",line:"@tp_phuket"}}]},
+  { id: 8, n: "Time Midas", w: ["Rolex","Omega","Panerai"], b: [], m: ["126710blro","126711chnr","116500ln"],
+    a: "เซ็นทรัลลาดพร้าว, จตุจักร", lat: 13.8130, lng: 100.5619, c:["pre"], stock:"ready",
+    soc:{tel:"02-937-8888",line:"@timemidas",ig:"timemidas_th"}},
+  { id: 9, n: "Luxe Gallery Bangkok", w: ["Rolex","Cartier","Omega"], b: ["Hermès","Louis Vuitton","Chanel"], m: ["126711chnr","b25"],
+    a: "เอ็มโพเรียม, วัฒนา", lat: 13.7302, lng: 100.5693, c:["new","pre"], stock:"ready",
+    soc:{tel:"02-664-1234",line:"@luxegallery",ig:"luxegallery_th",fb:"LuxeGalleryBKK",tiktok:"luxegallery"},
+    branches:[{id:91,n:"เอ็มโพเรียม",a:"วัฒนา, กทม.",soc:{tel:"02-664-1234",line:"@lg_empo"}},{id:92,n:"ไอคอนสยาม",a:"คลองสาน, กทม.",soc:{tel:"02-495-7000",line:"@lg_icon"}}]},
+  { id: 14, n: "Maison Prestige Siam", w: ["Patek Philippe","Audemars Piguet"], b: ["Hermès","Celine"], m: ["b30"],
+    a: "เซ็นทรัลชิดลม, ปทุมวัน", lat: 13.7428, lng: 100.5460, c:["new"], stock:"preorder",
+    soc:{tel:"02-793-7777",line:"@maisonprestige",ig:"maison_prestige",fb:"MaisonPrestigeBKK",tiktok:"maisonprestige"}},
+  { id: 10, n: "KOMEHYO", w: [], b: ["Hermès","Chanel","Louis Vuitton","Christian Dior"], m: ["b25","b30"],
+    a: "เซ็นทรัลเวิลด์, ปทุมวัน", lat: 13.7470, lng: 100.5390, c:["new","pre"], stock:"ready",
+    soc:{tel:"02-288-0088",line:"@komehyo",ig:"komehyo_thailand",fb:"KomehyoThailand",tiktok:"komehyo.th"}},
+  { id: 11, n: "Brandname Exchange", w: [], b: ["Prada","Celine","Gucci","Goyard"], m: [],
+    a: "สยามสแควร์, ปทุมวัน", lat: 13.7444, lng: 100.5330, c:["new","pre"], stock:"ask",
+    soc:{tel:"02-656-1234",line:"@bne",ig:"brandname.exchange",fb:"BrandnameExchange"}},
+  { id: 12, n: "SF Brandname", w: [], b: ["Louis Vuitton","Hermès","Balenciaga"], m: ["b25"],
+    a: "MBK Center, ปทุมวัน", lat: 13.7444, lng: 100.5300, c:["new","pre"], stock:"ready",
+    soc:{tel:"02-610-9777",line:"@sfbrandname",ig:"sfbrandname_th",tiktok:"sfbrandname"}}
 ];
 
 function hue(n) { let v=0; for(let i=0;i<n.length;i++) v=n.charCodeAt(i)+((v<<5)-v); return `hsl(${[34,28,40,32,38,24,42,30][Math.abs(v)%8]}, 35%, 45%)`; }
@@ -500,7 +519,7 @@ function socUrl(k, v) {
 
 const SOC = {
   tel: { label: "โทร", d: "M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 015.2 12.86 19.79 19.79 0 012.13 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z", str: true },
-  line: { label: "LINE", d: "M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63h2.386c.346 0 .627.285.627.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596a.629.629 0 01-.709-.219l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.271.173-.508.43-.595a.63.63 0 01.689.221l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63.346 0 .628.285.628.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.282.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314" },
+  line: { label: "LINE", d: "M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.630 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63h2.386c.346 0 .627.285.627.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596a.629.629 0 01-.709-.219l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.271.173-.508.43-.595a.63.63 0 01.689.221l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63.346 0 .628.285.628.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.630 0 .344-.282.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314" },
   ig: { label: "Instagram", d: "M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919C8.416 2.175 8.796 2.163 12 2.163zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12s.014 3.668.072 4.948c.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24s3.668-.014 4.948-.072c4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948s-.014-3.667-.072-4.947c-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" },
   fb: { label: "Facebook", d: "M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" },
   x: { label: "X", d: "M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" },
@@ -527,17 +546,46 @@ function FolderIc({s=16}) { return e('svg',{width:s,height:s,viewBox:"0 0 24 24"
 function LocIc({s=11, c="currentColor"}) { return e('svg',{width:s,height:s,viewBox:"0 0 24 24",fill:"none",stroke:c,strokeWidth:2,style:{flexShrink:0}}, e('path',{d:"M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"}), e('circle',{cx:12,cy:10,r:3})); }
 function CheckIc({s=14, stroke}) { return e('svg',{width:s,height:s,viewBox:"0 0 24 24",fill:"none",stroke:stroke||"currentColor",strokeWidth:3,strokeLinecap:"round"}, e('polyline',{points:"20 6 9 17 4 12"})); }
 function StarIc({s=12, filled}) { return e('svg',{width:s,height:s,viewBox:"0 0 24 24",fill:filled?"#F59E0B":"none",stroke:"#F59E0B",strokeWidth:2}, e('polygon',{points:"12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"})); }
+function XThinIc({s=24}) { return e('svg',{width:s,height:s,viewBox:"0 0 24 24",fill:"none",stroke:"currentColor",strokeWidth:1.5}, e('line',{x1:18,y1:6,x2:6,y2:18}), e('line',{x1:6,y1:6,x2:18,y2:18})); }
+function NavIc({s=16,c="currentColor"}) { return e('svg',{width:s,height:s,viewBox:"0 0 24 24",fill:"none",stroke:c,strokeWidth:2,strokeLinecap:"round",strokeLinejoin:"round"}, e('polygon',{points:"3 11 22 2 13 21 11 13 3 11"})); }
 
 const triggerHaptic = () => { if(navigator.vibrate){ try { navigator.vibrate(50); } catch(e){} } };
+
+// Distance helper (Haversine)
+function calcDist(lat1, lng1, lat2, lng2) {
+  const R = 6371;
+  const dLat = (lat2-lat1) * Math.PI/180;
+  const dLng = (lng2-lng1) * Math.PI/180;
+  const a = Math.sin(dLat/2)*Math.sin(dLat/2) +
+            Math.cos(lat1*Math.PI/180)*Math.cos(lat2*Math.PI/180)*
+            Math.sin(dLng/2)*Math.sin(dLng/2);
+  return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+}
+function fmtDist(km) {
+  if (km < 1) return `${Math.round(km*1000)} ม.`;
+  return `${km.toFixed(1)} กม.`;
+}
 
 const NUM_ALL = STORES.length;
 const NUM_WATCH = STORES.filter(s => s.w.length > 0).length;
 const NUM_BAG = STORES.filter(s => s.b.length > 0).length;
 
-// Count stores per brand
 function brandStoreCount(brand) {
   return STORES.filter(s => [...s.w, ...s.b].includes(brand)).length;
 }
+
+const detectModel = (query) => {
+  if (!query) return null;
+  const t = query.toLowerCase().trim();
+  const exact = KNOWN_MODELS.find(m => t === m.id || m.n.toLowerCase() === t || m.desc.toLowerCase() === t);
+  if (exact) return exact;
+  if (t.length >= 3) {
+    return KNOWN_MODELS.find(m =>
+      m.id.includes(t) || m.n.toLowerCase().includes(t) || m.desc.toLowerCase().includes(t)
+    );
+  }
+  return null;
+};
 
 const getFuzzySuggestion = (query) => {
   if(!query) return null;
@@ -557,15 +605,19 @@ const getFuzzySuggestion = (query) => {
   return null;
 };
 
-function Card({ store, type, bf, onOpen, onToast }) {
+function Card({ store, type, bf, onOpen, onToast, userPos }) {
   const brands = type === "watch" ? store.w : type === "bag" ? store.b : [...store.w, ...store.b];
   if (bf && bf.length > 0 && !bf.some(x => brands.includes(x))) return null;
   const show = brands.slice(0, 2);
   const extra = brands.length > 2 ? brands.length - 2 : 0;
   const branchCount = (store.branches || []).length + 1;
   const socKeys = ["tel","line","ig","fb","tiktok","x"].filter(k => store.soc[k]).slice(0, 4);
+  const dist = userPos && store.lat ? calcDist(userPos.lat, userPos.lng, store.lat, store.lng) : null;
 
   return e('div', { className: 'card', onClick: () => { triggerHaptic(); onOpen(store, type); } },
+    dist !== null && e('div', { className: 'card-dist', onClick: ev => ev.stopPropagation() },
+      e(NavIc, {s:9, c:"#2D5A20"}), fmtDist(dist)
+    ),
     e('div', { className: 'c-head' },
       e('div', { className: 'c-av', style:{background:hue(store.n)} }, store.n.charAt(0)),
       e('div', { className: 'c-info' },
@@ -609,7 +661,7 @@ function Card({ store, type, bf, onOpen, onToast }) {
   );
 }
 
-function RenderSection({ title, count, stores, type, bf, view, onOpen, onToast, isAllView }) {
+function RenderSection({ title, count, stores, type, bf, view, onOpen, onToast, isAllView, userPos }) {
   const [lim, setLim] = useState(6);
   if (stores.length === 0) return null;
   const show = isAllView ? stores.slice(0, lim) : stores;
@@ -618,7 +670,7 @@ function RenderSection({ title, count, stores, type, bf, view, onOpen, onToast, 
       e('h2', { className: 'sh-t' }, title, e('span', { className: 'sh-sub' }, `${count} ร้าน`))
     ),
     e('div', { className: view === 'grid' ? 'grid' : 'list-layout' },
-      show.map(s => e(Card, { key: s.id, store: s, type, bf, onOpen, onToast }))
+      show.map(s => e(Card, { key: s.id, store: s, type, bf, onOpen, onToast, userPos }))
     ),
     (isAllView && stores.length > lim) && e('button', {
       className: 'btn-more',
@@ -627,12 +679,7 @@ function RenderSection({ title, count, stores, type, bf, view, onOpen, onToast, 
   );
 }
 
-// ══════════════════════════
-// BRAND SHEET (FIXED)
-// ══════════════════════════
 function BrandSheet({ selBr, setSelBr, sheetQ, setSheetQ, onClose, onVoice }) {
-  const watchCount = WB.filter(b => !sheetQ || b.toLowerCase().includes(sheetQ.toLowerCase())).length;
-  const bagCount = BB.filter(b => !sheetQ || b.toLowerCase().includes(sheetQ.toLowerCase())).length;
   const popFiltered = POPULAR.filter(b => !sheetQ || b.toLowerCase().includes(sheetQ.toLowerCase()));
   const watchFiltered = WB.filter(b => !sheetQ || b.toLowerCase().includes(sheetQ.toLowerCase()));
   const bagFiltered = BB.filter(b => !sheetQ || b.toLowerCase().includes(sheetQ.toLowerCase()));
@@ -643,8 +690,6 @@ function BrandSheet({ selBr, setSelBr, sheetQ, setSheetQ, onClose, onVoice }) {
   };
 
   return e('div', { className:'sh', onClick: ev => ev.stopPropagation() },
-
-    // ── STICKY HEADER ──
     e('div', { className:'modal-sticky-hdr' },
       e('div', { className:'bs-hdr-inner' },
         e('div', { className:'bs-hdr-top' },
@@ -661,6 +706,7 @@ function BrandSheet({ selBr, setSelBr, sheetQ, setSheetQ, onClose, onVoice }) {
           )
         )
       ),
+      /* ── Search bar — เว้นระยะจากปุ่มปิด ── */
       e('div', { className:'bs-srch-wrap' },
         e('div', { className:'sh-srch-bar' },
           e('div', {className:'s-inp'},
@@ -670,8 +716,7 @@ function BrandSheet({ selBr, setSelBr, sheetQ, setSheetQ, onClose, onVoice }) {
           e('button', {className:'s-mic', onClick:onVoice, title:"ค้นหาด้วยเสียง"}, e(MicIc,{s:20}))
         )
       ),
-
-      // ── POPULAR BRANDS ROW (compact, starred, inline) ──
+      /* ── Popular row — label ชิดบนซ้าย ── */
       popFiltered.length > 0 && e('div', { className:'bs-popular-row' },
         e('div', { className:'bs-pop-label' }, e(StarIc,{s:12,filled:true}), "ยอดนิยม"),
         e('div', { className:'bs-pop-brands' },
@@ -690,11 +735,7 @@ function BrandSheet({ selBr, setSelBr, sheetQ, setSheetQ, onClose, onVoice }) {
         )
       )
     ),
-
-    // ── SCROLLABLE BODY ──
     e('div', { className:'sh-body' },
-
-      // Watch brands (excluding popular)
       watchFiltered.filter(b => !POPULAR.includes(b)).length > 0 && e('div', null,
         e('div', { className:'sh-sec-t' },
           e(WatchIc,{s:14,c:"#B29167"}), "นาฬิกา",
@@ -710,14 +751,12 @@ function BrandSheet({ selBr, setSelBr, sheetQ, setSheetQ, onClose, onVoice }) {
             },
               e('div', {className:'sh-ic', style:{background:hue(brand)}}, brand.charAt(0)),
               e('div', {className:'sh-item-name', title:brand}, brand),
-              e('div', {style:{fontSize:10,color:sel?'white':'#A0A0A0',flexShrink:0}}, `${cnt} ร้าน`),
-              sel && e('span', {className:'sh-item-check'}, e(CheckIc,{s:13,stroke:'var(--pri)'}))
+              e('div', {style:{fontSize:9,color:sel?'white':'#A0A0A0',flexShrink:0}}, `${cnt}`),
+              sel && e('span', {className:'sh-item-check'}, e(CheckIc,{s:12,stroke:'var(--pri)'}))
             );
           })
         )
       ),
-
-      // Bag brands (excluding popular)
       bagFiltered.filter(b => !POPULAR.includes(b)).length > 0 && e('div', null,
         e('div', { className:'sh-sec-t' },
           e(BagIc,{s:14,c:"#B29167"}), "กระเป๋า",
@@ -733,19 +772,17 @@ function BrandSheet({ selBr, setSelBr, sheetQ, setSheetQ, onClose, onVoice }) {
             },
               e('div', {className:'sh-ic', style:{background:hue(brand)}}, brand.charAt(0)),
               e('div', {className:'sh-item-name', title:brand}, brand),
-              e('div', {style:{fontSize:10,color:sel?'white':'#A0A0A0',flexShrink:0}}, `${cnt} ร้าน`),
-              sel && e('span', {className:'sh-item-check'}, e(CheckIc,{s:13,stroke:'var(--pri)'}))
+              e('div', {style:{fontSize:9,color:sel?'white':'#A0A0A0',flexShrink:0}}, `${cnt}`),
+              sel && e('span', {className:'sh-item-check'}, e(CheckIc,{s:12,stroke:'var(--pri)'}))
             );
           })
         )
       )
     ),
-
-    // ── STICKY FOOTER CTA ──
     e('div', { className:'sh-footer' },
       e('button', {
         className:'c-cta',
-        style:{width:"100%",height:50,justifyContent:"center",fontSize:15,borderRadius:25},
+        style:{width:"100%",height:48,justifyContent:"center",fontSize:15,borderRadius:24},
         onClick: onClose
       }, `ดูผลลัพธ์${selBr.length > 0 ? ` (${selBr.length} แบรนด์)` : "ทั้งหมด"}`, e(ChevRightIc,{s:18}))
     )
@@ -766,6 +803,11 @@ function App() {
   const [brQ, setBrQ] = useState("");
   const [toast, setToast] = useState(null);
 
+  // Nearby state
+  const [userPos, setUserPos] = useState(null);
+  const [nearbyOn, setNearbyOn] = useState(false);
+  const [locating, setLocating] = useState(false);
+
   const [voiceOpen, setVoiceOpen] = useState(false);
   const [voiceText, setVoiceText] = useState("");
   const [voiceListening, setVoiceListening] = useState(false);
@@ -778,6 +820,33 @@ function App() {
     setToast(msg); setTimeout(() => setToast(null), 2600);
   }, []);
 
+  // ── Nearby: request geolocation ──
+  const handleNearby = useCallback(() => {
+    triggerHaptic();
+    if (nearbyOn) {
+      setNearbyOn(false); setUserPos(null);
+      showToast("ปิดการค้นหาใกล้ฉันแล้ว");
+      return;
+    }
+    if (!navigator.geolocation) {
+      showToast("เบราว์เซอร์ไม่รองรับ GPS"); return;
+    }
+    setLocating(true);
+    navigator.geolocation.getCurrentPosition(
+      (pos) => {
+        setUserPos({ lat: pos.coords.latitude, lng: pos.coords.longitude });
+        setNearbyOn(true); setLocating(false);
+        showToast("✓ เรียงร้านค้าตามระยะทางแล้ว");
+      },
+      (err) => {
+        setLocating(false);
+        if (err.code === 1) showToast("กรุณาอนุญาตการเข้าถึง Location");
+        else showToast("ไม่สามารถระบุตำแหน่งได้");
+      },
+      { timeout: 8000, maximumAge: 60000 }
+    );
+  }, [nearbyOn, showToast]);
+
   const translateVoice = (text) => {
     let t = text.toLowerCase().trim();
     const map = {
@@ -785,8 +854,10 @@ function App() {
       "ลักซ": "Luxe Gallery","ลักซ์": "Luxe Gallery","lux": "Luxe Gallery",
       "สยามสวิส": "Siam Swiss","siam swiss": "Siam Swiss",
       "แพนดู": "Pendulum","เพนดู": "Pendulum","pendulum": "Pendulum",
-      "พารากอน": "พารากอน","เอ็มควอเทียร์": "เอ็มควอเทียร์","เซ็นทรัล": "เซ็นทรัล",
-      "โอเมก้า": "Omega","โอเมกา": "Omega","ฮับลอท": "Hublot","อับลอท": "Hublot"
+      "โอเมก้า": "Omega","โอเมกา": "Omega","ฮับลอท": "Hublot","อับลอท": "Hublot",
+      "เปปซี่": "126710blro","pepsi": "126710blro",
+      "รูทเบียร์": "126711chnr","root beer": "126711chnr",
+      "เดโทน่า": "116500ln","daytona": "116500ln"
     };
     for (let key in map) { if (t.includes(key)) return map[key]; }
     const fuzzy = getFuzzySuggestion(t);
@@ -861,8 +932,10 @@ function App() {
     showToast(`✓ กำลังเริ่มสมัครสินเชื่อที่ ${store.n}`);
   };
 
+  const currentMatchedModel = useMemo(() => detectModel(q), [q]);
+
   const getList = useCallback((t) => {
-    return STORES.filter((s) => {
+    let list = STORES.filter((s) => {
       if (mR && !mR.stores.includes(s.id)) return false;
       if (t === "watch" && s.w.length === 0) return false;
       if (t === "bag" && s.b.length === 0) return false;
@@ -871,14 +944,25 @@ function App() {
       const br = t === "watch" ? s.w : t === "bag" ? s.b : [...s.w, ...s.b];
       if (!mR) {
         if (selBr.length > 0 && !selBr.some((x) => br.includes(x))) return false;
-        if (q) {
+        if (currentMatchedModel) {
+          return s.m && s.m.includes(currentMatchedModel.id);
+        } else if (q) {
           const x = q.toLowerCase();
           return s.n.toLowerCase().includes(x) || s.a.toLowerCase().includes(x) || br.some((b) => b.toLowerCase().includes(x));
         }
       }
       return true;
     });
-  }, [cond, selBr, q, mR]);
+    // ถ้า nearby เปิด → เรียงตามระยะทาง
+    if (nearbyOn && userPos) {
+      list = [...list].sort((a, b) => {
+        const da = a.lat ? calcDist(userPos.lat, userPos.lng, a.lat, a.lng) : 9999;
+        const db = b.lat ? calcDist(userPos.lat, userPos.lng, b.lat, b.lng) : 9999;
+        return da - db;
+      });
+    }
+    return list;
+  }, [cond, selBr, q, mR, currentMatchedModel, nearbyOn, userPos]);
 
   const ws = useMemo(() => getList("watch"), [getList]);
   const bs = useMemo(() => getList("bag"), [getList]);
@@ -892,7 +976,9 @@ function App() {
 
   useEffect(() => { setSelBranchId(null); setBrQ(""); }, [det]);
 
-  const suggestedBrand = (dispCount === 0 && q.trim() !== "") ? getFuzzySuggestion(q) : null;
+  const suggestedBrand = (dispCount === 0 && q.trim() !== "" && !currentMatchedModel) ? getFuzzySuggestion(q) : null;
+
+  const hasFilter = cond !== "all" || selBr.length > 0 || q || nearbyOn;
 
   return e('div', { className: 'layout' },
 
@@ -923,7 +1009,7 @@ function App() {
       e('div', { className: 'tb-sep' }),
       e('div', { className: 'tb-src' },
         e(SearchIc, {s:18}),
-        e('input', { placeholder:"ค้นหาร้านค้า, แบรนด์ หรือสถานที่...", value:q, onChange: ev => {setQ(ev.target.value); setMR(null);} }),
+        e('input', { placeholder:"ค้นหาร้านค้า, แบรนด์ หรือรุ่น...", value:q, onChange: ev => {setQ(ev.target.value); setMR(null);} }),
         q && e('button', { style:{cursor:'pointer',color:'#A0A0A0',padding:'0 8px',background:'none',border:'none',fontSize:18}, onClick:()=>{triggerHaptic(); setQ(''); setMR(null);} }, "✕"),
         e('button', { className:'tb-mic', onClick:()=>openVoice("search"), title:"ค้นหาด้วยเสียง" }, e(MicIc,{s:18}))
       ),
@@ -933,29 +1019,58 @@ function App() {
       )
     ),
 
-    // FILTERS
+    // FILTERS — รวมปุ่ม "ใกล้ฉัน" ไว้ใน f-wrap เดิม
     e('div', { className: 'f-row' },
       e('div', { className: 'f-wrap' },
-        e('button', { className: `f-pill ${cond==='all'?'on':''}`, onClick:()=>{triggerHaptic(); setCond('all');} }, "ทั้งหมด"),
+        e('button', { className: `f-pill ${cond==='all'&&!nearbyOn?'on':''}`, onClick:()=>{triggerHaptic(); setCond('all');} }, "ทั้งหมด"),
         e('button', { className: `f-pill ${cond==='new'?'on':''}`, onClick:()=>{triggerHaptic(); setCond('new');} }, e(TimeIc,{s:15}), "มือ 1"),
         e('button', { className: `f-pill ${cond==='pre'?'on':''}`, onClick:()=>{triggerHaptic(); setCond('pre');} }, e(UsersIc,{s:15}), "มือ 2"),
         e('button', { className: `f-pill ${selBr.length>0?'on':''}`, onClick:()=>{triggerHaptic(); setSheet(true);} },
           e(FolderIc,{s:15}), "เลือกแบรนด์",
-          selBr.length > 0 && e('span', {style:{background:'#8F6D44',color:'white',padding:'2px 8px',borderRadius:12,fontSize:11,marginLeft:4}}, selBr.length))
+          selBr.length > 0 && e('span', {style:{background:'#8F6D44',color:'white',padding:'2px 8px',borderRadius:12,fontSize:11,marginLeft:4}}, selBr.length)),
+        // ── ปุ่มใกล้ฉัน ──
+        e('button', {
+          className: `f-pill nearby ${nearbyOn?'on':''} ${locating?'locating':''}`,
+          onClick: handleNearby,
+          title: nearbyOn ? "ปิดการค้นหาใกล้ฉัน" : "ค้นหาร้านค้าใกล้ฉัน"
+        },
+          e(NavIc, {s:15, c: nearbyOn ? "#3E7A2E" : locating ? "#A27B52" : "#5B8A4A"}),
+          locating ? "กำลังระบุตำแหน่ง..." : nearbyOn ? "ใกล้ฉัน" : "ใกล้ฉัน"
+        )
       ),
       e('div', { className: 'f-right' },
-        (cond!=="all" || selBr.length>0 || q) && e('button', {
+        hasFilter && e('button', {
           className: 'f-clear',
-          onClick:()=>{triggerHaptic(); setSelBr([]);setCond("all");setQ("");setMR(null);showToast("ล้างตัวกรองแล้ว");}
+          onClick:()=>{triggerHaptic(); setSelBr([]);setCond("all");setQ("");setMR(null);setNearbyOn(false);setUserPos(null);showToast("ล้างตัวกรองแล้ว");}
         }, "ล้างทั้งหมด"),
         e('div', { className: 'f-total' }, `ทั้งหมด ${dispCount} ร้านค้า`)
       )
     ),
 
+    // MODEL MATCH BANNER
+    currentMatchedModel && e('div', { className: 'model-banner' },
+      e('div', { className: 'mb-av' }, currentMatchedModel.initial),
+      e('div', { className: 'mb-info' },
+        e('div', { className: 'mb-name', title: currentMatchedModel.n }, currentMatchedModel.n),
+        e('div', { className: 'mb-desc' }, `${currentMatchedModel.desc} · ${dispCount} ร้าน`)
+      ),
+      e('button', { className: 'mb-close', onClick: () => { triggerHaptic(); setQ(''); } }, e(XThinIc, {s:24}))
+    ),
+
+    // NEARBY BANNER — แสดงเมื่อเปิด nearby
+    nearbyOn && userPos && e('div', { className: 'nearby-banner' },
+      e('div', { className: 'nb-ic' }, e(NavIc, {s:20, c:"#2D5A20"})),
+      e('div', { className: 'nb-info' },
+        e('div', { className: 'nb-title' }, "เรียงตามระยะทางจากคุณ"),
+        e('div', { className: 'nb-sub' }, `พบ ${dispCount} ร้านค้าใกล้เคียง · กด "ใกล้ฉัน" อีกครั้งเพื่อปิด`)
+      ),
+      e('button', { className: 'nb-close', onClick: () => { setNearbyOn(false); setUserPos(null); showToast("ปิดการค้นหาใกล้ฉันแล้ว"); } }, e(XThinIc, {s:22}))
+    ),
+
     // STORE LISTS
     tab === "all" ? e('div', null,
-      e(RenderSection, { title:"ร้านนาฬิกา", count:ws.length, stores:ws, type:"watch", bf:mR?[mR.brand]:selBr, view, onOpen:(st,ty)=>setDet({store:st,type:ty}), onToast:showToast, isAllView:true }),
-      e(RenderSection, { title:"ร้านกระเป๋า", count:bs.length, stores:bs, type:"bag", bf:mR?[mR.brand]:selBr, view, onOpen:(st,ty)=>setDet({store:st,type:ty}), onToast:showToast, isAllView:true }),
+      e(RenderSection, { title:"ร้านนาฬิกา", count:ws.length, stores:ws, type:"watch", bf:mR?[mR.brand]:selBr, view, onOpen:(st,ty)=>setDet({store:st,type:ty}), onToast:showToast, isAllView:true, userPos:nearbyOn?userPos:null }),
+      e(RenderSection, { title:"ร้านกระเป๋า", count:bs.length, stores:bs, type:"bag", bf:mR?[mR.brand]:selBr, view, onOpen:(st,ty)=>setDet({store:st,type:ty}), onToast:showToast, isAllView:true, userPos:nearbyOn?userPos:null }),
       dispCount === 0 && e('div', {style:{padding:'60px 20px',textAlign:'center'}},
         e('div', {style:{color:'#EFE4D8',fontSize:18,marginBottom:16,fontWeight:300}}, "ไม่พบร้านค้าที่ตรงกับเงื่อนไขการค้นหา"),
         suggestedBrand && e('div', {style:{background:'#FFF',borderRadius:20,padding:24,boxShadow:'0 16px 40px rgba(90,60,30,0.12)',display:'inline-block',maxWidth:400,width:'100%',border:'1px solid #EFE4D8'}},
@@ -965,10 +1080,10 @@ function App() {
         )
       )
     ) : e('div', null,
-      e(RenderSection, { title: tab==="watch"?"ร้านนาฬิกา":"ร้านกระเป๋า", count:(tab==="watch"?ws:bs).length, stores:(tab==="watch"?ws:bs), type:tab, bf:mR?[mR.brand]:selBr, view, onOpen:(st,ty)=>setDet({store:st,type:ty}), onToast:showToast, isAllView:false })
+      e(RenderSection, { title: tab==="watch"?"ร้านนาฬิกา":"ร้านกระเป๋า", count:(tab==="watch"?ws:bs).length, stores:(tab==="watch"?ws:bs), type:tab, bf:mR?[mR.brand]:selBr, view, onOpen:(st,ty)=>setDet({store:st,type:ty}), onToast:showToast, isAllView:false, userPos:nearbyOn?userPos:null })
     ),
 
-    // ══ BRAND SHEET MODAL ══
+    // BRAND SHEET MODAL
     sheet && e('div', { className:'ov', onClick:()=>{triggerHaptic(); setSheet(false);} },
       e(BrandSheet, {
         selBr, setSelBr, sheetQ, setSheetQ,
@@ -977,11 +1092,9 @@ function App() {
       })
     ),
 
-    // ══ DETAIL MODAL ══
+    // DETAIL MODAL
     detStore && e('div', { className:'ov', onClick:()=>{triggerHaptic(); setDet(null);} },
       e('div', { className:'sh', onClick:ev=>ev.stopPropagation() },
-
-        // Sticky header
         e('div', { className:'d-sticky-hdr' },
           e('div', { className:'d-sh-left' },
             e('div', { className:'d-sh-av', style:{background:hue(detStore.n)} }, detStore.n.charAt(0)),
@@ -993,8 +1106,6 @@ function App() {
           ),
           e('button', { className:'d-sh-close', onClick:()=>{triggerHaptic(); setDet(null);} }, "✕")
         ),
-
-        // Scrollable body
         e('div', { className:'sh-body-detail' },
           e('div', {className:'d-loc'}, e(LocIc,{s:14}), activeBranch ? activeBranch.a : detStore.a),
           e('div', {className:'d-tags'},
@@ -1059,7 +1170,7 @@ function App() {
       )
     ),
 
-    // ══ VOICE SEARCH ══
+    // VOICE SEARCH
     voiceOpen && e('div', { className:'voice-ov' },
       e('button', {className:'voice-close', onClick:closeVoice}, "✕"),
       e('div', {className:'voice-inner'},
