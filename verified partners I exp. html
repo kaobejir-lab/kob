@@ -84,19 +84,32 @@ button, input, textarea, select { font-family: 'Kanit', sans-serif !important; }
 
 .tb-sep { width: 1px; height: 24px; background: #EAEAEA; margin: 0 4px; }
 
+/* SEARCH & DROPDOWN */
+.src-wrap { position: relative; flex: 1; min-width: 200px; }
 .tb-src {
-  flex: 1; min-width: 200px; background: #F8F6F3; border-radius: 30px; height: 44px;
+  width: 100%; background: #F8F6F3; border-radius: 30px; height: 44px;
   display: flex; align-items: center; padding: 0 16px; gap: 10px;
   transition: all 0.4s var(--ease-smooth); border: 1px solid transparent;
 }
-.tb-src:focus-within {
-  background: #FFFFFF; border-color: #EFE4D8;
-  box-shadow: 0 8px 24px rgba(162,123,82,0.15);
-}
+.tb-src.focused { background: #FFFFFF; border-color: #EFE4D8; box-shadow: 0 8px 24px rgba(162,123,82,0.15); }
 .tb-src input { flex: 1; border: none; background: transparent; font-size: 14px; color: var(--text-dark); outline: none; font-weight: 400; width: 100%; }
 .tb-src input::placeholder { color: #A0A0A0; }
 .tb-mic { width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #A0A0A0; cursor: pointer; transition: all 0.35s var(--ease-smooth); flex-shrink: 0; background: transparent; border: none; }
 .tb-mic:hover { color: var(--pri); background: #F0E9DF; transform: scale(1.1); }
+
+.src-dd { position: absolute; top: calc(100% + 8px); left: 0; right: 0; background: var(--white); border-radius: 20px; box-shadow: 0 16px 40px rgba(0,0,0,0.15); padding: 16px; z-index: 200; border: 1px solid #EFE4D8; animation: ddIn 0.3s var(--ease-bounce); max-height: 380px; overflow-y: auto; }
+@keyframes ddIn { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+.s-lbl { font-size: 12px; font-weight: 600; color: #A0A0A0; margin-bottom: 12px; padding: 0 4px; display: flex; align-items: center; gap: 6px; }
+.t-tag-wrap { display: flex; flex-wrap: wrap; gap: 8px; }
+.t-tag { padding: 8px 16px; background: #F6F4F0; border-radius: 20px; font-size: 13px; color: #5A4A3D; cursor: pointer; transition: all 0.2s; border: none; display: inline-flex; align-items: center; gap: 6px; font-weight: 500; }
+.t-tag:hover { background: #EFE4D8; color: var(--pri); transform: translateY(-2px); }
+.sg-item { padding: 12px 14px; border-radius: 12px; display: flex; align-items: center; gap: 12px; cursor: pointer; transition: all 0.2s; }
+.sg-item:hover { background: #F9F7F5; transform: translateX(4px); }
+.sg-ic { color: #A0A0A0; display: flex; flex-shrink: 0; }
+.sg-item:hover .sg-ic { color: var(--pri); }
+.sg-txt { flex: 1; font-size: 14px; color: #2D2D2D; font-weight: 500; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.sg-type { font-size: 10px; color: #8F6D44; background: #FAF5EF; padding: 3px 8px; border-radius: 12px; font-weight: 600; flex-shrink: 0; }
+
 .tb-vws { display: flex; gap: 4px; padding-right: 4px; }
 .t-vw { width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; color: #B0B0B0; background: transparent; transition: all 0.4s var(--ease-bounce); flex-shrink: 0; border: none; }
 .t-vw:hover { background: #F5F5F5; color: var(--text-dark); transform: translateY(-2px); }
@@ -121,36 +134,21 @@ button, input, textarea, select { font-family: 'Kanit', sans-serif !important; }
 .f-clear:hover { color: var(--white); text-decoration: underline; text-underline-offset: 2px; }
 .f-total { color: var(--white); font-size: 13px; font-weight: 500; display: flex; align-items: center; }
 
-/* ══ MODEL MATCH BANNER ══ */
-.model-banner {
-  background: var(--white); border-radius: 16px; padding: 16px 20px;
-  display: flex; align-items: center; gap: 16px; margin-bottom: 24px;
-  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
-  animation: bannerFadeIn 0.4s var(--ease-bounce);
-}
+/* BANNER */
+.model-banner { background: var(--white); border-radius: 16px; padding: 16px 20px; display: flex; align-items: center; gap: 16px; margin-bottom: 24px; box-shadow: 0 4px 16px rgba(0,0,0,0.08); animation: bannerFadeIn 0.4s var(--ease-bounce); }
 @keyframes bannerFadeIn { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
 .mb-av { width: 52px; height: 52px; border-radius: 12px; background: #A0815E; color: white; display: flex; align-items: center; justify-content: center; font-size: 22px; font-weight: 600; flex-shrink: 0; }
 .mb-info { flex: 1; min-width: 0; }
 .mb-name { font-size: 17px; font-weight: 700; color: #2D2D2D; margin-bottom: 2px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .mb-desc { font-size: 13px; color: #8F6D44; font-weight: 500; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .mb-close { background: none; border: none; cursor: pointer; color: #A0A0A0; padding: 8px; margin-right: -8px; transition: color 0.3s; display: flex; align-items: center; justify-content: center; }
-.mb-close:hover { color: #555; }
 
-/* NEARBY BANNER */
-.nearby-banner {
-  background: linear-gradient(135deg, #F2FAF0 0%, #FFFFFF 100%);
-  border: 1px solid #D4EDCF;
-  border-radius: 16px; padding: 14px 18px;
-  display: flex; align-items: center; gap: 14px; margin-bottom: 24px;
-  box-shadow: 0 4px 16px rgba(62,122,46,0.08);
-  animation: bannerFadeIn 0.4s var(--ease-bounce);
-}
+.nearby-banner { background: linear-gradient(135deg, #F2FAF0 0%, #FFFFFF 100%); border: 1px solid #D4EDCF; border-radius: 16px; padding: 14px 18px; display: flex; align-items: center; gap: 14px; margin-bottom: 24px; box-shadow: 0 4px 16px rgba(62,122,46,0.08); animation: bannerFadeIn 0.4s var(--ease-bounce); }
 .nb-ic { width: 44px; height: 44px; border-radius: 12px; background: #D4EDCF; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
 .nb-info { flex: 1; min-width: 0; }
 .nb-title { font-size: 15px; font-weight: 700; color: #2D5A20; margin-bottom: 2px; }
 .nb-sub { font-size: 12px; color: #5B8A4A; font-weight: 400; }
 .nb-close { background: none; border: none; cursor: pointer; color: #A0B89A; padding: 8px; margin-right: -8px; transition: color 0.3s; display: flex; align-items: center; justify-content: center; }
-.nb-close:hover { color: #555; }
 
 /* SECTION HEADER */
 .s-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; border-bottom: 2px solid rgba(255,255,255,0.1); padding-bottom: 16px; }
@@ -166,9 +164,18 @@ button, input, textarea, select { font-family: 'Kanit', sans-serif !important; }
 /* CARD */
 .card { background: var(--white); border-radius: 20px; padding: 18px; display: flex; flex-direction: column; transition: transform 0.5s var(--ease-smooth), box-shadow 0.5s var(--ease-smooth), border-color 0.5s var(--ease-smooth); position: relative; cursor: pointer; border: 1px solid transparent; overflow: hidden; }
 .card:hover { transform: translateY(-4px) scale(1.01); box-shadow: 0 24px 50px rgba(90,60,30,0.18), 0 8px 20px rgba(90,60,30,0.08); border-color: #EFE4D8; z-index: 2; }
+.card-dist { background: #D4EDCF; color: #2D5A20; font-size: 10px; font-weight: 700; padding: 4px 8px; border-radius: 12px; display: flex; align-items: center; gap: 3px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
 
-/* Nearby badge on card */
-.card-dist { position: absolute; top: 12px; right: 12px; background: #D4EDCF; color: #2D5A20; font-size: 10px; font-weight: 700; padding: 3px 8px; border-radius: 10px; display: flex; align-items: center; gap: 3px; }
+/* SKELETON */
+.skeleton { pointer-events: none; border-color: #F5F5F5; }
+.sk-pulse { background: linear-gradient(90deg, #F0F0F0 25%, #FAFAFA 50%, #F0F0F0 75%); background-size: 200% 100%; animation: skAnim 1.5s infinite; border-radius: 8px; }
+@keyframes skAnim { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
+.sk-av { width: 48px; height: 48px; border-radius: 14px; }
+.sk-t1 { width: 60%; height: 16px; margin-bottom: 8px; }
+.sk-t2 { width: 40%; height: 12px; }
+.sk-br { width: 60px; height: 22px; border-radius: 16px; display: inline-block; margin-right: 6px; }
+.sk-btn { width: 36px; height: 36px; border-radius: 12px; display: inline-block; margin-right: 8px;}
+.sk-btn-l { width: 110px; height: 40px; border-radius: 20px; }
 
 /* LIST VIEW */
 .list-layout .card { flex-direction: row; align-items: center; padding: 18px 24px; box-shadow: 0 4px 16px rgba(162,123,82,0.05); border: 1px solid #F5F1E9; gap: 0; }
@@ -204,7 +211,7 @@ button, input, textarea, select { font-family: 'Kanit', sans-serif !important; }
 .c-more { color: var(--pri); font-size: 11px; font-weight: 700; flex-shrink: 0; background: #FDF9F4; padding: 4px 8px; border-radius: 16px; border: 1px solid #FAF1E5; white-space: nowrap; }
 
 /* CARD FOOTER */
-.c-foot { display: flex; justify-content: space-between; align-items: center; margin-top: auto; padding-top: 10px; border-top: none; gap: 8px; }
+.c-foot { display: flex; justify-content: space-between; align-items: center; margin-top: auto; padding-top: 10px; border-top: none; gap: 8px; width: 100%; }
 .c-soc { display: flex; gap: 12px; align-items: center; }
 .c-btn { width: 36px; height: 36px; border-radius: 12px; background: #FAF8F5; display: flex; align-items: center; justify-content: center; transition: all 0.4s var(--ease-bounce); color: #A89D8F; border: 1px solid transparent; text-decoration: none; cursor: pointer; flex-shrink: 0; }
 .c-btn:hover { background: #FFFFFF; color: var(--pri); transform: translateY(-3px); box-shadow: 0 6px 16px rgba(162,123,82,0.15); border-color: #EFE4D8; }
@@ -215,134 +222,48 @@ button, input, textarea, select { font-family: 'Kanit', sans-serif !important; }
 .c-cta { background: linear-gradient(135deg, #B29167 0%, #9E7D5F 100%); color: var(--white); padding: 0 18px; height: 40px; min-width: 130px; border-radius: 20px; font-size: 13px; font-weight: 600; display: inline-flex; align-items: center; justify-content: center; gap: 6px; border: none; cursor: pointer; transition: all 0.4s var(--ease-bounce); box-shadow: 0 6px 16px rgba(178,145,103,0.25); white-space: nowrap; }
 .c-cta:hover { background: linear-gradient(135deg, #A27B52 0%, #8C6A4F 100%); transform: translateY(-3px); box-shadow: 0 10px 24px rgba(178,145,103,0.4); }
 
-/* ═══════════════════════════════
-   BRAND SHEET — FIXED SCROLLABLE
-   ═══════════════════════════════ */
+/* BRAND SHEET */
 .ov { position: fixed; inset: 0; background: rgba(0,0,0,.6); backdrop-filter: blur(6px); z-index: 100; display: flex; align-items: center; justify-content: center; padding: 16px; animation: ovIn 0.3s var(--ease-smooth); }
 @keyframes ovIn { from { opacity: 0; } to { opacity: 1; } }
 
-.sh {
-  width: 100%; max-width: 720px;
-  height: 90vh;
-  background: var(--white); border-radius: 24px;
-  display: flex; flex-direction: column;
-  box-shadow: 0 24px 60px rgba(0,0,0,0.3);
-  animation: shIn 0.5s var(--ease-bounce);
-  position: relative; overflow: hidden;
-}
+.sh { width: 100%; max-width: 720px; height: 90vh; background: var(--white); border-radius: 24px; display: flex; flex-direction: column; box-shadow: 0 24px 60px rgba(0,0,0,0.3); animation: shIn 0.5s var(--ease-bounce); position: relative; overflow: hidden; }
 @keyframes shIn { from { transform: translateY(30px) scale(0.98); opacity: 0; } to { transform: translateY(0) scale(1); opacity: 1; } }
-
-/* ── Sticky modal header ── */
-.modal-sticky-hdr {
-  position: sticky; top: 0; z-index: 50;
-  background: rgba(255,255,255,0.97);
-  backdrop-filter: blur(16px);
-  border-bottom: 1px solid #F0EBE5;
-  flex-shrink: 0;
-  padding: 0;
-}
-
-/* Brand sheet header — TIGHTER */
-.bs-hdr-inner {
-  padding: 14px 20px 0;          /* ลดจาก 18px 24px */
-  display: flex; flex-direction: column; gap: 10px;
-}
-.bs-hdr-top {
-  display: flex; align-items: center; justify-content: space-between;
-}
+.modal-sticky-hdr { position: sticky; top: 0; z-index: 50; background: rgba(255,255,255,0.97); backdrop-filter: blur(16px); border-bottom: 1px solid #F0EBE5; flex-shrink: 0; padding: 0; }
+.bs-hdr-inner { padding: 14px 20px 0; display: flex; flex-direction: column; gap: 10px; }
+.bs-hdr-top { display: flex; align-items: center; justify-content: space-between; }
 .bs-hdr-title { font-size: 18px; font-weight: 700; color: #2D2D2D; }
 .bs-hdr-meta { display: flex; align-items: center; gap: 8px; }
 .bs-hdr-count { font-size: 12px; font-weight: 500; color: #8F6D44; background: #FAF5EF; padding: 3px 10px; border-radius: 12px; }
 .bs-close { width: 30px; height: 30px; border-radius: 50%; background: #F5F5F5; border: none; display: flex; align-items: center; justify-content: center; cursor: pointer; color: #555; transition: all 0.3s; font-size: 13px; flex-shrink: 0; }
 .bs-close:hover { background: #EAEAEA; color: #000; transform: scale(1.05); }
-
-/* Search bar — เพิ่ม top padding ให้ห่างจากปุ่มปิด */
-.bs-srch-wrap { padding: 10px 20px 12px; } /* เพิ่ม top จาก 0 → 10px */
-.sh-srch-bar {
-  display: flex; align-items: center; gap: 12px;
-  background: #F6F4F0; border-radius: 14px; padding: 5px 5px 5px 16px;
-  border: 2px solid transparent; transition: all 0.4s var(--ease-bounce);
-}
-.sh-srch-bar:focus-within {
-  background: #FFF; border-color: #DCCFB8;
-  box-shadow: 0 6px 16px rgba(162,123,82,0.1); transform: translateY(-1px);
-}
+.bs-srch-wrap { padding: 10px 20px 12px; }
+.sh-srch-bar { display: flex; align-items: center; gap: 12px; background: #F6F4F0; border-radius: 14px; padding: 5px 5px 5px 16px; border: 2px solid transparent; transition: all 0.4s var(--ease-bounce); }
+.sh-srch-bar:focus-within { background: #FFF; border-color: #DCCFB8; box-shadow: 0 6px 16px rgba(162,123,82,0.1); transform: translateY(-1px); }
 .s-inp { flex: 1; display: flex; align-items: center; gap: 10px; color: #A09D98; }
 .s-inp input { border: none; background: transparent; height: 36px; flex: 1; outline: none; font-size: 14px; color: var(--text-dark); }
 .s-mic { width: 36px; height: 36px; border-radius: 10px; display: flex; align-items: center; justify-content: center; cursor: pointer; color: var(--pri); transition: all 0.35s var(--ease-smooth); background: transparent; border: none; }
 .s-mic:hover { background: #EFE9E2; transform: scale(1.05); }
-
-/* ── Popular brands row — ชิดบน, label ชิดซ้าย ── */
-.bs-popular-row {
-  display: flex;
-  align-items: flex-start;   /* เปลี่ยนจาก center → flex-start */
-  gap: 8px;
-  padding: 8px 20px 10px;    /* ลด padding เล็กน้อย */
-  border-bottom: 1px solid #F5F0E8;
-  flex-wrap: wrap;
-  background: #FDFCFA;
-}
-.bs-pop-label {
-  display: flex; align-items: center; gap: 4px;
-  font-size: 11px; font-weight: 600; color: #A27B52;
-  text-transform: uppercase; letter-spacing: 0.6px;
-  flex-shrink: 0; white-space: nowrap;
-  padding-top: 5px;          /* ให้ label กับ chips อยู่ระนาบเดียวกัน */
-}
+.bs-popular-row { display: flex; align-items: flex-start; gap: 8px; padding: 8px 20px 10px; border-bottom: 1px solid #F5F0E8; flex-wrap: wrap; background: #FDFCFA; }
+.bs-pop-label { display: flex; align-items: center; gap: 4px; font-size: 11px; font-weight: 600; color: #A27B52; text-transform: uppercase; letter-spacing: 0.6px; flex-shrink: 0; white-space: nowrap; padding-top: 5px; }
 .bs-pop-brands { display: flex; flex-wrap: wrap; gap: 6px; flex: 1; }
-.bs-pop-chip {
-  display: inline-flex; align-items: center; gap: 5px;
-  padding: 4px 11px; border-radius: 16px;
-  font-size: 12px; font-weight: 500; cursor: pointer;
-  background: #F5F1EB; color: #5A4A3D;
-  border: 1px solid #E8E0D4;
-  transition: all 0.3s var(--ease-bounce); white-space: nowrap;
-}
+.bs-pop-chip { display: inline-flex; align-items: center; gap: 5px; padding: 4px 11px; border-radius: 16px; font-size: 12px; font-weight: 500; cursor: pointer; background: #F5F1EB; color: #5A4A3D; border: 1px solid #E8E0D4; transition: all 0.3s var(--ease-bounce); white-space: nowrap; }
 .bs-pop-chip:hover { background: #FFF8F0; border-color: #DCCFB8; transform: translateY(-1px); box-shadow: 0 3px 8px rgba(162,123,82,0.1); }
 .bs-pop-chip.on { background: linear-gradient(135deg, #B28E6A 0%, #8C6A4F 100%); color: #FFF; border-color: transparent; box-shadow: 0 4px 12px rgba(162,123,82,0.25); }
-.bs-pop-star { font-size: 10px; }
-
-/* ── Scrollable body — เพิ่ม padding น้อยลงให้เห็นเนื้อหามากขึ้น ── */
-.sh-body {
-  flex: 1; overflow-y: auto;
-  padding: 12px 20px 16px;   /* ลดจาก 20px 24px */
-  display: flex; flex-direction: column; gap: 4px;
-}
-
-/* Section titles */
-.sh-sec-t {
-  font-size: 11px; font-weight: 700; color: #5A4A3D;
-  text-transform: uppercase; letter-spacing: 1px;
-  margin: 10px 0 8px 2px;    /* ลดจาก 16px */
-  display: flex; align-items: center; gap: 8px;
-}
+.sh-body { flex: 1; overflow-y: auto; padding: 12px 20px 16px; display: flex; flex-direction: column; gap: 4px; }
+.sh-sec-t { font-size: 11px; font-weight: 700; color: #5A4A3D; text-transform: uppercase; letter-spacing: 1px; margin: 10px 0 8px 2px; display: flex; align-items: center; gap: 8px; }
 .sh-sec-t::after { content:""; flex: 1; height: 1.5px; background: linear-gradient(90deg, #E6DCD0 0%, rgba(230,220,208,0) 100%); }
 .sh-sec-count { font-size: 11px; font-weight: 600; color: #A27B52; background: #FAF5EF; padding: 1px 8px; border-radius: 10px; text-transform: none; letter-spacing: 0; }
-
-/* Brand grid — 3 cols default, 4 cols on wider */
 .sh-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 7px; }
 @media (min-width: 420px) { .sh-grid { grid-template-columns: repeat(3, 1fr); } }
 @media (min-width: 600px) { .sh-grid { grid-template-columns: repeat(4, 1fr); } }
-
-/* Brand items — เล็กลงเพื่อให้เห็นหลายรายการ */
-.sh-item {
-  background: #FAF9F7; border: 1px solid #F0EBE5; padding: 8px 10px; border-radius: 10px;
-  display: flex; align-items: center; gap: 8px; cursor: pointer;
-  transition: all 0.4s var(--ease-bounce);
-}
+.sh-item { background: #FAF9F7; border: 1px solid #F0EBE5; padding: 8px 10px; border-radius: 10px; display: flex; align-items: center; gap: 8px; cursor: pointer; transition: all 0.4s var(--ease-bounce); }
 .sh-item:hover { background: #FFF; border-color: #DCCFB8; transform: translateY(-2px); box-shadow: 0 6px 18px rgba(162,123,82,0.08); }
 .sh-item.on { border-color: var(--pri); background: #FFFBF5; box-shadow: 0 4px 12px rgba(162,123,82,0.12); }
 .sh-item.on .sh-ic { background: var(--pri) !important; color: #FFF; }
 .sh-ic { width: 28px; height: 28px; border-radius: 8px; color: #FFF; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 600; flex-shrink: 0; }
 .sh-item-name { font-size: 12px; font-weight: 500; flex: 1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .sh-item-check { color: var(--pri); flex-shrink: 0; }
-
-/* Footer CTA */
-.sh-footer {
-  flex-shrink: 0; padding: 10px 20px 16px;
-  border-top: 1px solid #F5F0E8;
-  background: rgba(255,255,255,0.97); backdrop-filter: blur(8px);
-}
+.sh-footer { flex-shrink: 0; padding: 10px 20px 16px; border-top: 1px solid #F5F0E8; background: rgba(255,255,255,0.97); backdrop-filter: blur(8px); }
 
 /* DETAIL MODAL */
 .d-sticky-hdr { position: sticky; top: 0; z-index: 50; background: rgba(255,255,255,0.95); backdrop-filter: blur(12px); border-bottom: 1px solid #F0EBE5; display: flex; align-items: center; justify-content: space-between; padding: 14px 24px; flex-shrink: 0; }
@@ -388,7 +309,7 @@ button, input, textarea, select { font-family: 'Kanit', sans-serif !important; }
 .d-acts { display: flex; gap: 10px; margin-top: 8px; }
 .d-a { height: 48px; border-radius: 24px; font-size: 15px; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; border: none; transition: all 0.4s var(--ease-bounce); }
 .d-a.sec { background: #F4F4F4; color: var(--text-dark); flex: 1; }
-.d-a.sec:hover { background: #EBEBEB; transform: translateY(-2px); }
+.d-a.sec:hover { background: #EBEBEB; transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
 .d-a.pri { background: linear-gradient(135deg, #A2805A 0%, #8A6846 100%); color: white; flex: 1.5; box-shadow: 0 6px 16px rgba(162,128,90,0.25); }
 .d-a.pri:hover { background: linear-gradient(135deg, #91704B 0%, #7A593A 100%); box-shadow: 0 8px 24px rgba(162,128,90,0.35); transform: translateY(-2px); }
 
@@ -443,21 +364,23 @@ const { useState, useMemo, useCallback, useRef, useEffect } = React;
 const WB = ["Patek Philippe","Rolex","Audemars Piguet","Richard Mille","Franck Muller","Hublot","Panerai","Omega","Piaget","Corum","Chopard","Breguet","Bvlgari","Cartier","Tiffany & Co.","Van Cleef & Arpels"];
 const BB = ["Hermès","Chanel","Louis Vuitton","Yves Saint Laurent","Christian Dior","Goyard","Gucci","Balenciaga","Celine","Valentino","Fendi","Prada","Bottega Veneta","Loewe","Givenchy","Delvaux"];
 const ALL_BR = [...new Set([...WB, ...BB])];
-// ── ตัด Audemars Piguet ออกจากยอดนิยม ──
 const POPULAR = ["Rolex","Hermès","Patek Philippe","Chanel","Louis Vuitton"];
 
 const KNOWN_MODELS = [
   { id: "126710blro", n: "Rolex 126710BLRO", desc: "GMT-Master II Pepsi", br: "Rolex", initial: "R" },
   { id: "126711chnr", n: "Rolex 126711CHNR", desc: "GMT-Master II Root Beer", br: "Rolex", initial: "R" },
+  { id: "126710blnr", n: "Rolex 126710BLNR", desc: "GMT-Master II Batman", br: "Rolex", initial: "R" },
   { id: "116500ln", n: "Rolex 116500LN", desc: "Cosmograph Daytona", br: "Rolex", initial: "R" },
+  { id: "126610ln", n: "Rolex 126610LN", desc: "Submariner Date Black", br: "Rolex", initial: "R" },
+  { id: "116610lv", n: "Rolex 116610LV", desc: "Submariner Date Hulk", br: "Rolex", initial: "R" },
+  { id: "126300", n: "Rolex 126300", desc: "Datejust 41", br: "Rolex", initial: "R" },
   { id: "b25", n: "Hermès Birkin 25", desc: "Togo Leather Gold Hardware", br: "Hermès", initial: "H" },
   { id: "b30", n: "Hermès Birkin 30", desc: "Epsom Leather", br: "Hermès", initial: "H" },
   { id: "5711", n: "Patek Philippe 5711/1A", desc: "Nautilus Stainless Steel", br: "Patek Philippe", initial: "P" }
 ];
 
-// เพิ่ม lat/lng สำหรับ Nearby feature
 const STORES = [
-  { id: 1, n: "Pendulum", w: ["Rolex","Omega","Patek Philippe"], b: [], m: ["126710blro","126711chnr","116500ln"],
+  { id: 1, n: "Pendulum", w: ["Rolex","Omega","Patek Philippe"], b: [], m: ["126710blro","126711chnr","116500ln","126610ln"],
     a: "สยามพารากอน, ปทุมวัน", lat: 13.7465, lng: 100.5347, c:["new","pre"], stock:"ready",
     soc:{tel:"02-610-9500",line:"@pendulum",ig:"pendulum_th",fb:"PendulumTH",tiktok:"pendulum.th"},
     branches:[{id:11,n:"พารากอน",a:"ปทุมวัน, กทม.",soc:{tel:"02-610-9500",line:"@pendulum_paragon"}},{id:12,n:"เอ็มควอเทียร์",a:"วัฒนา, กทม.",soc:{tel:"02-269-1000",line:"@pendulum_emq"}},{id:13,n:"เซ็นทรัล เชียงใหม่",a:"เมือง, เชียงใหม่",soc:{tel:"053-211-123",line:"@pendulum_cm"}}]},
@@ -468,13 +391,13 @@ const STORES = [
   { id: 3, n: "Siam Swiss", w: ["Omega","Chopard","Panerai"], b: [], m: [],
     a: "เอ็มควอเทียร์, วัฒนา", lat: 13.7303, lng: 100.5693, c:["new"], stock:"preorder",
     soc:{tel:"02-269-1000",line:"@siamswiss",ig:"siamswiss",tiktok:"siamswiss.official"}},
-  { id: 4, n: "PMT The Hour Glass", w: ["Rolex","Richard Mille","Cartier"], b: [], m: ["126710blro","116500ln"],
+  { id: 4, n: "PMT The Hour Glass", w: ["Rolex","Richard Mille","Cartier"], b: [], m: ["126710blro","116500ln","126710blnr"],
     a: "สยามพารากอน, ปทุมวัน", lat: 13.7464, lng: 100.5350, c:["pre"], stock:"ready",
     soc:{tel:"02-664-8888",line:"@pmthg",ig:"pmt_thehourglass",fb:"PMTTheHourGlass"}},
   { id: 5, n: "TKI", w: ["Patek Philippe","Audemars Piguet","Franck Muller"], b: [], m: ["5711"],
     a: "ไอคอนสยาม, คลองสาน", lat: 13.7248, lng: 100.5092, c:["pre"], stock:"ask",
     soc:{tel:"02-255-6789",line:"@tki",ig:"tki_bkk",fb:"TKIBangkok"}},
-  { id: 6, n: "Cortina Watch Bangkok", w: ["Rolex","Bvlgari","Corum"], b: [], m: ["126710blro","126711chnr"],
+  { id: 6, n: "Cortina Watch Bangkok", w: ["Rolex","Bvlgari","Corum"], b: [], m: ["126710blro","126711chnr","126300"],
     a: "เซ็นทรัลเอ็มบาสซี, ปทุมวัน", lat: 13.7437, lng: 100.5476, c:["pre"], stock:"ready",
     soc:{tel:"02-255-1234",line:"@cortinawatch",ig:"cortinawatch",fb:"CortinaWatchTH",tiktok:"cortinawatch"}},
   { id: 7, n: "THONG PATEK", w: ["Patek Philippe","Hublot","Breguet"], b: [], m: ["5711"],
@@ -484,11 +407,11 @@ const STORES = [
   { id: 8, n: "Time Midas", w: ["Rolex","Omega","Panerai"], b: [], m: ["126710blro","126711chnr","116500ln"],
     a: "เซ็นทรัลลาดพร้าว, จตุจักร", lat: 13.8130, lng: 100.5619, c:["pre"], stock:"ready",
     soc:{tel:"02-937-8888",line:"@timemidas",ig:"timemidas_th"}},
-  { id: 9, n: "Luxe Gallery Bangkok", w: ["Rolex","Cartier","Omega"], b: ["Hermès","Louis Vuitton","Chanel"], m: ["126711chnr","b25"],
+  { id: 9, n: "Luxe Gallery Bangkok", w: [], b: ["Hermès","Louis Vuitton","Chanel"], m: ["b25"],
     a: "เอ็มโพเรียม, วัฒนา", lat: 13.7302, lng: 100.5693, c:["new","pre"], stock:"ready",
     soc:{tel:"02-664-1234",line:"@luxegallery",ig:"luxegallery_th",fb:"LuxeGalleryBKK",tiktok:"luxegallery"},
     branches:[{id:91,n:"เอ็มโพเรียม",a:"วัฒนา, กทม.",soc:{tel:"02-664-1234",line:"@lg_empo"}},{id:92,n:"ไอคอนสยาม",a:"คลองสาน, กทม.",soc:{tel:"02-495-7000",line:"@lg_icon"}}]},
-  { id: 14, n: "Maison Prestige Siam", w: ["Patek Philippe","Audemars Piguet"], b: ["Hermès","Celine"], m: ["b30"],
+  { id: 14, n: "Maison Prestige Siam", w: [], b: ["Hermès","Celine"], m: ["b30"],
     a: "เซ็นทรัลชิดลม, ปทุมวัน", lat: 13.7428, lng: 100.5460, c:["new"], stock:"preorder",
     soc:{tel:"02-793-7777",line:"@maisonprestige",ig:"maison_prestige",fb:"MaisonPrestigeBKK",tiktok:"maisonprestige"}},
   { id: 10, n: "KOMEHYO", w: [], b: ["Hermès","Chanel","Louis Vuitton","Christian Dior"], m: ["b25","b30"],
@@ -499,7 +422,19 @@ const STORES = [
     soc:{tel:"02-656-1234",line:"@bne",ig:"brandname.exchange",fb:"BrandnameExchange"}},
   { id: 12, n: "SF Brandname", w: [], b: ["Louis Vuitton","Hermès","Balenciaga"], m: ["b25"],
     a: "MBK Center, ปทุมวัน", lat: 13.7444, lng: 100.5300, c:["new","pre"], stock:"ready",
-    soc:{tel:"02-610-9777",line:"@sfbrandname",ig:"sfbrandname_th",tiktok:"sfbrandname"}}
+    soc:{tel:"02-610-9777",line:"@sfbrandname",ig:"sfbrandname_th",tiktok:"sfbrandname"}},
+  { id: 15, n: "Expert Watch", w: ["Rolex","Omega","Panerai","Patek Philippe"], b: [], m: ["126610ln","126300","116610lv"],
+    a: "เซ็นทรัลลาดพร้าว, จตุจักร", lat: 13.8130, lng: 100.5619, c:["pre"], stock:"ready",
+    soc:{tel:"02-937-1111",line:"@expertwatch",fb:"expertwatch"} },
+  { id: 16, n: "MoMo Brandname", w: [], b: ["Hermès","Chanel","Louis Vuitton","Celine"], m: ["b25"],
+    a: "สยามสแควร์, ปทุมวัน", lat: 13.7444, lng: 100.5330, c:["new","pre"], stock:"ready",
+    soc:{tel:"02-656-2222",line:"@momobrand",ig:"momo.brandname"} },
+  { id: 17, n: "Pixiu Watch", w: ["Rolex","Patek Philippe"], b: [], m: ["116500ln"],
+    a: "เกษรวิลเลจ, ปทุมวัน", lat: 13.7444, lng: 100.5404, c:["pre"], stock:"ready",
+    soc:{tel:"02-656-1111",line:"@pixiuwatch",ig:"pixiuwatch"} },
+  { id: 18, n: "Siam Watch Club", w: ["Omega","Cartier","Panerai"], b: [], m: [],
+    a: "สยามสแควร์, ปทุมวัน", lat: 13.7444, lng: 100.5330, c:["new","pre"], stock:"ask",
+    soc:{tel:"02-251-2222",line:"@siamwatchclub",fb:"siamwatchclub"} }
 ];
 
 function hue(n) { let v=0; for(let i=0;i<n.length;i++) v=n.charCodeAt(i)+((v<<5)-v); return `hsl(${[34,28,40,32,38,24,42,30][Math.abs(v)%8]}, 35%, 45%)`; }
@@ -542,70 +477,128 @@ function MicIc({s=16}) { return e('svg',{width:s,height:s,viewBox:"0 0 24 24",fi
 function ChevRightIc({s=14}) { return e('svg',{width:s,height:s,viewBox:"0 0 24 24",fill:"none",stroke:"currentColor",strokeWidth:2}, e('polyline',{points:"9 18 15 12 9 6"})); }
 function TimeIc({s=16}) { return e('svg',{width:s,height:s,viewBox:"0 0 24 24",fill:"none",stroke:"currentColor",strokeWidth:2}, e('circle',{cx:12,cy:12,r:10}), e('polyline',{points:"12 6 12 12 16 14"})); }
 function UsersIc({s=16}) { return e('svg',{width:s,height:s,viewBox:"0 0 24 24",fill:"none",stroke:"currentColor",strokeWidth:2}, e('path',{d:"M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"}), e('circle',{cx:9,cy:7,r:4}), e('path',{d:"M23 21v-2a4 4 0 0 0-3-3.87"}), e('circle',{cx:17,cy:4,r:3})); }
-function FolderIc({s=16}) { return e('svg',{width:s,height:s,viewBox:"0 0 24 24",fill:"none",stroke:"currentColor",strokeWidth:2}, e('path',{d:"M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"})); }
+function FolderIc({s=16,c="currentColor"}) { return e('svg',{width:s,height:s,viewBox:"0 0 24 24",fill:"none",stroke:c,strokeWidth:2}, e('path',{d:"M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"})); }
 function LocIc({s=11, c="currentColor"}) { return e('svg',{width:s,height:s,viewBox:"0 0 24 24",fill:"none",stroke:c,strokeWidth:2,style:{flexShrink:0}}, e('path',{d:"M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"}), e('circle',{cx:12,cy:10,r:3})); }
 function CheckIc({s=14, stroke}) { return e('svg',{width:s,height:s,viewBox:"0 0 24 24",fill:"none",stroke:stroke||"currentColor",strokeWidth:3,strokeLinecap:"round"}, e('polyline',{points:"20 6 9 17 4 12"})); }
 function StarIc({s=12, filled}) { return e('svg',{width:s,height:s,viewBox:"0 0 24 24",fill:filled?"#F59E0B":"none",stroke:"#F59E0B",strokeWidth:2}, e('polygon',{points:"12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"})); }
 function XThinIc({s=24}) { return e('svg',{width:s,height:s,viewBox:"0 0 24 24",fill:"none",stroke:"currentColor",strokeWidth:1.5}, e('line',{x1:18,y1:6,x2:6,y2:18}), e('line',{x1:6,y1:6,x2:18,y2:18})); }
 function NavIc({s=16,c="currentColor"}) { return e('svg',{width:s,height:s,viewBox:"0 0 24 24",fill:"none",stroke:c,strokeWidth:2,strokeLinecap:"round",strokeLinejoin:"round"}, e('polygon',{points:"3 11 22 2 13 21 11 13 3 11"})); }
 
+function HeartIc({s=14, c="currentColor"}) { return e('svg',{width:s,height:s,viewBox:"0 0 24 24",fill:"none",stroke:c,strokeWidth:2,strokeLinecap:"round",strokeLinejoin:"round"}, e('path',{d:"M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"})); }
+function HeartFilledIc({s=14, c="#FF4B4B"}) { return e('svg',{width:s,height:s,viewBox:"0 0 24 24",fill:c,stroke:c,strokeWidth:2,strokeLinecap:"round",strokeLinejoin:"round"}, e('path',{d:"M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"})); }
+function ShareIc({s=16}) { return e('svg',{width:s,height:s,viewBox:"0 0 24 24",fill:"none",stroke:"currentColor",strokeWidth:2,strokeLinecap:"round",strokeLinejoin:"round"}, e('circle',{cx:18,cy:5,r:3}), e('circle',{cx:6,cy:12,r:3}), e('circle',{cx:18,cy:19,r:3}), e('line',{x1:8.59,y1:13.51,x2:15.42,y2:17.49}), e('line',{x1:15.41,y1:6.51,x2:8.59,y2:10.49})); }
+function TrendIc({s=14}) { return e('svg',{width:s,height:s,viewBox:"0 0 24 24",fill:"none",stroke:"currentColor",strokeWidth:2,strokeLinecap:"round",strokeLinejoin:"round"}, e('polyline',{points:"23 6 13.5 15.5 8.5 10.5 1 18"}), e('polyline',{points:"17 6 23 6 23 12"})); }
+
 const triggerHaptic = () => { if(navigator.vibrate){ try { navigator.vibrate(50); } catch(e){} } };
 
-// Distance helper (Haversine)
 function calcDist(lat1, lng1, lat2, lng2) {
   const R = 6371;
   const dLat = (lat2-lat1) * Math.PI/180;
   const dLng = (lng2-lng1) * Math.PI/180;
-  const a = Math.sin(dLat/2)*Math.sin(dLat/2) +
-            Math.cos(lat1*Math.PI/180)*Math.cos(lat2*Math.PI/180)*
-            Math.sin(dLng/2)*Math.sin(dLng/2);
+  const a = Math.sin(dLat/2)*Math.sin(dLat/2) + Math.cos(lat1*Math.PI/180)*Math.cos(lat2*Math.PI/180)*Math.sin(dLng/2)*Math.sin(dLng/2);
   return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
 }
-function fmtDist(km) {
-  if (km < 1) return `${Math.round(km*1000)} ม.`;
-  return `${km.toFixed(1)} กม.`;
-}
+function fmtDist(km) { return km < 1 ? `${Math.round(km*1000)} ม.` : `${km.toFixed(1)} กม.`; }
 
 const NUM_ALL = STORES.length;
 const NUM_WATCH = STORES.filter(s => s.w.length > 0).length;
 const NUM_BAG = STORES.filter(s => s.b.length > 0).length;
 
-function brandStoreCount(brand) {
-  return STORES.filter(s => [...s.w, ...s.b].includes(brand)).length;
-}
+function brandStoreCount(brand) { return STORES.filter(s => [...s.w, ...s.b].includes(brand)).length; }
 
 const detectModel = (query) => {
   if (!query) return null;
   const t = query.toLowerCase().trim();
   const exact = KNOWN_MODELS.find(m => t === m.id || m.n.toLowerCase() === t || m.desc.toLowerCase() === t);
   if (exact) return exact;
-  if (t.length >= 3) {
-    return KNOWN_MODELS.find(m =>
-      m.id.includes(t) || m.n.toLowerCase().includes(t) || m.desc.toLowerCase().includes(t)
-    );
-  }
+  if (t.length >= 3) return KNOWN_MODELS.find(m => m.id.includes(t) || m.n.toLowerCase().includes(t) || m.desc.toLowerCase().includes(t));
   return null;
 };
 
+// FUZZY MAP UPDATE
 const getFuzzySuggestion = (query) => {
-  if(!query) return null;
+  if(!query || query.trim().length < 2) return null;
   const t = query.toLowerCase().trim();
+  
+  // Mapping dictionary (Support Thai typing mistakes / nicknames)
   const map = [
-    { valid: "Rolex", mistakes: ["โลเล็ก","โลเลก","โรเล็ก","คอเหล็ก","lolex","rolexs","โรเรก","โรเล็ค"] },
-    { valid: "Patek Philippe", mistakes: ["ปาเตก","ปาเต๊ะ","พาเทก","พาเท็ก","ปาเต็ก","patek","patex"] },
-    { valid: "Hermès", mistakes: ["แอร์เมส","แอเมส","เฮอเมส","เฮอร์มีส","hermes"] },
+    { valid: "THONG PATEK", mistakes: ["ทง","ทอง","ทองปาเต๊ะ","thong"] },
+    { valid: "Luxe Gallery Bangkok", mistakes: ["ลักซ","ลักซ์","lux","luxe"] },
+    { valid: "Pendulum", mistakes: ["แพนดู","เพนดู","pendulum","เพนดูลัม"] },
+    { valid: "Siam Swiss", mistakes: ["สยามสวิส"] },
+    { valid: "Rolex", mistakes: ["โลเล็ก","โลเลก","โรเล็ก","คอเหล็ก","lolex","rolexs","โรเรก","โรเล็ค","โรเล็กซ์","โรเลกซ์"] },
+    { valid: "Patek Philippe", mistakes: ["ปาเตก","ปาเต๊ะ","พาเทก","พาเท็ก","ปาเต็ก","patek","patex","ปาเตค"] },
+    { valid: "Hermès", mistakes: ["แอร์เมส","แอเมส","เฮอเมส","เฮอร์มีส","hermes","แอมเมส"] },
     { valid: "Chanel", mistakes: ["ชาแนล","แชแนล","chanell","ชแนล"] },
-    { valid: "Louis Vuitton", mistakes: ["หลุย","หลุยส์","วิตตอง","louis","lv"] },
-    { valid: "Audemars Piguet", mistakes: ["เอดพี่","เอพี","ap","audemar"] },
-    { valid: "Cartier", mistakes: ["คาเทีย","คาร์เทีย","cartie"] }
+    { valid: "Louis Vuitton", mistakes: ["หลุย","หลุยส์","วิตตอง","louis","lv","หลุยส"] },
+    { valid: "Audemars Piguet", mistakes: ["เอดพี่","เอพี","ap","audemar","โอเดอมาร์"] },
+    { valid: "Cartier", mistakes: ["คาเทีย","คาร์เทีย","cartie","คาร์เทียร์"] }
   ];
-  for(let i=0;i<map.length;i++) {
-    if(map[i].mistakes.some(m => t.includes(m) || m.includes(t))) return map[i].valid;
+  
+  for(let i=0;i<map.length;i++) { 
+     if(map[i].mistakes.some(m => t === m || (t.length >= 2 && m.includes(t)) || (m.length >= 3 && t.includes(m)))) {
+        return map[i].valid;
+     }
+  }
+  
+  // Optional: Levenshtein distance fallback for typing errors >= 3 chars
+  if (t.length >= 3) {
+    let closest = null;
+    let minD = 99;
+    const checkList = [...ALL_BR, ...STORES.map(s=>s.n)];
+
+    const dist = (a, b) => {
+      if(!a.length) return b.length; if(!b.length) return a.length;
+      const m = []; for(let i=0;i<=b.length;i++) m[i]=[i]; for(let j=0;j<=a.length;j++) m[0][j]=j;
+      for(let i=1;i<=b.length;i++){
+        for(let j=1;j<=a.length;j++){
+          if(b.charAt(i-1)===a.charAt(j-1)) m[i][j]=m[i-1][j-1];
+          else m[i][j]=Math.min(m[i-1][j-1]+1, Math.min(m[i][j-1]+1, m[i-1][j]+1));
+        }
+      }
+      return m[b.length][a.length];
+    };
+
+    checkList.forEach(w => {
+      const wL = w.toLowerCase();
+      if (wL.includes(t) && !closest) { closest = w; minD = 0; return; }
+      const wParts = wL.split(' ');
+      const tParts = t.split(' ');
+      wParts.forEach(wp => {
+        tParts.forEach(tp => {
+           if (tp.length > 2) {
+             const d = dist(wp, tp);
+             if (d <= 2 && d < minD) { minD = d; closest = w; }
+           }
+        });
+      });
+    });
+    return minD <= 2 ? closest : null;
   }
   return null;
 };
 
-function Card({ store, type, bf, onOpen, onToast, userPos }) {
+function SkeletonCard({ view }) {
+  const isList = view === 'list';
+  return e('div', { className: `card skeleton ${isList ? 'list-layout-sk' : ''}` },
+    e('div', { className: 'c-head' },
+      e('div', { className: 'sk-pulse sk-av' }),
+      e('div', { className: 'c-info' },
+        e('div', { className: 'sk-pulse sk-t1' }),
+        e('div', { className: 'sk-pulse sk-t2' })
+      )
+    ),
+    e('div', { className: 'c-brs-wrap' },
+      e('div', { className: 'c-brs' }, e('div', {className:'sk-pulse sk-br'}), e('div', {className:'sk-pulse sk-br'}))
+    ),
+    e('div', { className: 'c-foot' },
+      e('div', { className: 'c-soc' }, e('div', {className:'sk-pulse sk-btn'}), e('div', {className:'sk-pulse sk-btn'})),
+      e('div', { className: 'sk-pulse sk-btn-l' })
+    )
+  );
+}
+
+function Card({ store, type, bf, onOpen, onToast, userPos, favs, toggleFav }) {
   const brands = type === "watch" ? store.w : type === "bag" ? store.b : [...store.w, ...store.b];
   if (bf && bf.length > 0 && !bf.some(x => brands.includes(x))) return null;
   const show = brands.slice(0, 2);
@@ -613,14 +606,22 @@ function Card({ store, type, bf, onOpen, onToast, userPos }) {
   const branchCount = (store.branches || []).length + 1;
   const socKeys = ["tel","line","ig","fb","tiktok","x"].filter(k => store.soc[k]).slice(0, 4);
   const dist = userPos && store.lat ? calcDist(userPos.lat, userPos.lng, store.lat, store.lng) : null;
+  const isFav = favs.includes(store.id);
 
   return e('div', { className: 'card', onClick: () => { triggerHaptic(); onOpen(store, type); } },
-    dist !== null && e('div', { className: 'card-dist', onClick: ev => ev.stopPropagation() },
-      e(NavIc, {s:9, c:"#2D5A20"}), fmtDist(dist)
+    e('div', { style: { position: 'absolute', top: 12, right: 12, display: 'flex', gap: 6, alignItems: 'center', zIndex: 5 } },
+      dist !== null && e('div', { className: 'card-dist', onClick: ev => ev.stopPropagation() },
+        e(NavIc, {s:9, c:"#2D5A20"}), fmtDist(dist)
+      ),
+      e('button', {
+        style: { background: 'white', border: '1px solid #EFE4D8', borderRadius: '50%', width: 30, height: 30, display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', boxShadow: '0 4px 10px rgba(0,0,0,0.06)', color: isFav ? '#FF4B4B' : '#C0B3A6', transition: 'all 0.3s ease' },
+        onClick: (ev) => toggleFav(store.id, ev),
+        title: isFav ? "ลบจากร้านโปรด" : "บันทึกร้านโปรด"
+      }, isFav ? e(HeartFilledIc, {s:15}) : e(HeartIc, {s:15}))
     ),
     e('div', { className: 'c-head' },
       e('div', { className: 'c-av', style:{background:hue(store.n)} }, store.n.charAt(0)),
-      e('div', { className: 'c-info' },
+      e('div', { className: 'c-info', style:{paddingRight: 36} },
         e('div', { className: 'c-nm', title: store.n },
           e('span', { className: 'c-nm-txt' }, store.n),
           e('span', { className: 'c-nm-icons' },
@@ -661,8 +662,18 @@ function Card({ store, type, bf, onOpen, onToast, userPos }) {
   );
 }
 
-function RenderSection({ title, count, stores, type, bf, view, onOpen, onToast, isAllView, userPos }) {
+function RenderSection({ title, count, stores, type, bf, view, onOpen, onToast, isAllView, userPos, locating, favs, toggleFav }) {
   const [lim, setLim] = useState(6);
+
+  if (locating) {
+    return e('div', { style: { marginBottom: 24 } },
+      e('div', { className: 's-head' }, e('h2', { className: 'sh-t' }, title, e('span', { className: 'sh-sub' }, `กำลังระบุตำแหน่ง...`))),
+      e('div', { className: view === 'grid' ? 'grid' : 'list-layout' },
+        [1,2,3,4,5,6].map(i => e(SkeletonCard, { key: i, view }))
+      )
+    );
+  }
+
   if (stores.length === 0) return null;
   const show = isAllView ? stores.slice(0, lim) : stores;
   return e('div', { style: { marginBottom: 24 } },
@@ -670,7 +681,7 @@ function RenderSection({ title, count, stores, type, bf, view, onOpen, onToast, 
       e('h2', { className: 'sh-t' }, title, e('span', { className: 'sh-sub' }, `${count} ร้าน`))
     ),
     e('div', { className: view === 'grid' ? 'grid' : 'list-layout' },
-      show.map(s => e(Card, { key: s.id, store: s, type, bf, onOpen, onToast, userPos }))
+      show.map(s => e(Card, { key: s.id, store: s, type, bf, onOpen, onToast, userPos, favs, toggleFav }))
     ),
     (isAllView && stores.length > lim) && e('button', {
       className: 'btn-more',
@@ -684,10 +695,7 @@ function BrandSheet({ selBr, setSelBr, sheetQ, setSheetQ, onClose, onVoice }) {
   const watchFiltered = WB.filter(b => !sheetQ || b.toLowerCase().includes(sheetQ.toLowerCase()));
   const bagFiltered = BB.filter(b => !sheetQ || b.toLowerCase().includes(sheetQ.toLowerCase()));
 
-  const toggle = (brand) => {
-    triggerHaptic();
-    setSelBr(p => p.includes(brand) ? p.filter(x=>x!==brand) : [...p, brand]);
-  };
+  const toggle = (brand) => { triggerHaptic(); setSelBr(p => p.includes(brand) ? p.filter(x=>x!==brand) : [...p, brand]); };
 
   return e('div', { className:'sh', onClick: ev => ev.stopPropagation() },
     e('div', { className:'modal-sticky-hdr' },
@@ -698,38 +706,25 @@ function BrandSheet({ selBr, setSelBr, sheetQ, setSheetQ, onClose, onVoice }) {
             selBr.length > 0 && e('span', { className:'bs-hdr-count' }, `เลือกแล้ว ${selBr.length} แบรนด์`)
           ),
           e('div', { style:{display:'flex',alignItems:'center',gap:8} },
-            selBr.length > 0 && e('button', {
-              style:{color:'var(--pri)',fontSize:13,cursor:'pointer',background:'none',border:'none',fontWeight:500,padding:'4px 10px'},
-              onClick:()=>{ triggerHaptic(); setSelBr([]); }
-            }, "ล้างทั้งหมด"),
+            selBr.length > 0 && e('button', { style:{color:'var(--pri)',fontSize:13,cursor:'pointer',background:'none',border:'none',fontWeight:500,padding:'4px 10px'}, onClick:()=>{ triggerHaptic(); setSelBr([]); } }, "ล้างทั้งหมด"),
             e('button', { className:'bs-close', onClick: onClose }, "✕")
           )
         )
       ),
-      /* ── Search bar — เว้นระยะจากปุ่มปิด ── */
       e('div', { className:'bs-srch-wrap' },
         e('div', { className:'sh-srch-bar' },
-          e('div', {className:'s-inp'},
-            e(SearchIc,{s:18}),
-            e('input', { placeholder:"พิมพ์ชื่อแบรนด์...", value:sheetQ, onChange:ev=>setSheetQ(ev.target.value)})
-          ),
+          e('div', {className:'s-inp'}, e(SearchIc,{s:18}), e('input', { placeholder:"พิมพ์ชื่อแบรนด์...", value:sheetQ, onChange:ev=>setSheetQ(ev.target.value)})),
           e('button', {className:'s-mic', onClick:onVoice, title:"ค้นหาด้วยเสียง"}, e(MicIc,{s:20}))
         )
       ),
-      /* ── Popular row — label ชิดบนซ้าย ── */
       popFiltered.length > 0 && e('div', { className:'bs-popular-row' },
         e('div', { className:'bs-pop-label' }, e(StarIc,{s:12,filled:true}), "ยอดนิยม"),
         e('div', { className:'bs-pop-brands' },
           popFiltered.map(brand => {
             const sel = selBr.includes(brand);
-            const cnt = brandStoreCount(brand);
-            return e('button', {
-              key: brand, className:`bs-pop-chip ${sel?'on':''}`,
-              onClick: () => toggle(brand)
-            },
-              sel ? e(CheckIc,{s:11, stroke:"white"}) : e(StarIc,{s:11,filled:true}),
-              brand,
-              e('span', {style:{opacity:0.7, fontSize:10}}, `(${cnt})`)
+            return e('button', { key: brand, className:`bs-pop-chip ${sel?'on':''}`, onClick: () => toggle(brand) },
+              sel ? e(CheckIc,{s:11, stroke:"white"}) : e(StarIc,{s:11,filled:true}), brand,
+              e('span', {style:{opacity:0.7, fontSize:10}}, `(${brandStoreCount(brand)})`)
             );
           })
         )
@@ -737,42 +732,28 @@ function BrandSheet({ selBr, setSelBr, sheetQ, setSheetQ, onClose, onVoice }) {
     ),
     e('div', { className:'sh-body' },
       watchFiltered.filter(b => !POPULAR.includes(b)).length > 0 && e('div', null,
-        e('div', { className:'sh-sec-t' },
-          e(WatchIc,{s:14,c:"#B29167"}), "นาฬิกา",
-          e('span', {className:'sh-sec-count'}, `${watchFiltered.filter(b=>!POPULAR.includes(b)).length} แบรนด์`)
-        ),
+        e('div', { className:'sh-sec-t' }, e(WatchIc,{s:14,c:"#B29167"}), "นาฬิกา", e('span', {className:'sh-sec-count'}, `${watchFiltered.filter(b=>!POPULAR.includes(b)).length} แบรนด์`)),
         e('div', { className:'sh-grid' },
           watchFiltered.filter(b => !POPULAR.includes(b)).map(brand => {
             const sel = selBr.includes(brand);
-            const cnt = brandStoreCount(brand);
-            return e('div', {
-              key:brand, className:`sh-item ${sel?'on':''}`,
-              onClick:()=>toggle(brand)
-            },
+            return e('div', { key:brand, className:`sh-item ${sel?'on':''}`, onClick:()=>toggle(brand) },
               e('div', {className:'sh-ic', style:{background:hue(brand)}}, brand.charAt(0)),
               e('div', {className:'sh-item-name', title:brand}, brand),
-              e('div', {style:{fontSize:9,color:sel?'white':'#A0A0A0',flexShrink:0}}, `${cnt}`),
+              e('div', {style:{fontSize:9,color:sel?'white':'#A0A0A0',flexShrink:0}}, `${brandStoreCount(brand)}`),
               sel && e('span', {className:'sh-item-check'}, e(CheckIc,{s:12,stroke:'var(--pri)'}))
             );
           })
         )
       ),
       bagFiltered.filter(b => !POPULAR.includes(b)).length > 0 && e('div', null,
-        e('div', { className:'sh-sec-t' },
-          e(BagIc,{s:14,c:"#B29167"}), "กระเป๋า",
-          e('span', {className:'sh-sec-count'}, `${bagFiltered.filter(b=>!POPULAR.includes(b)).length} แบรนด์`)
-        ),
+        e('div', { className:'sh-sec-t' }, e(BagIc,{s:14,c:"#B29167"}), "กระเป๋า", e('span', {className:'sh-sec-count'}, `${bagFiltered.filter(b=>!POPULAR.includes(b)).length} แบรนด์`)),
         e('div', { className:'sh-grid' },
           bagFiltered.filter(b => !POPULAR.includes(b)).map(brand => {
             const sel = selBr.includes(brand);
-            const cnt = brandStoreCount(brand);
-            return e('div', {
-              key:brand, className:`sh-item ${sel?'on':''}`,
-              onClick:()=>toggle(brand)
-            },
+            return e('div', { key:brand, className:`sh-item ${sel?'on':''}`, onClick:()=>toggle(brand) },
               e('div', {className:'sh-ic', style:{background:hue(brand)}}, brand.charAt(0)),
               e('div', {className:'sh-item-name', title:brand}, brand),
-              e('div', {style:{fontSize:9,color:sel?'white':'#A0A0A0',flexShrink:0}}, `${cnt}`),
+              e('div', {style:{fontSize:9,color:sel?'white':'#A0A0A0',flexShrink:0}}, `${brandStoreCount(brand)}`),
               sel && e('span', {className:'sh-item-check'}, e(CheckIc,{s:12,stroke:'var(--pri)'}))
             );
           })
@@ -780,11 +761,7 @@ function BrandSheet({ selBr, setSelBr, sheetQ, setSheetQ, onClose, onVoice }) {
       )
     ),
     e('div', { className:'sh-footer' },
-      e('button', {
-        className:'c-cta',
-        style:{width:"100%",height:48,justifyContent:"center",fontSize:15,borderRadius:24},
-        onClick: onClose
-      }, `ดูผลลัพธ์${selBr.length > 0 ? ` (${selBr.length} แบรนด์)` : "ทั้งหมด"}`, e(ChevRightIc,{s:18}))
+      e('button', { className:'c-cta', style:{width:"100%",height:48,justifyContent:"center",fontSize:15,borderRadius:24}, onClick: onClose }, `ดูผลลัพธ์${selBr.length > 0 ? ` (${selBr.length} แบรนด์)` : "ทั้งหมด"}`, e(ChevRightIc,{s:18}))
     )
   );
 }
@@ -803,7 +780,11 @@ function App() {
   const [brQ, setBrQ] = useState("");
   const [toast, setToast] = useState(null);
 
-  // Nearby state
+  const [srcFocus, setSrcFocus] = useState(false);
+
+  const [favs, setFavs] = useState(() => JSON.parse(localStorage.getItem('bm_favs') || '[]'));
+  useEffect(() => localStorage.setItem('bm_favs', JSON.stringify(favs)), [favs]);
+
   const [userPos, setUserPos] = useState(null);
   const [nearbyOn, setNearbyOn] = useState(false);
   const [locating, setLocating] = useState(false);
@@ -816,27 +797,28 @@ function App() {
   const voiceTargetRef = useRef("search");
   const timerRef = useRef(null);
 
-  const showToast = useCallback((msg) => {
-    setToast(msg); setTimeout(() => setToast(null), 2600);
-  }, []);
+  const showToast = useCallback((msg) => { setToast(msg); setTimeout(() => setToast(null), 2600); }, []);
 
-  // ── Nearby: request geolocation ──
+  const toggleFav = useCallback((id, ev) => {
+    ev.stopPropagation(); triggerHaptic();
+    setFavs(p => {
+       const n = p.includes(id) ? p.filter(x=>x!==id) : [...p, id];
+       if(!p.includes(id)) showToast("บันทึกร้านโปรดแล้ว 🤍");
+       return n;
+    });
+  }, [showToast]);
+
   const handleNearby = useCallback(() => {
     triggerHaptic();
     if (nearbyOn) {
-      setNearbyOn(false); setUserPos(null);
-      showToast("ปิดการค้นหาใกล้ฉันแล้ว");
-      return;
+      setNearbyOn(false); setUserPos(null); showToast("ปิดการค้นหาใกล้ฉันแล้ว"); return;
     }
-    if (!navigator.geolocation) {
-      showToast("เบราว์เซอร์ไม่รองรับ GPS"); return;
-    }
-    setLocating(true);
+    if (!navigator.geolocation) { showToast("เบราว์เซอร์ไม่รองรับ GPS"); return; }
+    setLocating(true); setCond('all');
     navigator.geolocation.getCurrentPosition(
       (pos) => {
         setUserPos({ lat: pos.coords.latitude, lng: pos.coords.longitude });
-        setNearbyOn(true); setLocating(false);
-        showToast("✓ เรียงร้านค้าตามระยะทางแล้ว");
+        setNearbyOn(true); setLocating(false); showToast("✓ เรียงร้านค้าตามระยะทางแล้ว");
       },
       (err) => {
         setLocating(false);
@@ -847,40 +829,19 @@ function App() {
     );
   }, [nearbyOn, showToast]);
 
-  const translateVoice = (text) => {
-    let t = text.toLowerCase().trim();
-    const map = {
-      "ทง": "THONG PATEK","ทอง": "THONG PATEK","ทองปาเต๊ะ": "THONG PATEK",
-      "ลักซ": "Luxe Gallery","ลักซ์": "Luxe Gallery","lux": "Luxe Gallery",
-      "สยามสวิส": "Siam Swiss","siam swiss": "Siam Swiss",
-      "แพนดู": "Pendulum","เพนดู": "Pendulum","pendulum": "Pendulum",
-      "โอเมก้า": "Omega","โอเมกา": "Omega","ฮับลอท": "Hublot","อับลอท": "Hublot",
-      "เปปซี่": "126710blro","pepsi": "126710blro",
-      "รูทเบียร์": "126711chnr","root beer": "126711chnr",
-      "เดโทน่า": "116500ln","daytona": "116500ln"
-    };
-    for (let key in map) { if (t.includes(key)) return map[key]; }
-    const fuzzy = getFuzzySuggestion(t);
-    if(fuzzy) return fuzzy;
-    return text;
-  };
-
   const startListening = useCallback(() => {
     const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
     if (!SR) { setVoiceError("เบราว์เซอร์นี้ไม่รองรับการค้นหาด้วยเสียง"); return; }
     setVoiceError(null); setVoiceText("");
     try {
-      const r = new SR();
-      r.lang = "th-TH"; r.continuous = false; r.interimResults = true;
+      const r = new SR(); r.lang = "th-TH"; r.continuous = false; r.interimResults = true;
       r.onstart = () => { triggerHaptic(); setVoiceListening(true); };
       r.onresult = (ev) => {
-        let text = "";
-        for (let i = 0; i < ev.results.length; i++) text += ev.results[i][0].transcript;
-        setVoiceText(text);
-        clearTimeout(timerRef.current);
+        let text = ""; for (let i = 0; i < ev.results.length; i++) text += ev.results[i][0].transcript;
+        setVoiceText(text); clearTimeout(timerRef.current);
         if (ev.results[0].isFinal || text.trim() !== "") {
           timerRef.current = setTimeout(() => {
-            const finalTxt = translateVoice(text);
+            const finalTxt = text.trim();
             if (voiceTargetRef.current === "sheet") setSheetQ(finalTxt);
             else { setQ(finalTxt); setMR(null); }
             closeVoice(); showToast(`ค้นหา: "${finalTxt}"`); triggerHaptic();
@@ -896,43 +857,63 @@ function App() {
       };
       r.onend = () => setVoiceListening(false);
       recogRef.current = r; r.start();
-    } catch (err) {
-      setVoiceError("ไม่สามารถเริ่มการรับเสียงได้"); setVoiceListening(false);
-    }
+    } catch (err) { setVoiceError("ไม่สามารถเริ่มการรับเสียงได้"); setVoiceListening(false); }
   }, []);
 
-  const openVoice = useCallback((target = "search") => {
-    triggerHaptic(); voiceTargetRef.current = target;
-    setVoiceText(""); setVoiceError(null); setVoiceOpen(true);
-    setTimeout(() => startListening(), 300);
-  }, [startListening]);
-
-  const closeVoice = useCallback(() => {
-    triggerHaptic();
-    if (recogRef.current) { try { recogRef.current.stop(); } catch(e){} }
-    clearTimeout(timerRef.current);
-    setVoiceOpen(false); setVoiceListening(false); setVoiceText(""); setVoiceError(null);
-  }, []);
-
-  const submitVoice = useCallback(() => {
-    if (!voiceText.trim()) return;
-    const finalTxt = translateVoice(voiceText);
-    if (voiceTargetRef.current === "sheet") setSheetQ(finalTxt);
-    else { setQ(finalTxt); setMR(null); }
-    closeVoice(); showToast(`ค้นหา: "${finalTxt}"`);
-  }, [voiceText, closeVoice, showToast]);
-
-  const openMap = (address, ev) => {
-    triggerHaptic(); if (ev) ev.stopPropagation();
-    window.open(`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address)}`, '_blank');
-  };
-
-  const applyLoan = (store, ev) => {
-    triggerHaptic(); if (ev) ev.stopPropagation();
-    showToast(`✓ กำลังเริ่มสมัครสินเชื่อที่ ${store.n}`);
-  };
+  const openVoice = useCallback((target = "search") => { triggerHaptic(); voiceTargetRef.current = target; setVoiceText(""); setVoiceError(null); setVoiceOpen(true); setTimeout(() => startListening(), 300); }, [startListening]);
+  const closeVoice = useCallback(() => { triggerHaptic(); if (recogRef.current) { try { recogRef.current.stop(); } catch(e){} } clearTimeout(timerRef.current); setVoiceOpen(false); setVoiceListening(false); setVoiceText(""); setVoiceError(null); }, []);
+  const submitVoice = useCallback(() => { if (!voiceText.trim()) return; const finalTxt = voiceText.trim(); if (voiceTargetRef.current === "sheet") setSheetQ(finalTxt); else { setQ(finalTxt); setMR(null); } closeVoice(); showToast(`ค้นหา: "${finalTxt}"`); }, [voiceText, closeVoice, showToast]);
+  const openMap = (address, ev) => { triggerHaptic(); if (ev) ev.stopPropagation(); window.open(`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address)}`, '_blank'); };
+  const applyLoan = (store, ev) => { triggerHaptic(); if (ev) ev.stopPropagation(); showToast(`✓ กำลังเริ่มสมัครสินเชื่อที่ ${store.n}`); };
 
   const currentMatchedModel = useMemo(() => detectModel(q), [q]);
+
+  // SMART SUGGESTIONS GENERATOR 
+  const suggestions = useMemo(() => {
+    if (!q.trim()) return [];
+    const query = q.toLowerCase();
+    let res = [];
+    
+    ALL_BR.forEach(b => { if(b.toLowerCase().includes(query)) res.push({ text: b, matchText: b, type: 'แบรนด์', ic: CertIc }); });
+    KNOWN_MODELS.forEach(m => { if(m.id.includes(query) || m.n.toLowerCase().includes(query) || m.desc.toLowerCase().includes(query)) res.push({ text: m.n, matchText: m.n, type: 'รุ่นนาฬิกา', ic: WatchIc }); });
+    STORES.forEach(s => { if(s.n.toLowerCase().includes(query) || s.a.toLowerCase().includes(query)) res.push({ text: s.n, matchText: s.n, type: 'ร้านค้า', ic: FolderIc }); });
+    
+    // Fuzzy matching integration into dropdown
+    const fuzzy = getFuzzySuggestion(q);
+    if (fuzzy && fuzzy.toLowerCase() !== query.trim()) {
+       const isBrand = ALL_BR.includes(fuzzy);
+       if (!res.some(r => r.matchText === fuzzy)) {
+          // Add smart suggestion at the very top
+          res.unshift({ matchText: fuzzy, text: `คุณหมายถึง "${fuzzy}" ใช่ไหม?`, type: 'แนะนำ', ic: isBrand ? CertIc : FolderIc });
+       }
+    }
+    return res.slice(0, 6);
+  }, [q]);
+
+  const parsedQ = useMemo(() => {
+    let text = q.toLowerCase();
+    let isW = text.includes('นาฬิกา') || text.includes('watch');
+    let isB = text.includes('กระเป๋า') || text.includes('bag');
+    let isPre = text.includes('มือสอง') || text.includes('มือ 2') || text.includes('used');
+    let isNew = text.includes('มือหนึ่ง') || text.includes('มือ 1') || text.includes('new');
+    let clean = text.replace(/นาฬิกา|กระเป๋า|มือสอง|มือ\s*2|มือหนึ่ง|มือ\s*1|watch|bag|used|new/g, '').trim();
+    return { clean, isW, isB, isPre, isNew };
+  }, [q]);
+
+  const selectSuggestion = (txt) => { triggerHaptic(); setQ(txt); setSrcFocus(false); setMR(null); };
+
+  const handleShare = () => {
+    triggerHaptic();
+    const url = window.location.href;
+    const text = `แวะดูร้าน ${detStore.n} แหล่งรวมแบรนด์เนมคัดเกรดบน Brandname Money`;
+    if (navigator.share) {
+      navigator.share({ title: detStore.n, text: text, url: url }).catch(()=>{});
+    } else {
+      const el = document.createElement('textarea');
+      el.value = `${text} ${url}`; el.setAttribute('readonly', ''); el.style.position = 'absolute'; el.style.left = '-9999px'; document.body.appendChild(el); el.select(); document.execCommand('copy'); document.body.removeChild(el);
+      showToast("คัดลอกลิงก์ร้านค้าแล้ว");
+    }
+  };
 
   const getList = useCallback((t) => {
     let list = STORES.filter((s) => {
@@ -941,19 +922,35 @@ function App() {
       if (t === "bag" && s.b.length === 0) return false;
       if (cond === "new" && !s.c.includes("new")) return false;
       if (cond === "pre" && !s.c.includes("pre")) return false;
+      if (cond === "fav" && !favs.includes(s.id)) return false; 
+      
       const br = t === "watch" ? s.w : t === "bag" ? s.b : [...s.w, ...s.b];
+      
       if (!mR) {
         if (selBr.length > 0 && !selBr.some((x) => br.includes(x))) return false;
         if (currentMatchedModel) {
           return s.m && s.m.includes(currentMatchedModel.id);
         } else if (q) {
-          const x = q.toLowerCase();
-          return s.n.toLowerCase().includes(x) || s.a.toLowerCase().includes(x) || br.some((b) => b.toLowerCase().includes(x));
+          const { clean, isW, isB, isPre, isNew } = parsedQ;
+          
+          // SMART FILTER FALLBACK: if user types "ทง" we filter against "thong patek" directly!
+          const fuzzy = getFuzzySuggestion(q);
+          const activeQuery = fuzzy ? fuzzy.toLowerCase() : clean;
+          
+          if (isW && s.w.length === 0) return false;
+          if (isB && s.b.length === 0) return false;
+          if (isPre && !s.c.includes("pre")) return false;
+          if (isNew && !s.c.includes("new")) return false;
+
+          if (activeQuery) {
+             return s.n.toLowerCase().includes(activeQuery) || 
+                    s.a.toLowerCase().includes(activeQuery) || 
+                    br.some((b) => b.toLowerCase().includes(activeQuery));
+          }
         }
       }
       return true;
     });
-    // ถ้า nearby เปิด → เรียงตามระยะทาง
     if (nearbyOn && userPos) {
       list = [...list].sort((a, b) => {
         const da = a.lat ? calcDist(userPos.lat, userPos.lng, a.lat, a.lng) : 9999;
@@ -962,11 +959,19 @@ function App() {
       });
     }
     return list;
-  }, [cond, selBr, q, mR, currentMatchedModel, nearbyOn, userPos]);
+  }, [cond, selBr, q, parsedQ, mR, currentMatchedModel, nearbyOn, userPos, favs]);
 
+  const allS = useMemo(() => getList("all"), [getList]);
   const ws = useMemo(() => getList("watch"), [getList]);
   const bs = useMemo(() => getList("bag"), [getList]);
-  const dispCount = tab === "watch" ? ws.length : tab === "bag" ? bs.length : ws.length + bs.length;
+  const dispCount = tab === "watch" ? ws.length : tab === "bag" ? bs.length : allS.length;
+
+  // Render fuzzy match banner if we are auto-filtering via activeQuery alias
+  const activeFuzzy = useMemo(() => getFuzzySuggestion(q), [q]);
+  const showFuzzyBanner = activeFuzzy && q.toLowerCase().trim() !== activeFuzzy.toLowerCase() && dispCount > 0;
+  const fuzzyBanner = showFuzzyBanner ? e('div', { style: { background: '#FFFBF5', border: '1px solid #EFE4D8', borderRadius: 12, padding: '10px 16px', marginBottom: 20, display: 'flex', alignItems: 'center', gap: 8, color: '#5A4A3D', fontSize: 13, boxShadow: '0 4px 12px rgba(162,123,82,0.08)' } },
+    e(SearchIc, {s:16}), `แสดงผลการค้นหาสำหรับ "${activeFuzzy}"`
+  ) : null;
 
   const detStore = det ? det.store : null;
   const activeBranch = (detStore && selBranchId) ? detStore.branches.find(b => b.id === selBranchId) : null;
@@ -977,7 +982,6 @@ function App() {
   useEffect(() => { setSelBranchId(null); setBrQ(""); }, [det]);
 
   const suggestedBrand = (dispCount === 0 && q.trim() !== "" && !currentMatchedModel) ? getFuzzySuggestion(q) : null;
-
   const hasFilter = cond !== "all" || selBr.length > 0 || q || nearbyOn;
 
   return e('div', { className: 'layout' },
@@ -1007,31 +1011,62 @@ function App() {
         e('button', { className: `t-tab ${tab==='bag'?'on':''}`, onClick:()=>{triggerHaptic(); setTab('bag');} }, e(BagIc,{s:16,c:"currentColor"}), "กระเป๋า")
       ),
       e('div', { className: 'tb-sep' }),
-      e('div', { className: 'tb-src' },
-        e(SearchIc, {s:18}),
-        e('input', { placeholder:"ค้นหาร้านค้า, แบรนด์ หรือรุ่น...", value:q, onChange: ev => {setQ(ev.target.value); setMR(null);} }),
-        q && e('button', { style:{cursor:'pointer',color:'#A0A0A0',padding:'0 8px',background:'none',border:'none',fontSize:18}, onClick:()=>{triggerHaptic(); setQ(''); setMR(null);} }, "✕"),
-        e('button', { className:'tb-mic', onClick:()=>openVoice("search"), title:"ค้นหาด้วยเสียง" }, e(MicIc,{s:18}))
+      
+      // SEARCH WITH DROPDOWN
+      e('div', { className: 'src-wrap' },
+        e('div', { className: `tb-src ${srcFocus ? 'focused' : ''}` },
+          e(SearchIc, {s:18}),
+          e('input', {
+            placeholder:"ค้นหาร้านค้า, แบรนด์ หรือรุ่น...", value:q,
+            onFocus: () => setSrcFocus(true),
+            onBlur: () => setTimeout(() => setSrcFocus(false), 200),
+            onChange: ev => {setQ(ev.target.value); setMR(null);}
+          }),
+          q && e('button', { style:{cursor:'pointer',color:'#A0A0A0',padding:'0 8px',background:'none',border:'none',fontSize:18}, onClick:()=>{triggerHaptic(); setQ(''); setMR(null);} }, "✕"),
+          e('button', { className:'tb-mic', onClick:()=>openVoice("search"), title:"ค้นหาด้วยเสียง" }, e(MicIc,{s:18}))
+        ),
+        srcFocus && e('div', { className: 'src-dd' },
+          !q ? e('div', null,
+            e('div', { className: 's-lbl' }, e(TrendIc, {s:14}), "คำค้นหายอดฮิต"),
+            e('div', { className: 't-tag-wrap' },
+              ["Rolex Daytona", "Hermès Birkin", "สยามพารากอน", "นาฬิกามือสอง", "กระเป๋าแบรนด์เนม"].map(t =>
+                e('button', { key: t, className: 't-tag', onClick: () => selectSuggestion(t) }, e(SearchIc, {s:12}), t)
+              )
+            )
+          ) : suggestions.length > 0 ? e('div', null,
+            e('div', { className: 's-lbl' }, "ผลการค้นหาแนะนำ"),
+            suggestions.map((sg, i) => e('div', { key: i, className: 'sg-item', onClick: () => selectSuggestion(sg.matchText || sg.text) },
+              e('div', { className: 'sg-ic' }, e(sg.ic, {s:16, c:"currentColor"})),
+              e('div', { className: 'sg-txt' }, sg.text),
+              e('div', { className: 'sg-type' }, sg.type)
+            ))
+          ) : e('div', { style: { padding: 12, textAlign: 'center', color: '#A0A0A0', fontSize: 13 } }, "ไม่พบคำแนะนำ")
+        )
       ),
+
       e('div', { className: 'tb-vws' },
         e('button', { className: `t-vw ${view==='grid'?'on':''}`, onClick:()=>{triggerHaptic(); setView('grid');} }, e(GridIc,{s:20})),
         e('button', { className: `t-vw ${view==='list'?'on':''}`, onClick:()=>{triggerHaptic(); setView('list');} }, e(ListIc,{s:20}))
       )
     ),
 
-    // FILTERS — รวมปุ่ม "ใกล้ฉัน" ไว้ใน f-wrap เดิม
+    // FILTERS
     e('div', { className: 'f-row' },
       e('div', { className: 'f-wrap' },
         e('button', { className: `f-pill ${cond==='all'&&!nearbyOn?'on':''}`, onClick:()=>{triggerHaptic(); setCond('all');} }, "ทั้งหมด"),
-        e('button', { className: `f-pill ${cond==='new'?'on':''}`, onClick:()=>{triggerHaptic(); setCond('new');} }, e(TimeIc,{s:15}), "มือ 1"),
-        e('button', { className: `f-pill ${cond==='pre'?'on':''}`, onClick:()=>{triggerHaptic(); setCond('pre');} }, e(UsersIc,{s:15}), "มือ 2"),
+        e('button', { className: `f-pill ${cond==='new'?'on':''}`, onClick:()=>{triggerHaptic(); setCond(cond==='new'?'all':'new');} }, e(TimeIc,{s:15}), "มือ 1"),
+        e('button', { className: `f-pill ${cond==='pre'?'on':''}`, onClick:()=>{triggerHaptic(); setCond(cond==='pre'?'all':'pre');} }, e(UsersIc,{s:15}), "มือ 2"),
         e('button', { className: `f-pill ${selBr.length>0?'on':''}`, onClick:()=>{triggerHaptic(); setSheet(true);} },
           e(FolderIc,{s:15}), "เลือกแบรนด์",
           selBr.length > 0 && e('span', {style:{background:'#8F6D44',color:'white',padding:'2px 8px',borderRadius:12,fontSize:11,marginLeft:4}}, selBr.length)),
-        // ── ปุ่มใกล้ฉัน ──
+        // Favorites
+        e('button', { className: `f-pill ${cond==='fav'?'on':''}`, onClick:()=>{triggerHaptic(); setCond(cond==='fav'?'all':'fav');} },
+          e(HeartFilledIc, {s:14, c: cond==='fav' ? '#8F6D44' : '#C0B3A6'}), "ร้านโปรด",
+          favs.length > 0 && e('span', {style:{opacity:0.6,fontSize:11,marginLeft:2}}, `(${favs.length})`)
+        ),
+        // Nearby
         e('button', {
-          className: `f-pill nearby ${nearbyOn?'on':''} ${locating?'locating':''}`,
-          onClick: handleNearby,
+          className: `f-pill nearby ${nearbyOn?'on':''} ${locating?'locating':''}`, onClick: handleNearby,
           title: nearbyOn ? "ปิดการค้นหาใกล้ฉัน" : "ค้นหาร้านค้าใกล้ฉัน"
         },
           e(NavIc, {s:15, c: nearbyOn ? "#3E7A2E" : locating ? "#A27B52" : "#5B8A4A"}),
@@ -1039,15 +1074,12 @@ function App() {
         )
       ),
       e('div', { className: 'f-right' },
-        hasFilter && e('button', {
-          className: 'f-clear',
-          onClick:()=>{triggerHaptic(); setSelBr([]);setCond("all");setQ("");setMR(null);setNearbyOn(false);setUserPos(null);showToast("ล้างตัวกรองแล้ว");}
-        }, "ล้างทั้งหมด"),
-        e('div', { className: 'f-total' }, `ทั้งหมด ${dispCount} ร้านค้า`)
+        hasFilter && e('button', { className: 'f-clear', onClick:()=>{triggerHaptic(); setSelBr([]);setCond("all");setQ("");setMR(null);setNearbyOn(false);setUserPos(null);showToast("ล้างตัวกรองแล้ว");} }, "ล้างทั้งหมด"),
+        e('div', { className: 'f-total' }, `ทั้งหมด ${dispCount} ร้านค้า`) 
       )
     ),
 
-    // MODEL MATCH BANNER
+    // BANNER
     currentMatchedModel && e('div', { className: 'model-banner' },
       e('div', { className: 'mb-av' }, currentMatchedModel.initial),
       e('div', { className: 'mb-info' },
@@ -1056,8 +1088,6 @@ function App() {
       ),
       e('button', { className: 'mb-close', onClick: () => { triggerHaptic(); setQ(''); } }, e(XThinIc, {s:24}))
     ),
-
-    // NEARBY BANNER — แสดงเมื่อเปิด nearby
     nearbyOn && userPos && e('div', { className: 'nearby-banner' },
       e('div', { className: 'nb-ic' }, e(NavIc, {s:20, c:"#2D5A20"})),
       e('div', { className: 'nb-info' },
@@ -1067,29 +1097,39 @@ function App() {
       e('button', { className: 'nb-close', onClick: () => { setNearbyOn(false); setUserPos(null); showToast("ปิดการค้นหาใกล้ฉันแล้ว"); } }, e(XThinIc, {s:22}))
     ),
 
-    // STORE LISTS
+    // STORE LISTS (WITH SEPARATED ALL TAB LOGIC)
     tab === "all" ? e('div', null,
-      e(RenderSection, { title:"ร้านนาฬิกา", count:ws.length, stores:ws, type:"watch", bf:mR?[mR.brand]:selBr, view, onOpen:(st,ty)=>setDet({store:st,type:ty}), onToast:showToast, isAllView:true, userPos:nearbyOn?userPos:null }),
-      e(RenderSection, { title:"ร้านกระเป๋า", count:bs.length, stores:bs, type:"bag", bf:mR?[mR.brand]:selBr, view, onOpen:(st,ty)=>setDet({store:st,type:ty}), onToast:showToast, isAllView:true, userPos:nearbyOn?userPos:null }),
-      dispCount === 0 && e('div', {style:{padding:'60px 20px',textAlign:'center'}},
-        e('div', {style:{color:'#EFE4D8',fontSize:18,marginBottom:16,fontWeight:300}}, "ไม่พบร้านค้าที่ตรงกับเงื่อนไขการค้นหา"),
-        suggestedBrand && e('div', {style:{background:'#FFF',borderRadius:20,padding:24,boxShadow:'0 16px 40px rgba(90,60,30,0.12)',display:'inline-block',maxWidth:400,width:'100%',border:'1px solid #EFE4D8'}},
-          e('div', {style:{color:'#5A4A3D',fontSize:15,marginBottom:8}}, "คุณหมายถึงแบรนด์นี้หรือเปล่า?"),
+      fuzzyBanner,
+      ws.length > 0 && e(RenderSection, { title:"ร้านนาฬิกา", count:ws.length, stores:ws, type:"watch", bf:mR?[mR.brand]:selBr, view, onOpen:(st,ty)=>setDet({store:st,type:ty}), onToast:showToast, isAllView:true, userPos:nearbyOn?userPos:null, locating, favs, toggleFav }),
+      bs.length > 0 && e(RenderSection, { title:"ร้านกระเป๋า", count:bs.length, stores:bs, type:"bag", bf:mR?[mR.brand]:selBr, view, onOpen:(st,ty)=>setDet({store:st,type:ty}), onToast:showToast, isAllView:true, userPos:nearbyOn?userPos:null, locating, favs, toggleFav }),
+      
+      // EMPTY STATE
+      dispCount === 0 && !locating && e('div', {style:{padding:'60px 20px',textAlign:'center'}},
+        e('div', {style:{color:'#EFE4D8',fontSize:18,marginBottom:16,fontWeight:300}}, cond === 'fav' ? "ยังไม่มีร้านค้าโปรดที่บันทึกไว้" : "ไม่พบร้านค้าที่ตรงกับเงื่อนไขการค้นหา"),
+        suggestedBrand && cond !== 'fav' && e('div', {style:{background:'#FFF',borderRadius:20,padding:24,boxShadow:'0 16px 40px rgba(90,60,30,0.12)',display:'inline-block',maxWidth:400,width:'100%',border:'1px solid #EFE4D8'}},
+          e('div', {style:{color:'#5A4A3D',fontSize:15,marginBottom:8}}, "คุณหมายถึงสิ่งนี้หรือเปล่า?"),
           e('div', {style:{fontSize:24,fontWeight:700,color:'var(--pri)',marginBottom:20}}, suggestedBrand),
           e('button', {className:'c-cta', style:{width:'100%',justifyContent:'center',height:48,fontSize:15,borderRadius:24}, onClick:()=>{triggerHaptic(); setQ(suggestedBrand);}}, "ดูร้านค้าทั้งหมด", e(ChevRightIc,{s:18}))
         )
       )
     ) : e('div', null,
-      e(RenderSection, { title: tab==="watch"?"ร้านนาฬิกา":"ร้านกระเป๋า", count:(tab==="watch"?ws:bs).length, stores:(tab==="watch"?ws:bs), type:tab, bf:mR?[mR.brand]:selBr, view, onOpen:(st,ty)=>setDet({store:st,type:ty}), onToast:showToast, isAllView:false, userPos:nearbyOn?userPos:null })
+      fuzzyBanner,
+      e(RenderSection, { title: tab==="watch"?"ร้านนาฬิกา":"ร้านกระเป๋า", count:(tab==="watch"?ws:bs).length, stores:(tab==="watch"?ws:bs), type:tab, bf:mR?[mR.brand]:selBr, view, onOpen:(st,ty)=>setDet({store:st,type:ty}), onToast:showToast, isAllView:false, userPos:nearbyOn?userPos:null, locating, favs, toggleFav }),
+      
+      // EMPTY STATE
+      dispCount === 0 && !locating && e('div', {style:{padding:'60px 20px',textAlign:'center'}},
+        e('div', {style:{color:'#EFE4D8',fontSize:18,marginBottom:16,fontWeight:300}}, cond === 'fav' ? "ยังไม่มีร้านค้าโปรดที่บันทึกไว้" : "ไม่พบร้านค้าที่ตรงกับเงื่อนไขการค้นหา"),
+        suggestedBrand && cond !== 'fav' && e('div', {style:{background:'#FFF',borderRadius:20,padding:24,boxShadow:'0 16px 40px rgba(90,60,30,0.12)',display:'inline-block',maxWidth:400,width:'100%',border:'1px solid #EFE4D8'}},
+          e('div', {style:{color:'#5A4A3D',fontSize:15,marginBottom:8}}, "คุณหมายถึงสิ่งนี้หรือเปล่า?"),
+          e('div', {style:{fontSize:24,fontWeight:700,color:'var(--pri)',marginBottom:20}}, suggestedBrand),
+          e('button', {className:'c-cta', style:{width:'100%',justifyContent:'center',height:48,fontSize:15,borderRadius:24}, onClick:()=>{triggerHaptic(); setQ(suggestedBrand);}}, "ดูร้านค้าทั้งหมด", e(ChevRightIc,{s:18}))
+        )
+      )
     ),
 
     // BRAND SHEET MODAL
     sheet && e('div', { className:'ov', onClick:()=>{triggerHaptic(); setSheet(false);} },
-      e(BrandSheet, {
-        selBr, setSelBr, sheetQ, setSheetQ,
-        onClose:()=>{ triggerHaptic(); setSheet(false); },
-        onVoice:()=>openVoice("sheet")
-      })
+      e(BrandSheet, { selBr, setSelBr, sheetQ, setSheetQ, onClose:()=>{ triggerHaptic(); setSheet(false); }, onVoice:()=>openVoice("sheet") })
     ),
 
     // DETAIL MODAL
@@ -1110,22 +1150,12 @@ function App() {
           e('div', {className:'d-loc'}, e(LocIc,{s:14}), activeBranch ? activeBranch.a : detStore.a),
           e('div', {className:'d-tags'},
             detStore.c && detStore.c.map(c => e('span', {key:c, className:`t-cond ${c}`}, c==="new"?"สินค้าใหม่มือ 1":"สินค้ามือสอง")),
-            e('span', {className:`t-cond ${detStore.stock==='ready'?'rdy':detStore.stock==='preorder'?'po':'ask'}`},
-              detStore.stock==='ready'?'พร้อมส่ง':detStore.stock==='preorder'?'Pre-Order':'ต้องสอบถามสต็อก')
+            e('span', {className:`t-cond ${detStore.stock==='ready'?'rdy':detStore.stock==='preorder'?'po':'ask'}`}, detStore.stock==='ready'?'พร้อมส่ง':detStore.stock==='preorder'?'Pre-Order':'ต้องสอบถามสต็อก')
           ),
           e('div', { className:'d-socs' },
-            dSocKeys.map(k => e('a', {
-              key:k, className:'d-soc',
-              href: socUrl(k, activeSoc[k]),
-              target: k !== 'tel' ? '_blank' : undefined,
-              rel: k !== 'tel' ? 'noopener noreferrer' : undefined,
-              onClick: () => { triggerHaptic(); if (k !== 'tel') showToast(`กำลังเปิด ${SOC[k].label}`); }
-            },
+            dSocKeys.map(k => e('a', { key:k, className:'d-soc', href: socUrl(k, activeSoc[k]), target: k !== 'tel' ? '_blank' : undefined, rel: k !== 'tel' ? 'noopener noreferrer' : undefined, onClick: () => { triggerHaptic(); if (k !== 'tel') showToast(`กำลังเปิด ${SOC[k].label}`); } },
               e('div', {className:'d-s-ic'}, e(Ico, {k, s:18, color:"currentColor"})),
-              e('div', {className:'d-s-txt'},
-                e('div', {className:'d-s-lbl'}, SOC[k].label),
-                e('div', {className:'d-s-val'}, activeSoc[k])
-              )
+              e('div', {className:'d-s-txt'}, e('div', {className:'d-s-lbl'}, SOC[k].label), e('div', {className:'d-s-val'}, activeSoc[k]))
             ))
           ),
           detStore.w.length > 0 && e('div', {className:'d-sec'},
@@ -1138,22 +1168,10 @@ function App() {
           ),
           otherBranches.length > 0 && e('div', {className:'d-sec', style:{borderTop:'1px solid #EBEBEB',paddingTop:16}},
             e('div', {className:'d-st'}, e(FolderIc,{s:14,c:"currentColor"}), "เลือกดูข้อมูลสาขาอื่น"),
-            e('div', {className:'d-br-srch'},
-              e(SearchIc,{s:14}),
-              e('input', {placeholder:"ค้นหาสาขา...", value:brQ, onChange:ev=>setBrQ(ev.target.value)})
-            ),
+            e('div', {className:'d-br-srch'}, e(SearchIc,{s:14}), e('input', {placeholder:"ค้นหาสาขา...", value:brQ, onChange:ev=>setBrQ(ev.target.value)})),
             e('div', {className:'d-br-list'},
-              otherBranches
-                .filter(br => !brQ || br.n.toLowerCase().includes(brQ.toLowerCase()) || br.a.toLowerCase().includes(brQ.toLowerCase()))
-                .map(br => e('div', {
-                  key:br.id,
-                  style:{
-                    background:'#FAFAFA', border:'1px solid #EAEAEA', padding:'10px 12px', borderRadius:'12px',
-                    display:'flex', justifyContent:'space-between', alignItems:'center', cursor:'pointer', transition:'all 0.3s ease',
-                    ...(selBranchId===br.id ? {borderColor:'var(--pri)', background:'#FFFBF5', boxShadow:'0 4px 12px rgba(162,123,82,0.1)'} : {})
-                  },
-                  onClick:()=>{ triggerHaptic(); setSelBranchId(selBranchId===br.id ? null : br.id); showToast(selBranchId===br.id ? "ยกเลิกเลือกสาขา" : `เลือกสาขา: ${br.n}`); }
-                },
+              otherBranches.filter(br => !brQ || br.n.toLowerCase().includes(brQ.toLowerCase()) || br.a.toLowerCase().includes(brQ.toLowerCase()))
+                .map(br => e('div', { key:br.id, style:{ background:'#FAFAFA', border:'1px solid #EAEAEA', padding:'10px 12px', borderRadius:'12px', display:'flex', justifyContent:'space-between', alignItems:'center', cursor:'pointer', transition:'all 0.3s ease', ...(selBranchId===br.id ? {borderColor:'var(--pri)', background:'#FFFBF5', boxShadow:'0 4px 12px rgba(162,123,82,0.1)'} : {}) }, onClick:()=>{ triggerHaptic(); setSelBranchId(selBranchId===br.id ? null : br.id); showToast(selBranchId===br.id ? "ยกเลิกเลือกสาขา" : `เลือกสาขา: ${br.n}`); } },
                   e('div', {style:{flex:1,minWidth:0}},
                     e('div', {style:{fontSize:13,fontWeight:600,color:'#222',whiteSpace:'nowrap',overflow:'hidden',textOverflow:'ellipsis'}}, br.n),
                     e('div', {style:{fontSize:11,color:'#888',display:'flex',alignItems:'center',gap:4,marginTop:2}}, e(LocIc,{s:10}), br.a)
@@ -1163,8 +1181,9 @@ function App() {
             )
           ),
           e('div', { className:'d-acts' },
-            e('button', {className:'d-a sec', onClick:(ev)=>openMap(activeBranch ? activeBranch.a : detStore.a, ev)}, e(LocIc,{s:16}), "แผนที่นำทาง"),
-            e('button', {className:'d-a pri', onClick:(ev)=>applyLoan(detStore, ev)}, "สมัครสินเชื่อ", e(ChevRightIc,{s:16}))
+            e('button', {className:'d-a sec', onClick:handleShare}, e(ShareIc,{s:16}), "แชร์"),
+            e('button', {className:'d-a sec', onClick:(ev)=>openMap(activeBranch ? activeBranch.a : detStore.a, ev)}, e(LocIc,{s:16}), "แผนที่"),
+            e('button', {className:'d-a pri', onClick:(ev)=>applyLoan(detStore, ev)}, "สมัครสินเชื่อ")
           )
         )
       )
@@ -1174,29 +1193,14 @@ function App() {
     voiceOpen && e('div', { className:'voice-ov' },
       e('button', {className:'voice-close', onClick:closeVoice}, "✕"),
       e('div', {className:'voice-inner'},
-        e('div', {className:'voice-status'},
-          voiceError ? "เกิดข้อผิดพลาด" :
-          voiceListening ? "กำลังฟังเสียงของคุณ..." :
-          voiceText ? "กำลังประมวลผล..." : "แตะไมค์เพื่อพูด"
-        ),
+        e('div', {className:'voice-status'}, voiceError ? "เกิดข้อผิดพลาด" : voiceListening ? "กำลังฟังเสียงของคุณ..." : voiceText ? "กำลังประมวลผล..." : "แตะไมค์เพื่อพูด" ),
         e('div', {className:'voice-mic-wrap'},
-          voiceListening && e('div', {className:'voice-pulse'}),
-          voiceListening && e('div', {className:'voice-pulse'}),
-          voiceListening && e('div', {className:'voice-pulse'}),
-          e('button', {
-            className:`voice-mic-btn ${voiceListening ? '' : 'idle'}`,
-            onClick: voiceListening ? null : startListening, disabled: voiceListening
-          }, e(MicIc, {s:44}))
+          voiceListening && e('div', {className:'voice-pulse'}), voiceListening && e('div', {className:'voice-pulse'}), voiceListening && e('div', {className:'voice-pulse'}),
+          e('button', { className:`voice-mic-btn ${voiceListening ? '' : 'idle'}`, onClick: voiceListening ? null : startListening, disabled: voiceListening }, e(MicIc, {s:44}))
         ),
-        e('div', {className:`voice-text ${voiceText ? '' : 'placeholder'}`},
-          voiceText || (voiceListening ? "กำลังฟังเสียงของคุณ..." : "กรุณาพูดชื่อแบรนด์ รุ่น หรือร้านค้า...")
-        ),
-        voiceListening && e('div', {className:'voice-waveform'},
-          [1,2,3,4,5,6,7,8,9].map(i => e('div', {key:i, className:'voice-bar'}))
-        ),
-        !voiceListening && !voiceText && !voiceError && e('div', {className:'voice-hint'},
-          'ตัวอย่างเช่น: "Rolex", "Hermès", "ทองปาเต๊ะ", หรือ "พารากอน"'
-        ),
+        e('div', {className:`voice-text ${voiceText ? '' : 'placeholder'}`}, voiceText || (voiceListening ? "กำลังฟังเสียงของคุณ..." : "กรุณาพูดชื่อแบรนด์ รุ่น หรือร้านค้า...") ),
+        voiceListening && e('div', {className:'voice-waveform'}, [1,2,3,4,5,6,7,8,9].map(i => e('div', {key:i, className:'voice-bar'})) ),
+        !voiceListening && !voiceText && !voiceError && e('div', {className:'voice-hint'}, 'ตัวอย่างเช่น: "Rolex", "Hermès", "ทองปาเต๊ะ", หรือ "พารากอน"' ),
         voiceError && e('div', {className:'voice-err'}, voiceError),
         e('div', {className:'voice-actions'},
           e('button', {className:'voice-btn ghost', onClick:closeVoice}, "ยกเลิก"),
@@ -1206,10 +1210,7 @@ function App() {
       )
     ),
 
-    toast && e('div', {className:'toast'},
-      e('div', {className:'toast-ic'}, e(CheckIc,{s:14, stroke:"white"})),
-      toast
-    )
+    toast && e('div', {className:'toast'}, e('div', {className:'toast-ic'}, e(CheckIc,{s:14, stroke:"white"})), toast )
   );
 }
 
