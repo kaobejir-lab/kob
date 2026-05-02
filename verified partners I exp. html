@@ -1078,7 +1078,7 @@ function Card({ store, type, bf, view, onOpen, onToast, userPos, favs, toggleFav
         className: 'c-cta',
         onClick: (ev) => {
           triggerHaptic(); ev.stopPropagation();
-          window.location.href = `./loan-apply.htm?store=${encodeURIComponent(store.n)}`;
+          window.open('https://brandname.genius-lending.com/credit-request/form', '_blank');
         }
       }, "สมัครสินเชื่อ", e(ChevRightIc, {s:14})),
 
@@ -1326,7 +1326,7 @@ function App() {
     triggerHaptic(); if (ev) ev.stopPropagation();
     showToast(`กำลังนำคุณไปหน้าสมัครสินเชื่อสำหรับ ${store.n}`);
     setTimeout(() => {
-      window.location.href = `./loan-apply.htm?store=${encodeURIComponent(store.n)}`;
+      window.open('https://brandname.genius-lending.com/credit-request/form', '_blank');
     }, 600);
   };
 
