@@ -43,24 +43,40 @@ button, input, textarea, select { font-family: 'Kanit', sans-serif !important; }
 @media (min-width: 900px) { .hero-wrap { flex-direction: row; align-items: center; } }
 .hero-txt { color: var(--white); max-width: 500px; }
 .h-badge { display: inline-flex; align-items: center; gap: 6px; background: var(--white); color: var(--text-dark); font-size: 12px; font-weight: 600; padding: 6px 16px; border-radius: 20px; margin-bottom: 16px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
-.h-title { font-size: 40px; font-weight: 600; margin-bottom: 8px; letter-spacing: -0.5px; line-height: 1.2; color: #FFFBF5; text-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+.h-title {
+  font-size: 40px; font-weight: 600; margin-bottom: 8px; letter-spacing: -0.5px; line-height: 1.2;
+  background: linear-gradient(135deg, #FFFFFF 0%, #FFF4DE 45%, #F2D9A8 100%);
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent; color: transparent;
+  filter: drop-shadow(0 4px 14px rgba(0,0,0,0.18));
+}
 .h-sub { font-size: 16px; font-weight: 300; opacity: 0.9; line-height: 1.5; color: #EFE6DA; }
 
 /* HERO STATS */
 .hero-stats { background: rgba(255,255,255,0.15); backdrop-filter: blur(10px); border-radius: 18px; padding: 4px; display: flex; align-items: stretch; gap: 4px; border: 1px solid rgba(255,255,255,0.2); }
-.hs-blk { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; padding: 12px 16px; border-radius: 14px; cursor: pointer; transition: all 0.5s var(--ease-smooth); min-width: 90px; position: relative; }
+.hs-blk { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; padding: 12px 16px; border-radius: 14px; cursor: pointer; transition: background 0.5s var(--ease-smooth), box-shadow 0.5s var(--ease-smooth), border-color 0.5s var(--ease-smooth), transform 0.5s var(--ease-smooth); min-width: 90px; position: relative; border: 1px solid transparent; }
 .hs-ic { color: rgba(255,255,255,0.4); transform: scale(0.9); transition: all 0.5s var(--ease-smooth); }
-.hs-v { font-size: 24px; font-weight: 700; line-height: 1; color: rgba(255,255,255,0.5); transition: all 0.5s var(--ease-smooth); }
-.hs-l { font-size: 12px; font-weight: 500; color: rgba(255,255,255,0.4); text-transform: uppercase; letter-spacing: 0.5px; transition: all 0.5s var(--ease-smooth); white-space: nowrap; }
-.hs-blk.on { background: var(--white); box-shadow: 0 8px 20px rgba(0,0,0,0.12); transform: scale(1.05); }
+.hs-v { font-size: 24px; font-weight: 700; line-height: 1; color: rgba(255,255,255,0.5); transition: color 0.5s var(--ease-smooth); }
+.hs-l { font-size: 12px; font-weight: 500; color: rgba(255,255,255,0.4); text-transform: uppercase; letter-spacing: 0.5px; transition: color 0.5s var(--ease-smooth), font-weight 0.5s var(--ease-smooth); white-space: nowrap; }
+.hs-blk.on {
+  background: linear-gradient(160deg, #FFFFFF 0%, #FFFFFF 75%, #FFF4E0 100%);
+  box-shadow: 0 10px 24px rgba(90,60,30,0.14), inset 0 1px 0 rgba(255,255,255,0.9), inset 0 -1px 0 rgba(212,163,85,0.05);
+  border-color: rgba(255,255,255,0.5);
+  transform: scale(1.05);
+}
 .hs-blk.on .hs-ic { color: var(--pri); transform: scale(1.1); }
-.hs-blk.on .hs-v { color: var(--text-dark); }
+.hs-blk.on .hs-v { color: #5A4A3D; }
 .hs-blk.on .hs-l { color: var(--pri); font-weight: 600; }
 .hs-blk:not(.on):hover { background: rgba(255,255,255,0.1); }
 .hs-blk:not(.on):hover .hs-v { color: rgba(255,255,255,0.8); }
 
 /* TOOLBAR */
-.tbar { background: var(--white); border-radius: 40px; padding: 8px 12px 8px 16px; display: flex; align-items: center; box-shadow: 0 8px 32px rgba(0,0,0,0.08); margin-bottom: 24px; gap: 12px; flex-wrap: wrap; }
+.tbar {
+  background: rgba(255,255,255,0.96); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+  border-radius: 40px; padding: 8px 12px 8px 16px; display: flex; align-items: center;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.08); margin-bottom: 16px; gap: 12px; flex-wrap: wrap;
+  position: sticky; top: 12px; z-index: 80;
+}
 .tb-tabs { display: flex; gap: 6px; }
 
 .t-tab {
@@ -78,8 +94,8 @@ button, input, textarea, select { font-family: 'Kanit', sans-serif !important; }
 .t-tab:hover { transform: translateY(-2px); color: #5A4A3D; }
 .t-tab.on {
   background: linear-gradient(135deg, #B28E6A 0%, #8C6A4F 100%); color: #FFFFFF;
-  box-shadow: 0 8px 20px rgba(162, 123, 82, 0.4);
-  text-shadow: 0 0 .5px rgba(255,255,255,0.8); transform: translateY(-2px);
+  box-shadow: 0 3px 8px rgba(162, 123, 82, 0.2);
+  text-shadow: 0 0 .5px rgba(255,255,255,0.8); transform: translateY(-1px);
 }
 
 .tb-sep { width: 1px; height: 24px; background: #EAEAEA; margin: 0 4px; }
@@ -134,6 +150,142 @@ button, input, textarea, select { font-family: 'Kanit', sans-serif !important; }
 .f-clear:hover { color: var(--white); text-decoration: underline; text-underline-offset: 2px; }
 .f-total { color: var(--white); font-size: 13px; font-weight: 500; display: flex; align-items: center; }
 
+/* FILTER CHIPS BAR — shows active filters below toolbar */
+.fchips-bar { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-bottom: 20px; animation: chipsFadeIn 0.35s var(--ease-smooth); }
+@keyframes chipsFadeIn { from { opacity: 0; transform: translateY(-4px); } to { opacity: 1; transform: translateY(0); } }
+.fchip {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: rgba(255,255,255,0.9); color: #5A4A3D;
+  padding: 6px 10px 6px 12px; border-radius: 20px;
+  font-size: 12.5px; font-weight: 500; line-height: 1;
+  border: 1px solid rgba(255,255,255,0.3);
+  box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+  backdrop-filter: blur(8px);
+  animation: chipPop 0.3s var(--ease-bounce);
+}
+@keyframes chipPop { from { transform: scale(0.7); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+.fchip-ic { color: var(--pri); display: inline-flex; flex-shrink: 0; }
+.fchip-label { white-space: nowrap; }
+.fchip-cat { font-size: 10px; font-weight: 600; color: #9A7A52; opacity: 0.8; }
+.fchip-x {
+  width: 18px; height: 18px; border-radius: 50%; background: rgba(162,123,82,0.12);
+  color: #8F6D44; border: none; cursor: pointer;
+  display: inline-flex; align-items: center; justify-content: center;
+  margin-left: 2px; padding: 0; flex-shrink: 0;
+  transition: all 0.25s var(--ease-bounce);
+}
+.fchip-x:hover { background: #8F6D44; color: #FFF; transform: rotate(90deg) scale(1.1); }
+.fchip-clear {
+  background: transparent; border: none;
+  color: rgba(255,255,255,0.85); font-size: 12.5px; font-weight: 500;
+  cursor: pointer; padding: 4px 8px; text-decoration: underline;
+  text-underline-offset: 3px; text-decoration-color: rgba(255,255,255,0.4);
+}
+.fchip-clear:hover { color: #FFF; text-decoration-color: rgba(255,255,255,0.9); }
+
+/* BRAND MONOGRAM — typographic style in BrandSheet */
+.brand-mono {
+  width: 28px; height: 28px; border-radius: 8px;
+  color: #FFF; display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0; overflow: hidden; line-height: 1; letter-spacing: -0.3px;
+}
+.brand-mono.serif { font-family: 'Playfair Display', Georgia, 'Times New Roman', serif; font-weight: 700; }
+.brand-mono.serif-italic { font-family: 'Playfair Display', Georgia, serif; font-weight: 600; font-style: italic; }
+.brand-mono.sans { font-family: 'Helvetica Neue', Arial, sans-serif; font-weight: 700; letter-spacing: 0.3px; }
+.brand-mono.sans-bold { font-family: 'Helvetica Neue', Arial Black, sans-serif; font-weight: 900; letter-spacing: -0.5px; }
+
+/* POPULAR brand marker in sheet */
+.sh-item { position: relative; }
+
+/* RESPONSIVE — Mobile first improvements */
+@media (max-width: 768px) {
+  .layout { padding: 20px 14px 80px; }
+
+  /* Hero */
+  .hero-wrap { gap: 20px; margin-bottom: 20px; }
+  .h-title { font-size: 28px; }
+  .h-sub { font-size: 14px; }
+  .h-badge { font-size: 11px; padding: 4px 12px; margin-bottom: 10px; }
+  .hero-stats { width: 100%; }
+  .hs-blk { padding: 10px 8px; min-width: 0; }
+  .hs-v { font-size: 20px; }
+  .hs-l { font-size: 10px; }
+
+  /* Toolbar: make search full-width on small screens */
+  .tbar { padding: 8px 10px; border-radius: 24px; top: 8px; gap: 8px; }
+  .tb-tabs { width: 100%; justify-content: space-around; order: 1; }
+  .t-tab { padding: 7px 14px; font-size: 13px; flex: 1; justify-content: center; }
+  .tb-sep { display: none; }
+  .src-wrap { width: 100%; order: 2; min-width: 0; }
+  .tb-src { height: 40px; }
+  .tb-src input { font-size: 14px; }
+  .tb-vws { order: 3; margin-left: auto; }
+  .t-vw { width: 38px; height: 38px; }
+
+  /* Filters */
+  .f-row { gap: 10px; margin-bottom: 16px; }
+  .f-wrap { padding: 4px; border-radius: 30px; width: 100%; overflow-x: auto; flex-wrap: nowrap; scrollbar-width: none; }
+  .f-wrap::-webkit-scrollbar { display: none; }
+  .f-pill { padding: 7px 14px; font-size: 12px; flex-shrink: 0; }
+  .f-right { width: 100%; justify-content: space-between; margin-left: 0; }
+  .f-total { font-size: 12px; }
+  .f-clear { font-size: 12px; }
+
+  /* Section header */
+  .sh-t { font-size: 20px; }
+  .s-head { padding-bottom: 12px; margin-bottom: 16px; }
+
+  /* Cards — already 1 column on small screens via grid */
+  .card { padding: 16px; border-radius: 16px; }
+  .c-nm { font-size: 15px; }
+  .c-loc { font-size: 11px; }
+
+  /* Detail modal — full-screen on mobile */
+  .ov { padding: 0; align-items: flex-end; }
+  .sh { max-height: 95vh; border-radius: 20px 20px 0 0; animation: shUpIn 0.4s var(--ease-bounce); }
+  @keyframes shUpIn { from { transform: translateY(100%); } to { transform: translateY(0); } }
+  .sh-body-detail { padding: 14px 18px 20px; gap: 14px; }
+  .d-sticky-hdr { padding: 12px 18px; }
+  .d-sh-nm { font-size: 16px; }
+  .d-socs { grid-template-columns: repeat(2, 1fr); }
+  .d-acts { flex-direction: column; gap: 8px; }
+  .d-a { flex: 1 1 auto; width: 100%; }
+
+  /* Brand sheet — full-screen */
+  .bs-hdr-inner { padding: 12px 16px 0; }
+  .bs-srch-wrap { padding: 8px 16px 10px; }
+  .bs-popular-row { padding: 6px 16px 8px; }
+  .sh-body { padding: 10px 16px 14px; }
+  .sh-footer { padding: 10px 16px 14px; }
+  .sh-grid { grid-template-columns: repeat(2, 1fr); gap: 6px; }
+
+  /* Voice modal */
+  .voice-mic-wrap { width: 160px; height: 160px; }
+  .voice-mic-btn { width: 80px; height: 80px; }
+  .voice-text { font-size: 20px; min-height: 54px; }
+
+  /* Filter chips */
+  .fchips-bar { margin-bottom: 14px; }
+  .fchip { font-size: 11.5px; padding: 5px 8px 5px 10px; }
+}
+
+/* TABLET — 600px to 1024px */
+@media (min-width: 600px) and (max-width: 1024px) {
+  .layout { padding: 32px 20px 90px; }
+  .h-title { font-size: 34px; }
+  /* Grid already 2-column from main CSS */
+  .sh-grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+/* Small phones */
+@media (max-width: 380px) {
+  .h-title { font-size: 24px; }
+  .t-tab { padding: 6px 10px; font-size: 12px; }
+  .f-pill { font-size: 11.5px; padding: 6px 12px; }
+  .sh-grid { grid-template-columns: repeat(2, 1fr); }
+  .c-cta { padding: 0 14px; min-width: auto; font-size: 12px; }
+}
+
 /* BANNER */
 .model-banner { background: var(--white); border-radius: 16px; padding: 16px 20px; display: flex; align-items: center; gap: 16px; margin-bottom: 24px; box-shadow: 0 4px 16px rgba(0,0,0,0.08); animation: bannerFadeIn 0.4s var(--ease-bounce); }
 @keyframes bannerFadeIn { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
@@ -162,9 +314,28 @@ button, input, textarea, select { font-family: 'Kanit', sans-serif !important; }
 .list-layout { display: flex; flex-direction: column; gap: 16px; margin-bottom: 24px; }
 
 /* CARD */
-.card { background: var(--white); border-radius: 20px; padding: 18px; display: flex; flex-direction: column; transition: transform 0.5s var(--ease-smooth), box-shadow 0.5s var(--ease-smooth), border-color 0.5s var(--ease-smooth); position: relative; cursor: pointer; border: 1px solid transparent; overflow: hidden; }
-.card:hover { transform: translateY(-4px) scale(1.01); box-shadow: 0 24px 50px rgba(90,60,30,0.18), 0 8px 20px rgba(90,60,30,0.08); border-color: #EFE4D8; z-index: 2; }
+.card { background: linear-gradient(135deg, #FEFBF7 0%, #FFFFFF 42%); border-radius: 20px; padding: 18px; display: flex; flex-direction: column; transition: transform 0.5s var(--ease-smooth), box-shadow 0.5s var(--ease-smooth), border-color 0.5s var(--ease-smooth), background 0.5s var(--ease-smooth); position: relative; cursor: pointer; border: 1px solid transparent; overflow: hidden; }
+.card:hover { background: linear-gradient(135deg, #FDF5EA 0%, #FFFFFF 58%); transform: translateY(-4px) scale(1.01); box-shadow: 0 16px 36px rgba(90,60,30,0.13), 0 4px 12px rgba(90,60,30,0.06); border-color: #EFE4D8; z-index: 2; }
+.card:active { transform: translateY(-1px) scale(0.99); transition: transform 0.15s var(--ease-bounce); }
 .card-dist { background: #D4EDCF; color: #2D5A20; font-size: 10px; font-weight: 700; padding: 4px 8px; border-radius: 12px; display: flex; align-items: center; gap: 3px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
+/* Distance badge — overlay on bottom-right of avatar */
+.card-dist-ov { position: absolute; bottom: -5px; right: -5px; background: rgba(28,76,22,0.88); backdrop-filter: blur(4px); color: #fff; font-size: 9px; font-weight: 700; padding: 3px 6px 3px 5px; border-radius: 8px; display: flex; align-items: center; gap: 2px; box-shadow: 0 2px 8px rgba(0,0,0,0.22); white-space: nowrap; z-index: 3; border: 1px solid rgba(255,255,255,0.15); }
+/* Hours row inside card */
+.c-hours { font-size: 11px; color: #B8AFA8; display: flex; align-items: center; gap: 5px; margin-top: 3px; flex-wrap: nowrap; min-width: 0; letter-spacing: 0; }
+.c-hours-time { color: #C2B9B0; font-weight: 400; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.c-hours-days { color: #C8C0B8; font-size: 10px; font-weight: 400; white-space: nowrap; }
+.c-open-dot { width: 8px; height: 8px; border-radius: 50%; background: #22C55E; flex-shrink: 0; position: relative; box-shadow: 0 0 4px rgba(34,197,94,0.5); }
+.c-open-dot::before, .c-open-dot::after { content:''; position:absolute; inset:0; border-radius:50%; background:#22C55E; opacity: 0; pointer-events: none; }
+.c-open-dot::before { animation: dotPulse 1.8s cubic-bezier(0.22, 0.61, 0.36, 1) infinite; }
+.c-open-dot::after { animation: dotPulse 1.8s cubic-bezier(0.22, 0.61, 0.36, 1) infinite 0.9s; }
+@keyframes dotPulse {
+  0%   { transform: scale(1);   opacity: 0.55; }
+  80%, 100% { transform: scale(2.2); opacity: 0; }
+}
+.c-open-lbl { color: #16A34A; font-weight: 600; }
+.c-closed-lbl { color: #B0B7C0; font-weight: 400; }
+.c-hours-sep { color: #D8D0C8; font-weight: 300; }
+.c-closed-dot { width: 8px; height: 8px; border-radius: 50%; background: #D1D5DB; flex-shrink: 0; }
 
 /* SKELETON */
 .skeleton { pointer-events: none; border-color: #F5F5F5; }
@@ -177,26 +348,186 @@ button, input, textarea, select { font-family: 'Kanit', sans-serif !important; }
 .sk-btn { width: 36px; height: 36px; border-radius: 12px; display: inline-block; margin-right: 8px;}
 .sk-btn-l { width: 110px; height: 40px; border-radius: 20px; }
 
-/* LIST VIEW */
-.list-layout .card { flex-direction: row; align-items: center; padding: 18px 24px; box-shadow: 0 4px 16px rgba(162,123,82,0.05); border: 1px solid #F5F1E9; gap: 0; }
-.list-layout .card:hover { transform: translateY(-3px); }
-.list-layout .c-head { flex: 0 0 35%; min-width: 0; margin-bottom: 0; padding-right: 20px; display: flex; align-items: center; gap: 12px; }
-.list-layout .c-brs-wrap { flex: 0 0 40%; min-width: 0; margin: 0; display: flex; justify-content: center; align-items: center; border-left: 1px solid #F0F0F0; border-right: 1px solid #F0F0F0; padding: 0 20px; overflow: hidden; }
-.list-layout .c-brs { justify-content: center; flex-wrap: wrap; gap: 6px; }
-.list-layout .c-foot { flex: 0 0 25%; min-width: 0; margin-top: 0; padding: 0 0 0 20px; border-top: none; justify-content: flex-end; gap: 10px; }
+/* HEART FAV BUTTON — Option A "Whisper" */
+.c-fav-btn { position: absolute; top: 10px; right: 10px; background: transparent; border: none; border-radius: 50%; width: 34px; height: 34px; display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 5; color: #B5A899; opacity: 0.3; transition: opacity 0.3s ease, color 0.3s ease, transform 0.25s var(--ease-bounce), filter 0.3s ease; }
+.c-fav-btn:hover { opacity: 0.6; transform: scale(1.1); }
+.c-fav-btn:active { transform: scale(0.85); opacity: 0.8; }
+.c-fav-btn.on { opacity: 1; color: #D4A355; filter: drop-shadow(0 0 6px rgba(212,163,85,0.45)); }
+.c-fav-btn.on:hover { filter: drop-shadow(0 0 10px rgba(212,163,85,0.55)); transform: scale(1.1); }
+.c-fav-btn.pop { animation: heartPop 0.5s var(--ease-bounce); }
+@keyframes heartPop {
+  0%   { transform: scale(1); }
+  30%  { transform: scale(1.4); }
+  55%  { transform: scale(0.88); }
+  80%  { transform: scale(1.06); }
+  100% { transform: scale(1); }
+}
+.c-fav-btn.pop.on svg { animation: heartIconBounce 0.5s var(--ease-bounce); }
+@keyframes heartIconBounce {
+  0%   { transform: scale(1); }
+  40%  { transform: scale(1.5) rotate(-10deg); }
+  70%  { transform: scale(0.92) rotate(4deg); }
+  100% { transform: scale(1) rotate(0); }
+}
+/* Burst ring — only when favoriting */
+.c-fav-btn.pop.on::after {
+  content:''; position:absolute; inset:-4px; border-radius:50%;
+  border: 1.5px solid rgba(212,163,85,0.5); opacity: 0;
+  animation: heartBurst 0.6s ease-out;
+}
+@keyframes heartBurst {
+  0%   { transform: scale(0.6); opacity: 0.8; }
+  100% { transform: scale(2.5); opacity: 0; }
+}
 
+/* LIST VIEW — single row layout */
+.list-layout .card {
+  background: linear-gradient(135deg, #FEFBF7 0%, #FFFFFF 50%);
+  flex-direction: row;
+  align-items: center;
+  padding: 14px 18px;
+  box-shadow: 0 2px 12px rgba(162,123,82,0.04);
+  border: 1px solid #F5F1E9;
+  gap: 16px;
+}
+.list-layout .card:hover {
+  background: linear-gradient(135deg, #FDF5EA 0%, #FFFFFF 60%);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(90,60,30,0.1), 0 2px 8px rgba(90,60,30,0.04);
+}
+
+/* col 1 — identity: avatar + name + location + hours */
+.list-layout .c-head {
+  flex: 1 1 0;
+  min-width: 0;
+  margin-bottom: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border-right: none;
+}
+
+/* col 2 — brands (brands shown in full, no clipping) */
+.list-layout .c-brs-wrap {
+  flex: 0 1 auto;
+  min-width: 0;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  padding: 0;
+  overflow: visible;
+  border-right: none;
+}
+.list-layout .c-brs {
+  flex-wrap: nowrap;
+  gap: 5px;
+  justify-content: flex-end;
+  width: auto;
+}
+/* Full brand name in list — no ellipsis, no overflow clip */
+.list-layout .c-br {
+  overflow: visible;
+  text-overflow: clip;
+  white-space: nowrap;
+  flex-shrink: 0;
+  max-width: none;
+}
+.list-layout .c-more { flex-shrink: 0; }
+
+/* col 3 — actions: social + CTA + heart (fixed width, stays on right) */
+.list-layout .c-foot {
+  flex: 0 0 auto;
+  width: auto;
+  min-width: 0;
+  margin-top: 0;
+  padding: 0;
+  border-top: none;
+  justify-content: flex-end;
+  gap: 10px;
+  align-items: center;
+}
+
+/* Social icons in list: smaller, circular */
+.list-layout .c-soc { gap: 6px; }
+.list-layout .c-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #F6F2EC;
+  border: 1px solid #ECE4D8;
+}
+.list-layout .c-btn:hover {
+  transform: none;
+  background: #FFFFFF;
+  border-color: #DCCFB8;
+  box-shadow: 0 2px 8px rgba(162,123,82,0.12);
+}
+.list-layout .c-btn.tel {
+  background: linear-gradient(135deg, #B5977D 0%, #9E7D5F 100%);
+  border-color: transparent;
+  box-shadow: 0 3px 10px rgba(181,151,125,0.3);
+}
+
+/* CTA in list: slightly more compact */
+.list-layout .c-cta {
+  height: 38px;
+  min-width: auto;
+  padding: 0 18px;
+  font-size: 13px;
+}
+
+/* Grid heart stays absolute — list heart is inline inside c-foot */
+.list-layout .c-fav-btn { display: none; }
+
+/* Heart button in list view — matches grid view (transparent, no border, same animations) */
+.c-fav-list {
+  width: 34px; height: 34px; border-radius: 50%; flex-shrink: 0;
+  background: transparent; border: none; color: #B5A899;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer; position: relative; padding: 0;
+  opacity: 0.3;
+  transition: opacity 0.3s ease, color 0.3s ease, transform 0.25s var(--ease-bounce), filter 0.3s ease;
+}
+.c-fav-list:hover { opacity: 0.6; transform: scale(1.1); }
+.c-fav-list:active { transform: scale(0.85); opacity: 0.8; }
+.c-fav-list.on {
+  opacity: 1; color: #D4A355;
+  filter: drop-shadow(0 0 6px rgba(212,163,85,0.45));
+}
+.c-fav-list.on:hover {
+  filter: drop-shadow(0 0 10px rgba(212,163,85,0.55));
+  transform: scale(1.1);
+}
+.c-fav-list.pop { animation: heartPop 0.5s var(--ease-bounce); }
+.c-fav-list.pop.on svg { animation: heartIconBounce 0.5s var(--ease-bounce); }
+.c-fav-list.pop.on::after {
+  content:''; position:absolute; inset:-4px; border-radius:50%;
+  border:1.5px solid rgba(212,163,85,0.5); opacity:0;
+  animation: heartBurst 0.6s ease-out;
+}
+
+/* Fix c-info padding in list */
+.list-layout .c-info { padding-right: 0 !important; }
+.list-layout .c-hours { flex-wrap: nowrap; }
+
+/* Responsive: mobile & tablet — stack back to column */
 @media (max-width: 1024px) {
-  .list-layout .card { flex-direction: column; align-items: flex-start; padding: 18px; gap: 12px; }
-  .list-layout .c-head { flex: 1 1 auto; width: 100%; padding-right: 0; }
-  .list-layout .c-brs-wrap { flex: 1 1 auto; width: 100%; justify-content: flex-start; border: none; padding: 0; }
-  .list-layout .c-brs { justify-content: flex-start; }
-  .list-layout .c-foot { flex: 1 1 auto; width: 100%; justify-content: space-between; padding-left: 0; border-top: none; }
+  .list-layout .card { flex-direction: column; align-items: flex-start; padding: 16px; gap: 10px; }
+  .list-layout .c-head { flex: 1 1 auto; width: 100%; padding-right: 48px; }
+  .list-layout .c-brs-wrap { flex: 1 1 auto; width: 100%; max-width: none; justify-content: flex-start; }
+  .list-layout .c-brs { justify-content: flex-start; flex-wrap: wrap; }
+  .list-layout .c-foot { flex: 1 1 auto; width: 100%; justify-content: flex-start; gap: 8px; padding-left: 0; }
+  .list-layout .c-btn { width: 36px; height: 36px; }
+  .list-layout .c-cta { height: 40px; }
+  .list-layout .c-fav-btn { display: flex; }   /* show abs heart again on mobile */
+  .c-fav-list { display: none; }               /* hide inline heart on mobile */
 }
 
 /* CARD INFO */
 .c-head { margin-bottom: 16px; display: flex; align-items: center; gap: 12px; min-width: 0; }
 .c-av { width: 48px; height: 48px; border-radius: 14px; background: #2D2D2D; color: #D6C2AC; display: flex; align-items: center; justify-content: center; font-size: 20px; font-weight: 600; flex-shrink: 0; box-shadow: 0 4px 10px rgba(0,0,0,0.08); }
-.c-info { flex: 1; display: flex; flex-direction: column; justify-content: center; gap: 3px; overflow: hidden; min-width: 0; }
+.c-info { flex: 1; display: flex; flex-direction: column; justify-content: center; gap: 3px; min-width: 0; }
 .c-nm { font-size: 16px; font-weight: 700; color: #2D2D2D; display: flex; align-items: center; gap: 6px; white-space: nowrap; overflow: hidden; line-height: 1.2; }
 .c-nm-txt { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; min-width: 0; }
 .c-nm-icons { display: inline-flex; align-items: center; gap: 4px; flex-shrink: 0; }
@@ -206,9 +537,9 @@ button, input, textarea, select { font-family: 'Kanit', sans-serif !important; }
 
 /* CARD BRANDS */
 .c-brs-wrap { margin-top: 2px; margin-bottom: 16px; display: flex; overflow: hidden; }
-.c-brs { display: flex; gap: 6px; align-items: center; flex-wrap: nowrap; overflow: hidden; width: 100%; }
-.c-br { padding: 4px 10px; background: #F9F7F5; border-radius: 16px; font-size: 11px; color: #5A4A3D; font-weight: 500; flex-shrink: 0; border: 1px solid #EFEDE8; white-space: nowrap; }
-.c-more { color: var(--pri); font-size: 11px; font-weight: 700; flex-shrink: 0; background: #FDF9F4; padding: 4px 8px; border-radius: 16px; border: 1px solid #FAF1E5; white-space: nowrap; }
+.c-brs { display: flex; gap: 5px; align-items: center; flex-wrap: nowrap; overflow: hidden; width: 100%; }
+.c-br { padding: 4px 10px; background: #F9F7F5; border-radius: 16px; font-size: 11px; color: #5A4A3D; font-weight: 500; flex-shrink: 1; min-width: 0; border: 1px solid #EFEDE8; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.c-more { color: var(--pri); font-size: 11px; font-weight: 600; flex-shrink: 0; background: #FDF9F4; padding: 4px 10px; border-radius: 16px; border: 1px solid #FAF1E5; white-space: nowrap; }
 
 /* CARD FOOTER */
 .c-foot { display: flex; justify-content: space-between; align-items: center; margin-top: auto; padding-top: 10px; border-top: none; gap: 8px; width: 100%; }
@@ -226,7 +557,7 @@ button, input, textarea, select { font-family: 'Kanit', sans-serif !important; }
 .ov { position: fixed; inset: 0; background: rgba(0,0,0,.6); backdrop-filter: blur(6px); z-index: 100; display: flex; align-items: center; justify-content: center; padding: 16px; animation: ovIn 0.3s var(--ease-smooth); }
 @keyframes ovIn { from { opacity: 0; } to { opacity: 1; } }
 
-.sh { width: 100%; max-width: 720px; height: 90vh; background: var(--white); border-radius: 24px; display: flex; flex-direction: column; box-shadow: 0 24px 60px rgba(0,0,0,0.3); animation: shIn 0.5s var(--ease-bounce); position: relative; overflow: hidden; }
+.sh { width: 100%; max-width: 720px; max-height: 90vh; background: var(--white); border-radius: 24px; display: flex; flex-direction: column; box-shadow: 0 24px 60px rgba(0,0,0,0.3); animation: shIn 0.5s var(--ease-bounce); position: relative; overflow: hidden; }
 @keyframes shIn { from { transform: translateY(30px) scale(0.98); opacity: 0; } to { transform: translateY(0) scale(1); opacity: 1; } }
 .modal-sticky-hdr { position: sticky; top: 0; z-index: 50; background: rgba(255,255,255,0.97); backdrop-filter: blur(16px); border-bottom: 1px solid #F0EBE5; flex-shrink: 0; padding: 0; }
 .bs-hdr-inner { padding: 14px 20px 0; display: flex; flex-direction: column; gap: 10px; }
@@ -237,11 +568,11 @@ button, input, textarea, select { font-family: 'Kanit', sans-serif !important; }
 .bs-close { width: 30px; height: 30px; border-radius: 50%; background: #F5F5F5; border: none; display: flex; align-items: center; justify-content: center; cursor: pointer; color: #555; transition: all 0.3s; font-size: 13px; flex-shrink: 0; }
 .bs-close:hover { background: #EAEAEA; color: #000; transform: scale(1.05); }
 .bs-srch-wrap { padding: 10px 20px 12px; }
-.sh-srch-bar { display: flex; align-items: center; gap: 12px; background: #F6F4F0; border-radius: 14px; padding: 5px 5px 5px 16px; border: 2px solid transparent; transition: all 0.4s var(--ease-bounce); }
+.sh-srch-bar { display: flex; align-items: center; gap: 12px; background: #F6F4F0; border-radius: 30px; padding: 5px 5px 5px 18px; border: 1.5px solid transparent; transition: all 0.4s var(--ease-bounce); }
 .sh-srch-bar:focus-within { background: #FFF; border-color: #DCCFB8; box-shadow: 0 6px 16px rgba(162,123,82,0.1); transform: translateY(-1px); }
 .s-inp { flex: 1; display: flex; align-items: center; gap: 10px; color: #A09D98; }
 .s-inp input { border: none; background: transparent; height: 36px; flex: 1; outline: none; font-size: 14px; color: var(--text-dark); }
-.s-mic { width: 36px; height: 36px; border-radius: 10px; display: flex; align-items: center; justify-content: center; cursor: pointer; color: var(--pri); transition: all 0.35s var(--ease-smooth); background: transparent; border: none; }
+.s-mic { width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; color: var(--pri); transition: all 0.35s var(--ease-smooth); background: transparent; border: none; }
 .s-mic:hover { background: #EFE9E2; transform: scale(1.05); }
 .bs-popular-row { display: flex; align-items: flex-start; gap: 8px; padding: 8px 20px 10px; border-bottom: 1px solid #F5F0E8; flex-wrap: wrap; background: #FDFCFA; }
 .bs-pop-label { display: flex; align-items: center; gap: 4px; font-size: 11px; font-weight: 600; color: #A27B52; text-transform: uppercase; letter-spacing: 0.6px; flex-shrink: 0; white-space: nowrap; padding-top: 5px; }
@@ -249,7 +580,7 @@ button, input, textarea, select { font-family: 'Kanit', sans-serif !important; }
 .bs-pop-chip { display: inline-flex; align-items: center; gap: 5px; padding: 4px 11px; border-radius: 16px; font-size: 12px; font-weight: 500; cursor: pointer; background: #F5F1EB; color: #5A4A3D; border: 1px solid #E8E0D4; transition: all 0.3s var(--ease-bounce); white-space: nowrap; }
 .bs-pop-chip:hover { background: #FFF8F0; border-color: #DCCFB8; transform: translateY(-1px); box-shadow: 0 3px 8px rgba(162,123,82,0.1); }
 .bs-pop-chip.on { background: linear-gradient(135deg, #B28E6A 0%, #8C6A4F 100%); color: #FFF; border-color: transparent; box-shadow: 0 4px 12px rgba(162,123,82,0.25); }
-.sh-body { flex: 1; overflow-y: auto; padding: 12px 20px 16px; display: flex; flex-direction: column; gap: 4px; }
+.sh-body { flex: 1 1 auto; min-height: 0; overflow-y: auto; padding: 12px 20px 16px; display: flex; flex-direction: column; gap: 4px; }
 .sh-sec-t { font-size: 11px; font-weight: 700; color: #5A4A3D; text-transform: uppercase; letter-spacing: 1px; margin: 10px 0 8px 2px; display: flex; align-items: center; gap: 8px; }
 .sh-sec-t::after { content:""; flex: 1; height: 1.5px; background: linear-gradient(90deg, #E6DCD0 0%, rgba(230,220,208,0) 100%); }
 .sh-sec-count { font-size: 11px; font-weight: 600; color: #A27B52; background: #FAF5EF; padding: 1px 8px; border-radius: 10px; text-transform: none; letter-spacing: 0; }
@@ -273,7 +604,7 @@ button, input, textarea, select { font-family: 'Kanit', sans-serif !important; }
 .d-sh-close { width: 32px; height: 32px; border-radius: 50%; background: #F5F5F5; border: none; display: flex; align-items: center; justify-content: center; cursor: pointer; color: #555; transition: all 0.3s; font-size: 14px; flex-shrink: 0; }
 .d-sh-close:hover { background: #EAEAEA; color: #000; transform: scale(1.05); }
 
-.sh-body-detail { overflow-y: auto; flex: 1; padding: 16px 24px 24px; display: flex; flex-direction: column; gap: 16px; }
+.sh-body-detail { overflow-y: auto; flex: 1 1 auto; min-height: 0; padding: 16px 24px 24px; display: flex; flex-direction: column; gap: 16px; }
 
 .d-loc { font-size: 14px; color: #777; display: flex; align-items: center; gap: 6px; }
 .d-tags { display: flex; gap: 6px; flex-wrap: wrap; }
@@ -283,6 +614,15 @@ button, input, textarea, select { font-family: 'Kanit', sans-serif !important; }
 .t-cond.rdy { background: #E8F5E9; color: #2E7D32; }
 .t-cond.ask { background: #F5F5F5; color: #616161; }
 .t-cond.po { background: #FCE4EC; color: #C2185B; }
+
+/* DETAIL HOURS — compact chip style */
+.d-hours-chip { display: inline-flex; align-items: center; gap: 7px; background: #FAFAF8; border: 1px solid #EEE8E1; border-radius: 40px; padding: 7px 14px 7px 10px; }
+.d-h-status-lbl { font-size: 12.5px; font-weight: 600; }
+.d-h-open { color: #16A34A; }
+.d-h-closed { color: #9CA3AF; }
+.d-h-divider { width: 1px; height: 12px; background: #E0D8D0; flex-shrink: 0; }
+.d-h-time { font-size: 12px; color: #7A7066; font-weight: 400; }
+.d-h-days { font-size: 11px; color: #B0A99F; font-weight: 400; }
 
 .d-socs { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; }
 @media (min-width: 600px) { .d-socs { grid-template-columns: repeat(3, 1fr); } }
@@ -323,7 +663,7 @@ button, input, textarea, select { font-family: 'Kanit', sans-serif !important; }
 .voice-close { position: absolute; top: 20px; right: 20px; width: 48px; height: 48px; border-radius: 50%; background: rgba(255,255,255,0.15); border: none; color: white; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 22px; transition: all 0.4s var(--ease-bounce); }
 .voice-close:hover { background: rgba(255,255,255,0.3); transform: rotate(90deg) scale(1.1); }
 .voice-inner { display: flex; flex-direction: column; align-items: center; gap: 16px; max-width: 460px; width: 100%; text-align: center; }
-.voice-status { color: rgba(255,255,255,0.8); font-size: 14px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; }
+.voice-status { color: rgba(255,255,255,0.85); font-size: 14px; font-weight: 400; }
 .voice-mic-wrap { position: relative; width: 200px; height: 200px; display: flex; align-items: center; justify-content: center; margin: 20px 0 10px; }
 .voice-pulse { position: absolute; width: 150px; height: 150px; border-radius: 50%; background: linear-gradient(135deg, rgba(255,255,255,0.3), rgba(255,255,255,0)); animation: voicePulse 2.4s cubic-bezier(0.25, 1, 0.5, 1) infinite; }
 .voice-pulse:nth-child(2) { animation-delay: 0.8s; }
@@ -361,10 +701,52 @@ button, input, textarea, select { font-family: 'Kanit', sans-serif !important; }
 const e = React.createElement;
 const { useState, useMemo, useCallback, useRef, useEffect } = React;
 
-const WB = ["Patek Philippe","Rolex","Audemars Piguet","Richard Mille","Franck Muller","Hublot","Panerai","Omega","Piaget","Corum","Chopard","Breguet","Bvlgari","Cartier","Tiffany & Co.","Van Cleef & Arpels"];
+const WB = ["Patek Philippe","Rolex","Audemars Piguet","Richard Mille","Franck Muller","Hublot","Panerai","Omega","Piaget","Corum","Chopard","Breguet","Hermès","Chanel","Bvlgari","Cartier","Tiffany & Co.","Van Cleef & Arpels"];
 const BB = ["Hermès","Chanel","Louis Vuitton","Yves Saint Laurent","Christian Dior","Goyard","Gucci","Balenciaga","Celine","Valentino","Fendi","Prada","Bottega Veneta","Loewe","Givenchy","Delvaux"];
 const ALL_BR = [...new Set([...WB, ...BB])];
 const POPULAR = ["Rolex","Hermès","Patek Philippe","Chanel","Louis Vuitton"];
+const POP_W = ["Rolex","Patek Philippe","Audemars Piguet","Hermès","Chanel"];
+const POP_B = ["Hermès","Chanel","Louis Vuitton","Christian Dior","Gucci"];
+
+// Brand typographic monogram map — stylized initials with era-appropriate typography
+// Note: These are neutral typographic treatments (monograms), not actual brand logos.
+// For production use, replace with licensed brand assets.
+const BRAND_MONO = {
+  // Watches — mostly serif for heritage feel
+  "Patek Philippe":      { m: "PP",  s: "serif",        c: "#1A1A1A" },
+  "Rolex":               { m: "R",   s: "serif",        c: "#0F7B48" },
+  "Audemars Piguet":     { m: "AP",  s: "serif",        c: "#1C1C1C" },
+  "Richard Mille":       { m: "RM",  s: "sans-bold",    c: "#111111" },
+  "Franck Muller":       { m: "FM",  s: "serif-italic", c: "#2D2D2D" },
+  "Hublot":              { m: "H",   s: "sans-bold",    c: "#000000" },
+  "Panerai":             { m: "P",   s: "serif",        c: "#1E1E1E" },
+  "Omega":               { m: "\u03A9", s: "serif",     c: "#A8262D" },
+  "Piaget":              { m: "P",   s: "serif-italic", c: "#1A1A1A" },
+  "Corum":               { m: "C",   s: "serif",        c: "#3D3D3D" },
+  "Chopard":             { m: "C",   s: "serif",        c: "#8A6435" },
+  "Breguet":             { m: "B",   s: "serif-italic", c: "#00356B" },
+  "Hermès":              { m: "H",   s: "serif",        c: "#C35F1E" },
+  "Chanel":              { m: "CC",  s: "sans",         c: "#000000" },
+  "Bvlgari":             { m: "BV",  s: "serif",        c: "#1A1A1A" },
+  "Cartier":             { m: "C",   s: "serif-italic", c: "#A8262D" },
+  "Tiffany & Co.":       { m: "T",   s: "serif",        c: "#0ABAB5" },
+  "Van Cleef & Arpels":  { m: "VCA", s: "serif",        c: "#1A1A1A" },
+  // Bags
+  "Louis Vuitton":       { m: "LV",  s: "serif",        c: "#6B3F1D" },
+  "Yves Saint Laurent":  { m: "YSL", s: "sans-bold",    c: "#000000" },
+  "Christian Dior":      { m: "D",   s: "serif",        c: "#1A1A1A" },
+  "Goyard":              { m: "G",   s: "serif",        c: "#2D2D2D" },
+  "Gucci":               { m: "G",   s: "serif",        c: "#5A2D0B" },
+  "Balenciaga":          { m: "B",   s: "sans-bold",    c: "#000000" },
+  "Celine":              { m: "C",   s: "sans-bold",    c: "#1A1A1A" },
+  "Valentino":           { m: "V",   s: "serif",        c: "#B8132C" },
+  "Fendi":               { m: "F",   s: "sans-bold",    c: "#F5C21A" },
+  "Prada":               { m: "P",   s: "sans-bold",    c: "#1A1A1A" },
+  "Bottega Veneta":      { m: "BV",  s: "sans-bold",    c: "#235643" },
+  "Loewe":               { m: "L",   s: "sans-bold",    c: "#6B2C0F" },
+  "Givenchy":            { m: "G",   s: "sans-bold",    c: "#1A1A1A" },
+  "Delvaux":             { m: "D",   s: "serif",        c: "#1A1A1A" }
+};
 
 const KNOWN_MODELS = [
   { id: "126710blro", n: "Rolex 126710BLRO", desc: "GMT-Master II Pepsi", br: "Rolex", initial: "R" },
@@ -380,60 +762,60 @@ const KNOWN_MODELS = [
 ];
 
 const STORES = [
+  { id: 7, n: "THONG PATEK", w: ["Patek Philippe","Hublot","Breguet"], b: [], m: ["5711"],
+    a: "เซ็นทรัลเวิลด์, ปทุมวัน", lat: 13.7469, lng: 100.5393, c:["new"], stock:"preorder", hours:{o:10,c:22,d:"จ–อา"},
+    soc:{tel:"02-255-1234",line:"@thongpatek",fb:"ThongPatek",tiktok:"thongpatek"},
+    branches:[{id:72,n:"เซ็นทรัล ภูเก็ต",a:"อ.เมือง, ภูเก็ต",soc:{tel:"076-211-123",line:"@tp_phuket"}},{id:73,n:"One Bangkok",a:"ปทุมวัน, กรุงเทพฯ",soc:{tel:"02-001-9999",line:"@tp_onebkk"}}]},
   { id: 1, n: "Pendulum", w: ["Rolex","Omega","Patek Philippe"], b: [], m: ["126710blro","126711chnr","116500ln","126610ln"],
-    a: "สยามพารากอน, ปทุมวัน", lat: 13.7465, lng: 100.5347, c:["new","pre"], stock:"ready",
+    a: "สยามพารากอน, ปทุมวัน", lat: 13.7465, lng: 100.5347, c:["new","pre"], stock:"ready", hours:{o:10,c:22,d:"จ–อา"},
     soc:{tel:"02-610-9500",line:"@pendulum",ig:"pendulum_th",fb:"PendulumTH",tiktok:"pendulum.th"},
-    branches:[{id:11,n:"พารากอน",a:"ปทุมวัน, กทม.",soc:{tel:"02-610-9500",line:"@pendulum_paragon"}},{id:12,n:"เอ็มควอเทียร์",a:"วัฒนา, กทม.",soc:{tel:"02-269-1000",line:"@pendulum_emq"}},{id:13,n:"เซ็นทรัล เชียงใหม่",a:"เมือง, เชียงใหม่",soc:{tel:"053-211-123",line:"@pendulum_cm"}}]},
+    branches:[{id:12,n:"เอ็มควอเทียร์",a:"วัฒนา, กทม.",soc:{tel:"02-269-1000",line:"@pendulum_emq"}},{id:13,n:"เซ็นทรัล เชียงใหม่",a:"เมือง, เชียงใหม่",soc:{tel:"053-211-123",line:"@pendulum_cm"}}]},
   { id: 2, n: "The Hour Glass", w: ["Patek Philippe","Audemars Piguet","Hublot"], b: [], m: ["5711"],
-    a: "เซ็นทรัลเวิลด์, ปทุมวัน", lat: 13.7469, lng: 100.5393, c:["new"], stock:"ready",
+    a: "เซ็นทรัลเวิลด์, ปทุมวัน", lat: 13.7469, lng: 100.5393, c:["new"], stock:"ready", hours:{o:10,c:22,d:"จ–อา"},
     soc:{tel:"02-255-9898",line:"@thehourglass",ig:"thehourglass_th",fb:"TheHourGlassThailand"},
-    branches:[{id:21,n:"เซ็นทรัลเวิลด์",a:"ปทุมวัน, กทม.",soc:{tel:"02-255-9898",line:"@thg_ctw"}},{id:22,n:"เกษรวิลเลจ",a:"ปทุมวัน, กทม.",soc:{tel:"02-656-1234",line:"@thg_gaysorn"}}]},
+    branches:[{id:22,n:"เกษรวิลเลจ",a:"ปทุมวัน, กทม.",soc:{tel:"02-656-1234",line:"@thg_gaysorn"}}]},
   { id: 3, n: "Siam Swiss", w: ["Omega","Chopard","Panerai"], b: [], m: [],
-    a: "เอ็มควอเทียร์, วัฒนา", lat: 13.7303, lng: 100.5693, c:["new"], stock:"preorder",
+    a: "เอ็มควอเทียร์, วัฒนา", lat: 13.7303, lng: 100.5693, c:["new"], stock:"preorder", hours:{o:10,c:22,d:"จ–อา"},
     soc:{tel:"02-269-1000",line:"@siamswiss",ig:"siamswiss",tiktok:"siamswiss.official"}},
   { id: 4, n: "PMT The Hour Glass", w: ["Rolex","Richard Mille","Cartier"], b: [], m: ["126710blro","116500ln","126710blnr"],
-    a: "สยามพารากอน, ปทุมวัน", lat: 13.7464, lng: 100.5350, c:["pre"], stock:"ready",
+    a: "สยามพารากอน, ปทุมวัน", lat: 13.7464, lng: 100.5350, c:["pre"], stock:"ready", hours:{o:10,c:22,d:"จ–อา"},
     soc:{tel:"02-664-8888",line:"@pmthg",ig:"pmt_thehourglass",fb:"PMTTheHourGlass"}},
   { id: 5, n: "TKI", w: ["Patek Philippe","Audemars Piguet","Franck Muller"], b: [], m: ["5711"],
-    a: "ไอคอนสยาม, คลองสาน", lat: 13.7248, lng: 100.5092, c:["pre"], stock:"ask",
+    a: "ไอคอนสยาม, คลองสาน", lat: 13.7248, lng: 100.5092, c:["pre"], stock:"ask", hours:{o:10,c:22,d:"จ–อา"},
     soc:{tel:"02-255-6789",line:"@tki",ig:"tki_bkk",fb:"TKIBangkok"}},
   { id: 6, n: "Cortina Watch Bangkok", w: ["Rolex","Bvlgari","Corum"], b: [], m: ["126710blro","126711chnr","126300"],
-    a: "เซ็นทรัลเอ็มบาสซี, ปทุมวัน", lat: 13.7437, lng: 100.5476, c:["pre"], stock:"ready",
+    a: "เซ็นทรัลเอ็มบาสซี, ปทุมวัน", lat: 13.7437, lng: 100.5476, c:["pre"], stock:"ready", hours:{o:10,c:22,d:"จ–อา"},
     soc:{tel:"02-255-1234",line:"@cortinawatch",ig:"cortinawatch",fb:"CortinaWatchTH",tiktok:"cortinawatch"}},
-  { id: 7, n: "THONG PATEK", w: ["Patek Philippe","Hublot","Breguet"], b: [], m: ["5711"],
-    a: "สาทร, กรุงเทพฯ", lat: 13.7214, lng: 100.5228, c:["new"], stock:"preorder",
-    soc:{tel:"02-255-1234",line:"@thongpatek",fb:"ThongPatek",tiktok:"thongpatek"},
-    branches:[{id:71,n:"สาขาสาทร",a:"เขตสาทร, กรุงเทพฯ",soc:{tel:"02-255-1234",line:"@tp_sathorn"}},{id:72,n:"สาขาภูเก็ต",a:"อ.เมือง, ภูเก็ต",soc:{tel:"076-211-123",line:"@tp_phuket"}}]},
   { id: 8, n: "Time Midas", w: ["Rolex","Omega","Panerai"], b: [], m: ["126710blro","126711chnr","116500ln"],
-    a: "เซ็นทรัลลาดพร้าว, จตุจักร", lat: 13.8130, lng: 100.5619, c:["pre"], stock:"ready",
+    a: "เซ็นทรัลลาดพร้าว, จตุจักร", lat: 13.8130, lng: 100.5619, c:["pre"], stock:"ready", hours:{o:10,c:22,d:"จ–อา"},
     soc:{tel:"02-937-8888",line:"@timemidas",ig:"timemidas_th"}},
   { id: 9, n: "Luxe Gallery Bangkok", w: [], b: ["Hermès","Louis Vuitton","Chanel"], m: ["b25"],
-    a: "เอ็มโพเรียม, วัฒนา", lat: 13.7302, lng: 100.5693, c:["new","pre"], stock:"ready",
+    a: "เอ็มโพเรียม, วัฒนา", lat: 13.7302, lng: 100.5693, c:["new","pre"], stock:"ready", hours:{o:10,c:21,d:"จ–อา"},
     soc:{tel:"02-664-1234",line:"@luxegallery",ig:"luxegallery_th",fb:"LuxeGalleryBKK",tiktok:"luxegallery"},
-    branches:[{id:91,n:"เอ็มโพเรียม",a:"วัฒนา, กทม.",soc:{tel:"02-664-1234",line:"@lg_empo"}},{id:92,n:"ไอคอนสยาม",a:"คลองสาน, กทม.",soc:{tel:"02-495-7000",line:"@lg_icon"}}]},
+    branches:[{id:92,n:"ไอคอนสยาม",a:"คลองสาน, กทม.",soc:{tel:"02-495-7000",line:"@lg_icon"}}]},
   { id: 14, n: "Maison Prestige Siam", w: [], b: ["Hermès","Celine"], m: ["b30"],
-    a: "เซ็นทรัลชิดลม, ปทุมวัน", lat: 13.7428, lng: 100.5460, c:["new"], stock:"preorder",
+    a: "เซ็นทรัลชิดลม, ปทุมวัน", lat: 13.7428, lng: 100.5460, c:["new"], stock:"preorder", hours:{o:10,c:21,d:"จ–อา"},
     soc:{tel:"02-793-7777",line:"@maisonprestige",ig:"maison_prestige",fb:"MaisonPrestigeBKK",tiktok:"maisonprestige"}},
   { id: 10, n: "KOMEHYO", w: [], b: ["Hermès","Chanel","Louis Vuitton","Christian Dior"], m: ["b25","b30"],
-    a: "เซ็นทรัลเวิลด์, ปทุมวัน", lat: 13.7470, lng: 100.5390, c:["new","pre"], stock:"ready",
+    a: "เซ็นทรัลเวิลด์, ปทุมวัน", lat: 13.7470, lng: 100.5390, c:["new","pre"], stock:"ready", hours:{o:10,c:22,d:"จ–อา"},
     soc:{tel:"02-288-0088",line:"@komehyo",ig:"komehyo_thailand",fb:"KomehyoThailand",tiktok:"komehyo.th"}},
   { id: 11, n: "Brandname Exchange", w: [], b: ["Prada","Celine","Gucci","Goyard"], m: [],
-    a: "สยามสแควร์, ปทุมวัน", lat: 13.7444, lng: 100.5330, c:["new","pre"], stock:"ask",
+    a: "สยามสแควร์, ปทุมวัน", lat: 13.7444, lng: 100.5330, c:["new","pre"], stock:"ask", hours:{o:10,c:21,d:"จ–อา"},
     soc:{tel:"02-656-1234",line:"@bne",ig:"brandname.exchange",fb:"BrandnameExchange"}},
   { id: 12, n: "SF Brandname", w: [], b: ["Louis Vuitton","Hermès","Balenciaga"], m: ["b25"],
-    a: "MBK Center, ปทุมวัน", lat: 13.7444, lng: 100.5300, c:["new","pre"], stock:"ready",
+    a: "MBK Center, ปทุมวัน", lat: 13.7444, lng: 100.5300, c:["new","pre"], stock:"ready", hours:{o:10,c:22,d:"จ–อา"},
     soc:{tel:"02-610-9777",line:"@sfbrandname",ig:"sfbrandname_th",tiktok:"sfbrandname"}},
   { id: 15, n: "Expert Watch", w: ["Rolex","Omega","Panerai","Patek Philippe"], b: [], m: ["126610ln","126300","116610lv"],
-    a: "เซ็นทรัลลาดพร้าว, จตุจักร", lat: 13.8130, lng: 100.5619, c:["pre"], stock:"ready",
+    a: "เซ็นทรัลลาดพร้าว, จตุจักร", lat: 13.8130, lng: 100.5619, c:["pre"], stock:"ready", hours:{o:10,c:22,d:"จ–อา"},
     soc:{tel:"02-937-1111",line:"@expertwatch",fb:"expertwatch"} },
   { id: 16, n: "MoMo Brandname", w: [], b: ["Hermès","Chanel","Louis Vuitton","Celine"], m: ["b25"],
-    a: "สยามสแควร์, ปทุมวัน", lat: 13.7444, lng: 100.5330, c:["new","pre"], stock:"ready",
+    a: "สยามสแควร์, ปทุมวัน", lat: 13.7444, lng: 100.5330, c:["new","pre"], stock:"ready", hours:{o:10,c:21,d:"จ–อา"},
     soc:{tel:"02-656-2222",line:"@momobrand",ig:"momo.brandname"} },
   { id: 17, n: "Pixiu Watch", w: ["Rolex","Patek Philippe"], b: [], m: ["116500ln"],
-    a: "เกษรวิลเลจ, ปทุมวัน", lat: 13.7444, lng: 100.5404, c:["pre"], stock:"ready",
+    a: "เกษรวิลเลจ, ปทุมวัน", lat: 13.7444, lng: 100.5404, c:["pre"], stock:"ready", hours:{o:11,c:21,d:"อ–อา"},
     soc:{tel:"02-656-1111",line:"@pixiuwatch",ig:"pixiuwatch"} },
   { id: 18, n: "Siam Watch Club", w: ["Omega","Cartier","Panerai"], b: [], m: [],
-    a: "สยามสแควร์, ปทุมวัน", lat: 13.7444, lng: 100.5330, c:["new","pre"], stock:"ask",
+    a: "สยามสแควร์, ปทุมวัน", lat: 13.7444, lng: 100.5330, c:["new","pre"], stock:"ask", hours:{o:10,c:22,d:"จ–อา"},
     soc:{tel:"02-251-2222",line:"@siamwatchclub",fb:"siamwatchclub"} }
 ];
 
@@ -485,9 +867,20 @@ function XThinIc({s=24}) { return e('svg',{width:s,height:s,viewBox:"0 0 24 24",
 function NavIc({s=16,c="currentColor"}) { return e('svg',{width:s,height:s,viewBox:"0 0 24 24",fill:"none",stroke:c,strokeWidth:2,strokeLinecap:"round",strokeLinejoin:"round"}, e('polygon',{points:"3 11 22 2 13 21 11 13 3 11"})); }
 
 function HeartIc({s=14, c="currentColor"}) { return e('svg',{width:s,height:s,viewBox:"0 0 24 24",fill:"none",stroke:c,strokeWidth:2,strokeLinecap:"round",strokeLinejoin:"round"}, e('path',{d:"M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"})); }
-function HeartFilledIc({s=14, c="#FF4B4B"}) { return e('svg',{width:s,height:s,viewBox:"0 0 24 24",fill:c,stroke:c,strokeWidth:2,strokeLinecap:"round",strokeLinejoin:"round"}, e('path',{d:"M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"})); }
+function HeartFilledIc({s=14, c="#D4A355"}) { return e('svg',{width:s,height:s,viewBox:"0 0 24 24",fill:c,stroke:c,strokeWidth:2,strokeLinecap:"round",strokeLinejoin:"round"}, e('path',{d:"M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"})); }
 function ShareIc({s=16}) { return e('svg',{width:s,height:s,viewBox:"0 0 24 24",fill:"none",stroke:"currentColor",strokeWidth:2,strokeLinecap:"round",strokeLinejoin:"round"}, e('circle',{cx:18,cy:5,r:3}), e('circle',{cx:6,cy:12,r:3}), e('circle',{cx:18,cy:19,r:3}), e('line',{x1:8.59,y1:13.51,x2:15.42,y2:17.49}), e('line',{x1:15.41,y1:6.51,x2:8.59,y2:10.49})); }
 function TrendIc({s=14}) { return e('svg',{width:s,height:s,viewBox:"0 0 24 24",fill:"none",stroke:"currentColor",strokeWidth:2,strokeLinecap:"round",strokeLinejoin:"round"}, e('polyline',{points:"23 6 13.5 15.5 8.5 10.5 1 18"}), e('polyline',{points:"17 6 23 6 23 12"})); }
+
+// Typographic brand monogram (stylized, not a real logo — see BRAND_MONO note)
+function BrandMono({ brand, size = 28 }) {
+  const cfg = BRAND_MONO[brand] || { m: brand.charAt(0), s: 'serif', c: hue(brand) };
+  const fs = cfg.m.length >= 3 ? size * 0.34 : cfg.m.length === 2 ? size * 0.46 : size * 0.58;
+  return e('div', {
+    className: `brand-mono ${cfg.s}`,
+    style: { width: size, height: size, background: cfg.c, fontSize: fs },
+    title: brand
+  }, cfg.m);
+}
 
 const triggerHaptic = () => { if(navigator.vibrate){ try { navigator.vibrate(50); } catch(e){} } };
 
@@ -522,14 +915,14 @@ const getFuzzySuggestion = (query) => {
   
   // Mapping dictionary (Support Thai typing mistakes / nicknames)
   const map = [
-    { valid: "THONG PATEK", mistakes: ["ทง","ทอง","ทองปาเต๊ะ","thong"] },
-    { valid: "Luxe Gallery Bangkok", mistakes: ["ลักซ","ลักซ์","lux","luxe"] },
+    { valid: "THONG PATEK", mistakes: ["ทง","ทอง","ธง","ธอง","ทองปาเต๊ะ","ทองปาเต็ก","ธงปาเต๊ะ","ทองปาเท็ก","thong","tong"] },
+    { valid: "Luxe Gallery Bangkok", mistakes: ["ลักซ","ลักซ์","lux","luxe","ลักซ์แกลเลอรี"] },
     { valid: "Pendulum", mistakes: ["แพนดู","เพนดู","pendulum","เพนดูลัม"] },
-    { valid: "Siam Swiss", mistakes: ["สยามสวิส"] },
+    { valid: "Siam Swiss", mistakes: ["สยามสวิส","สวิส"] },
     { valid: "Rolex", mistakes: ["โลเล็ก","โลเลก","โรเล็ก","คอเหล็ก","lolex","rolexs","โรเรก","โรเล็ค","โรเล็กซ์","โรเลกซ์"] },
-    { valid: "Patek Philippe", mistakes: ["ปาเตก","ปาเต๊ะ","พาเทก","พาเท็ก","ปาเต็ก","patek","patex","ปาเตค"] },
-    { valid: "Hermès", mistakes: ["แอร์เมส","แอเมส","เฮอเมส","เฮอร์มีส","hermes","แอมเมส"] },
-    { valid: "Chanel", mistakes: ["ชาแนล","แชแนล","chanell","ชแนล"] },
+    { valid: "Patek Philippe", mistakes: ["ปาเตก","ปาเต๊ะ","พาเทก","พาเท็ก","ปาเต็ก","patek","patex","ปาเตค","ฟิลิป"] },
+    { valid: "Hermès", mistakes: ["แอร์เมส","แอเมส","เฮอเมส","เฮอร์มีส","hermes","แอมเมส","แอร์เมซ"] },
+    { valid: "Chanel", mistakes: ["ชาแนล","แชแนล","chanell","ชแนล","ชาแนว"] },
     { valid: "Louis Vuitton", mistakes: ["หลุย","หลุยส์","วิตตอง","louis","lv","หลุยส"] },
     { valid: "Audemars Piguet", mistakes: ["เอดพี่","เอพี","ap","audemar","โอเดอมาร์"] },
     { valid: "Cartier", mistakes: ["คาเทีย","คาร์เทีย","cartie","คาร์เทียร์"] }
@@ -598,30 +991,49 @@ function SkeletonCard({ view }) {
   );
 }
 
-function Card({ store, type, bf, onOpen, onToast, userPos, favs, toggleFav }) {
+function Card({ store, type, bf, view, onOpen, onToast, userPos, favs, toggleFav }) {
   const brands = type === "watch" ? store.w : type === "bag" ? store.b : [...store.w, ...store.b];
   if (bf && bf.length > 0 && !bf.some(x => brands.includes(x))) return null;
-  const show = brands.slice(0, 2);
-  const extra = brands.length > 2 ? brands.length - 2 : 0;
+  const maxShow = view === 'list' ? 2 : 3;
+  const show = brands.slice(0, maxShow);
+  const extra = brands.length > maxShow ? brands.length - maxShow : 0;
   const branchCount = (store.branches || []).length + 1;
   const socKeys = ["tel","line","ig","fb","tiktok","x"].filter(k => store.soc[k]).slice(0, 4);
   const dist = userPos && store.lat ? calcDist(userPos.lat, userPos.lng, store.lat, store.lng) : null;
   const isFav = favs.includes(store.id);
+  const [popping, setPopping] = useState(false);
+
+  const now = new Date();
+  const curH = now.getHours() + now.getMinutes() / 60;
+  const isOpen = store.hours ? (curH >= store.hours.o && curH < store.hours.c) : null;
+  const hoursLabel = store.hours ? `${String(store.hours.o).padStart(2,'0')}:00–${String(store.hours.c).padStart(2,'0')}:00 น.` : null;
+  const daysLabel = store.hours && store.hours.d ? store.hours.d : null;
+
+  const handleFav = (ev) => {
+    toggleFav(store.id, ev);
+    setPopping(false);
+    // Force reflow so animation restarts on each click
+    requestAnimationFrame(() => requestAnimationFrame(() => setPopping(true)));
+    setTimeout(() => setPopping(false), 650);
+  };
 
   return e('div', { className: 'card', onClick: () => { triggerHaptic(); onOpen(store, type); } },
-    e('div', { style: { position: 'absolute', top: 12, right: 12, display: 'flex', gap: 6, alignItems: 'center', zIndex: 5 } },
-      dist !== null && e('div', { className: 'card-dist', onClick: ev => ev.stopPropagation() },
-        e(NavIc, {s:9, c:"#2D5A20"}), fmtDist(dist)
-      ),
-      e('button', {
-        style: { background: 'white', border: '1px solid #EFE4D8', borderRadius: '50%', width: 30, height: 30, display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', boxShadow: '0 4px 10px rgba(0,0,0,0.06)', color: isFav ? '#FF4B4B' : '#C0B3A6', transition: 'all 0.3s ease' },
-        onClick: (ev) => toggleFav(store.id, ev),
-        title: isFav ? "ลบจากร้านโปรด" : "บันทึกร้านโปรด"
-      }, isFav ? e(HeartFilledIc, {s:15}) : e(HeartIc, {s:15}))
-    ),
+
+    // Grid view: heart as absolute overlay top-right
+    view !== 'list' && e('button', {
+      className: `c-fav-btn${isFav?' on':''}${popping?' pop':''}`,
+      onClick: handleFav,
+      title: isFav ? "ลบจากร้านโปรด" : "บันทึกร้านโปรด"
+    }, isFav ? e(HeartFilledIc, {s:15}) : e(HeartIc, {s:15})),
+
     e('div', { className: 'c-head' },
-      e('div', { className: 'c-av', style:{background:hue(store.n)} }, store.n.charAt(0)),
-      e('div', { className: 'c-info', style:{paddingRight: 36} },
+      e('div', { style: { position:'relative', flexShrink:0 } },
+        e('div', { className: 'c-av', style:{background:hue(store.n)} }, store.n.charAt(0)),
+        dist !== null && e('div', { className:'card-dist-ov' },
+          e(NavIc, {s:8, c:"#86EFAC"}), fmtDist(dist)
+        )
+      ),
+      e('div', { className: 'c-info', style: view === 'list' ? {} : {paddingRight: 30} },
         e('div', { className: 'c-nm', title: store.n },
           e('span', { className: 'c-nm-txt' }, store.n),
           e('span', { className: 'c-nm-icons' },
@@ -634,15 +1046,23 @@ function Card({ store, type, bf, onOpen, onToast, userPos, favs, toggleFav }) {
           e(LocIc, {s:11}),
           e('span', { className: 'c-loc-txt' }, store.a),
           branchCount > 1 && e('span', { className: 'c-b-count' }, `${branchCount} สาขา`)
+        ),
+        isOpen !== null && e('div', { className: 'c-hours' },
+          isOpen ? e('span', {className:'c-open-dot'}) : e('span', {className:'c-closed-dot'}),
+          e('span', {className: isOpen ? 'c-open-lbl' : 'c-closed-lbl'}, isOpen ? "เปิดอยู่" : "ปิดแล้ว"),
+          e('span', {className:'c-hours-sep'}, '·'),
+          e('span', {className:'c-hours-time'}, hoursLabel)
         )
       )
     ),
+
     e('div', { className: 'c-brs-wrap' },
       e('div', { className: 'c-brs' },
         show.map(b => e('span', { key:b, className:'c-br', title:b }, b)),
-        extra > 0 && e('span', { className:'c-more' }, `+${extra}`)
+        extra > 0 && e('span', { className:'c-more', title: `และอีก ${extra} แบรนด์` }, `+ อื่น ๆ (${extra})`)
       )
     ),
+
     e('div', { className: 'c-foot', onClick: ev => ev.stopPropagation() },
       e('div', { className: 'c-soc' },
         socKeys.map(k => e('a', {
@@ -656,8 +1076,18 @@ function Card({ store, type, bf, onOpen, onToast, userPos, favs, toggleFav }) {
       ),
       e('button', {
         className: 'c-cta',
-        onClick: (ev) => { triggerHaptic(); ev.stopPropagation(); onOpen(store, type); }
-      }, "สมัครสินเชื่อ", e(ChevRightIc, {s:14}))
+        onClick: (ev) => {
+          triggerHaptic(); ev.stopPropagation();
+          window.location.href = `./loan-apply.htm?store=${encodeURIComponent(store.n)}`;
+        }
+      }, "สมัครสินเชื่อ", e(ChevRightIc, {s:14})),
+
+      // List view: heart rendered here, inside c-foot, after CTA
+      view === 'list' && e('button', {
+        className: `c-fav-list${isFav?' on':''}${popping?' pop':''}`,
+        onClick: handleFav,
+        title: isFav ? "ลบจากร้านโปรด" : "บันทึกร้านโปรด"
+      }, isFav ? e(HeartFilledIc, {s:16}) : e(HeartIc, {s:16}))
     )
   );
 }
@@ -681,7 +1111,7 @@ function RenderSection({ title, count, stores, type, bf, view, onOpen, onToast, 
       e('h2', { className: 'sh-t' }, title, e('span', { className: 'sh-sub' }, `${count} ร้าน`))
     ),
     e('div', { className: view === 'grid' ? 'grid' : 'list-layout' },
-      show.map(s => e(Card, { key: s.id, store: s, type, bf, onOpen, onToast, userPos, favs, toggleFav }))
+      show.map(s => e(Card, { key: s.id, store: s, type, bf, view, onOpen, onToast, userPos, favs, toggleFav }))
     ),
     (isAllView && stores.length > lim) && e('button', {
       className: 'btn-more',
@@ -691,11 +1121,45 @@ function RenderSection({ title, count, stores, type, bf, view, onOpen, onToast, 
 }
 
 function BrandSheet({ selBr, setSelBr, sheetQ, setSheetQ, onClose, onVoice }) {
-  const popFiltered = POPULAR.filter(b => !sheetQ || b.toLowerCase().includes(sheetQ.toLowerCase()));
-  const watchFiltered = WB.filter(b => !sheetQ || b.toLowerCase().includes(sheetQ.toLowerCase()));
-  const bagFiltered = BB.filter(b => !sheetQ || b.toLowerCase().includes(sheetQ.toLowerCase()));
+  // Per-category filter + sort popular first within each section
+  const applyQ = (b) => !sheetQ || b.toLowerCase().includes(sheetQ.toLowerCase());
+  const sortPopFirst = (list, popList) => {
+    const pop = list.filter(b => popList.includes(b));
+    const rest = list.filter(b => !popList.includes(b));
+    return [...pop, ...rest];
+  };
+  const watchFiltered = sortPopFirst(WB.filter(applyQ), POP_W);
+  const bagFiltered = sortPopFirst(BB.filter(applyQ), POP_B);
 
-  const toggle = (brand) => { triggerHaptic(); setSelBr(p => p.includes(brand) ? p.filter(x=>x!==brand) : [...p, brand]); };
+  // Merged popular list for sticky row — each item knows its own category
+  const popularList = [];
+  POP_W.forEach(b => { if (applyQ(b)) popularList.push({ brand: b, cat: 'watch' }); });
+  POP_B.forEach(b => {
+    if (!applyQ(b)) return;
+    // Skip if already added as watch (e.g., Hermès, Chanel exist in both). Default to watch for duplicates.
+    if (popularList.some(p => p.brand === b)) return;
+    popularList.push({ brand: b, cat: 'bag' });
+  });
+
+  const totalSel = selBr.watch.length + selBr.bag.length;
+
+  const toggleW = (brand) => {
+    triggerHaptic();
+    setSelBr(p => ({ ...p, watch: p.watch.includes(brand) ? p.watch.filter(x=>x!==brand) : [...p.watch, brand] }));
+  };
+  const toggleB = (brand) => {
+    triggerHaptic();
+    setSelBr(p => ({ ...p, bag: p.bag.includes(brand) ? p.bag.filter(x=>x!==brand) : [...p.bag, brand] }));
+  };
+
+  const renderItem = (brand, isSelected, onClick, popList) => {
+    return e('div', { key:brand, className:`sh-item ${isSelected?'on':''}`, onClick },
+      e(BrandMono, { brand, size: 28 }),
+      e('div', {className:'sh-item-name', title:brand}, brand),
+      e('div', {style:{fontSize:9,color:isSelected?'white':'#A0A0A0',flexShrink:0}}, `${brandStoreCount(brand)}`),
+      isSelected && e('span', {className:'sh-item-check'}, e(CheckIc,{s:12,stroke:'var(--pri)'}))
+    );
+  };
 
   return e('div', { className:'sh', onClick: ev => ev.stopPropagation() },
     e('div', { className:'modal-sticky-hdr' },
@@ -703,10 +1167,10 @@ function BrandSheet({ selBr, setSelBr, sheetQ, setSheetQ, onClose, onVoice }) {
         e('div', { className:'bs-hdr-top' },
           e('div', { className:'bs-hdr-meta' },
             e('div', { className:'bs-hdr-title' }, "เลือกแบรนด์"),
-            selBr.length > 0 && e('span', { className:'bs-hdr-count' }, `เลือกแล้ว ${selBr.length} แบรนด์`)
+            totalSel > 0 && e('span', { className:'bs-hdr-count' }, `เลือกแล้ว ${totalSel} แบรนด์`)
           ),
           e('div', { style:{display:'flex',alignItems:'center',gap:8} },
-            selBr.length > 0 && e('button', { style:{color:'var(--pri)',fontSize:13,cursor:'pointer',background:'none',border:'none',fontWeight:500,padding:'4px 10px'}, onClick:()=>{ triggerHaptic(); setSelBr([]); } }, "ล้างทั้งหมด"),
+            totalSel > 0 && e('button', { style:{color:'var(--pri)',fontSize:13,cursor:'pointer',background:'none',border:'none',fontWeight:500,padding:'4px 10px'}, onClick:()=>{ triggerHaptic(); setSelBr({watch:[], bag:[]}); } }, "ล้างทั้งหมด"),
             e('button', { className:'bs-close', onClick: onClose }, "✕")
           )
         )
@@ -717,12 +1181,13 @@ function BrandSheet({ selBr, setSelBr, sheetQ, setSheetQ, onClose, onVoice }) {
           e('button', {className:'s-mic', onClick:onVoice, title:"ค้นหาด้วยเสียง"}, e(MicIc,{s:20}))
         )
       ),
-      popFiltered.length > 0 && e('div', { className:'bs-popular-row' },
+      popularList.length > 0 && e('div', { className:'bs-popular-row' },
         e('div', { className:'bs-pop-label' }, e(StarIc,{s:12,filled:true}), "ยอดนิยม"),
         e('div', { className:'bs-pop-brands' },
-          popFiltered.map(brand => {
-            const sel = selBr.includes(brand);
-            return e('button', { key: brand, className:`bs-pop-chip ${sel?'on':''}`, onClick: () => toggle(brand) },
+          popularList.map(({brand, cat}) => {
+            const sel = cat === 'watch' ? selBr.watch.includes(brand) : selBr.bag.includes(brand);
+            const onClick = () => { if (cat === 'watch') toggleW(brand); else toggleB(brand); };
+            return e('button', { key: `${cat}-${brand}`, className:`bs-pop-chip ${sel?'on':''}`, onClick },
               sel ? e(CheckIc,{s:11, stroke:"white"}) : e(StarIc,{s:11,filled:true}), brand,
               e('span', {style:{opacity:0.7, fontSize:10}}, `(${brandStoreCount(brand)})`)
             );
@@ -731,37 +1196,29 @@ function BrandSheet({ selBr, setSelBr, sheetQ, setSheetQ, onClose, onVoice }) {
       )
     ),
     e('div', { className:'sh-body' },
-      watchFiltered.filter(b => !POPULAR.includes(b)).length > 0 && e('div', null,
-        e('div', { className:'sh-sec-t' }, e(WatchIc,{s:14,c:"#B29167"}), "นาฬิกา", e('span', {className:'sh-sec-count'}, `${watchFiltered.filter(b=>!POPULAR.includes(b)).length} แบรนด์`)),
+      watchFiltered.length > 0 && e('div', null,
+        e('div', { className:'sh-sec-t' },
+          e(WatchIc,{s:14,c:"#B29167"}), "นาฬิกา",
+          e('span', {className:'sh-sec-count'}, `${watchFiltered.length} แบรนด์`),
+          selBr.watch.length > 0 && e('span', {className:'sh-sec-count', style:{background:'#E8F5E9',color:'#2E7D32'}}, `เลือก ${selBr.watch.length}`)
+        ),
         e('div', { className:'sh-grid' },
-          watchFiltered.filter(b => !POPULAR.includes(b)).map(brand => {
-            const sel = selBr.includes(brand);
-            return e('div', { key:brand, className:`sh-item ${sel?'on':''}`, onClick:()=>toggle(brand) },
-              e('div', {className:'sh-ic', style:{background:hue(brand)}}, brand.charAt(0)),
-              e('div', {className:'sh-item-name', title:brand}, brand),
-              e('div', {style:{fontSize:9,color:sel?'white':'#A0A0A0',flexShrink:0}}, `${brandStoreCount(brand)}`),
-              sel && e('span', {className:'sh-item-check'}, e(CheckIc,{s:12,stroke:'var(--pri)'}))
-            );
-          })
+          watchFiltered.map(brand => renderItem(brand, selBr.watch.includes(brand), () => toggleW(brand), POP_W))
         )
       ),
-      bagFiltered.filter(b => !POPULAR.includes(b)).length > 0 && e('div', null,
-        e('div', { className:'sh-sec-t' }, e(BagIc,{s:14,c:"#B29167"}), "กระเป๋า", e('span', {className:'sh-sec-count'}, `${bagFiltered.filter(b=>!POPULAR.includes(b)).length} แบรนด์`)),
+      bagFiltered.length > 0 && e('div', null,
+        e('div', { className:'sh-sec-t' },
+          e(BagIc,{s:14,c:"#B29167"}), "กระเป๋า",
+          e('span', {className:'sh-sec-count'}, `${bagFiltered.length} แบรนด์`),
+          selBr.bag.length > 0 && e('span', {className:'sh-sec-count', style:{background:'#E8F5E9',color:'#2E7D32'}}, `เลือก ${selBr.bag.length}`)
+        ),
         e('div', { className:'sh-grid' },
-          bagFiltered.filter(b => !POPULAR.includes(b)).map(brand => {
-            const sel = selBr.includes(brand);
-            return e('div', { key:brand, className:`sh-item ${sel?'on':''}`, onClick:()=>toggle(brand) },
-              e('div', {className:'sh-ic', style:{background:hue(brand)}}, brand.charAt(0)),
-              e('div', {className:'sh-item-name', title:brand}, brand),
-              e('div', {style:{fontSize:9,color:sel?'white':'#A0A0A0',flexShrink:0}}, `${brandStoreCount(brand)}`),
-              sel && e('span', {className:'sh-item-check'}, e(CheckIc,{s:12,stroke:'var(--pri)'}))
-            );
-          })
+          bagFiltered.map(brand => renderItem(brand, selBr.bag.includes(brand), () => toggleB(brand), POP_B))
         )
       )
     ),
     e('div', { className:'sh-footer' },
-      e('button', { className:'c-cta', style:{width:"100%",height:48,justifyContent:"center",fontSize:15,borderRadius:24}, onClick: onClose }, `ดูผลลัพธ์${selBr.length > 0 ? ` (${selBr.length} แบรนด์)` : "ทั้งหมด"}`, e(ChevRightIc,{s:18}))
+      e('button', { className:'c-cta', style:{width:"100%",height:48,justifyContent:"center",fontSize:15,borderRadius:24}, onClick: onClose }, `ดูผลลัพธ์${totalSel > 0 ? ` (${totalSel} แบรนด์)` : "ทั้งหมด"}`, e(ChevRightIc,{s:18}))
     )
   );
 }
@@ -770,8 +1227,8 @@ function App() {
   const [tab, setTab] = useState("all");
   const [view, setView] = useState("grid");
   const [q, setQ] = useState("");
-  const [cond, setCond] = useState("all");
-  const [selBr, setSelBr] = useState([]);
+  const [cond, setCond] = useState({new:false, pre:false, fav:false});
+  const [selBr, setSelBr] = useState({watch:[], bag:[]});
   const [sheet, setSheet] = useState(false);
   const [sheetQ, setSheetQ] = useState("");
   const [det, setDet] = useState(null);
@@ -803,7 +1260,8 @@ function App() {
     ev.stopPropagation(); triggerHaptic();
     setFavs(p => {
        const n = p.includes(id) ? p.filter(x=>x!==id) : [...p, id];
-       if(!p.includes(id)) showToast("บันทึกร้านโปรดแล้ว 🤍");
+       if(!p.includes(id)) showToast("บันทึกร้านโปรดแล้ว 💛");
+       else showToast("ลบออกจากร้านโปรดแล้ว");
        return n;
     });
   }, [showToast]);
@@ -864,7 +1322,13 @@ function App() {
   const closeVoice = useCallback(() => { triggerHaptic(); if (recogRef.current) { try { recogRef.current.stop(); } catch(e){} } clearTimeout(timerRef.current); setVoiceOpen(false); setVoiceListening(false); setVoiceText(""); setVoiceError(null); }, []);
   const submitVoice = useCallback(() => { if (!voiceText.trim()) return; const finalTxt = voiceText.trim(); if (voiceTargetRef.current === "sheet") setSheetQ(finalTxt); else { setQ(finalTxt); setMR(null); } closeVoice(); showToast(`ค้นหา: "${finalTxt}"`); }, [voiceText, closeVoice, showToast]);
   const openMap = (address, ev) => { triggerHaptic(); if (ev) ev.stopPropagation(); window.open(`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address)}`, '_blank'); };
-  const applyLoan = (store, ev) => { triggerHaptic(); if (ev) ev.stopPropagation(); showToast(`✓ กำลังเริ่มสมัครสินเชื่อที่ ${store.n}`); };
+  const applyLoan = (store, ev) => {
+    triggerHaptic(); if (ev) ev.stopPropagation();
+    showToast(`กำลังนำคุณไปหน้าสมัครสินเชื่อสำหรับ ${store.n}`);
+    setTimeout(() => {
+      window.location.href = `./loan-apply.htm?store=${encodeURIComponent(store.n)}`;
+    }, 600);
+  };
 
   const currentMatchedModel = useMemo(() => detectModel(q), [q]);
 
@@ -874,6 +1338,12 @@ function App() {
     const query = q.toLowerCase();
     let res = [];
     
+    // Fuzzy bag/watch intent detection
+    const isBagQ = /กระเป[๋่]า|กะเป[๋่]า|เป[๋่]า|ฮ[ือ].*เป|bag/i.test(query);
+    const isWatchQ = /นาฬิกา|โนริกา|นา.*กา|watch/i.test(query);
+    if (isBagQ) res.push({ text: "ร้านกระเป๋าทั้งหมด", matchText: "กระเป๋า", type: 'หมวดหมู่', ic: BagIc });
+    if (isWatchQ) res.push({ text: "ร้านนาฬิกาทั้งหมด", matchText: "นาฬิกา", type: 'หมวดหมู่', ic: WatchIc });
+
     ALL_BR.forEach(b => { if(b.toLowerCase().includes(query)) res.push({ text: b, matchText: b, type: 'แบรนด์', ic: CertIc }); });
     KNOWN_MODELS.forEach(m => { if(m.id.includes(query) || m.n.toLowerCase().includes(query) || m.desc.toLowerCase().includes(query)) res.push({ text: m.n, matchText: m.n, type: 'รุ่นนาฬิกา', ic: WatchIc }); });
     STORES.forEach(s => { if(s.n.toLowerCase().includes(query) || s.a.toLowerCase().includes(query)) res.push({ text: s.n, matchText: s.n, type: 'ร้านค้า', ic: FolderIc }); });
@@ -892,11 +1362,11 @@ function App() {
 
   const parsedQ = useMemo(() => {
     let text = q.toLowerCase();
-    let isW = text.includes('นาฬิกา') || text.includes('watch');
-    let isB = text.includes('กระเป๋า') || text.includes('bag');
+    let isW = /นาฬิกา|โนริกา|watch/.test(text);
+    let isB = /กระเป[๋่]า|กะเป[๋่]า|เป[๋่]า|ฮ[ือ].*เป|bag/.test(text);
     let isPre = text.includes('มือสอง') || text.includes('มือ 2') || text.includes('used');
     let isNew = text.includes('มือหนึ่ง') || text.includes('มือ 1') || text.includes('new');
-    let clean = text.replace(/นาฬิกา|กระเป๋า|มือสอง|มือ\s*2|มือหนึ่ง|มือ\s*1|watch|bag|used|new/g, '').trim();
+    let clean = text.replace(/ร้าน|แบรนด์เนม|แบรนเนม|แบรนด์|แท้|ของแท้|นาฬิกา|โนริกา|กระเป[๋่]า|กะเป[๋่]า|เป[๋่]า|ฮ[ือ]+\s*/g, '').replace(/มือสอง|มือ\s*2|มือหนึ่ง|มือ\s*1|watch|bag|used|new/g, '').trim();
     return { clean, isW, isB, isPre, isNew };
   }, [q]);
 
@@ -920,14 +1390,30 @@ function App() {
       if (mR && !mR.stores.includes(s.id)) return false;
       if (t === "watch" && s.w.length === 0) return false;
       if (t === "bag" && s.b.length === 0) return false;
-      if (cond === "new" && !s.c.includes("new")) return false;
-      if (cond === "pre" && !s.c.includes("pre")) return false;
-      if (cond === "fav" && !favs.includes(s.id)) return false; 
+      if (cond.new && !s.c.includes("new")) return false;
+      if (cond.pre && !s.c.includes("pre")) return false;
+      if (cond.fav && !favs.includes(s.id)) return false; 
       
       const br = t === "watch" ? s.w : t === "bag" ? s.b : [...s.w, ...s.b];
       
       if (!mR) {
-        if (selBr.length > 0 && !selBr.some((x) => br.includes(x))) return false;
+        // Per-category brand filter: watch selections filter against s.w, bag selections against s.b
+        const hasW = selBr.watch.length > 0;
+        const hasB = selBr.bag.length > 0;
+        if (hasW || hasB) {
+          if (t === "watch") {
+            // Only watch brand filter applies
+            if (hasW && !selBr.watch.some(x => s.w.includes(x))) return false;
+          } else if (t === "bag") {
+            // Only bag brand filter applies
+            if (hasB && !selBr.bag.some(x => s.b.includes(x))) return false;
+          } else {
+            // All tab: store matches if it satisfies either filter (OR logic — show more, not less)
+            const wMatch = hasW && selBr.watch.some(x => s.w.includes(x));
+            const bMatch = hasB && selBr.bag.some(x => s.b.includes(x));
+            if (!wMatch && !bMatch) return false;
+          }
+        }
         if (currentMatchedModel) {
           return s.m && s.m.includes(currentMatchedModel.id);
         } else if (q) {
@@ -943,10 +1429,15 @@ function App() {
           if (isNew && !s.c.includes("new")) return false;
 
           if (activeQuery) {
-             return s.n.toLowerCase().includes(activeQuery) || 
-                    s.a.toLowerCase().includes(activeQuery) || 
-                    br.some((b) => b.toLowerCase().includes(activeQuery));
+             // Name / brand match via fuzzy-transformed query
+             if (s.n.toLowerCase().includes(activeQuery) || br.some((b) => b.toLowerCase().includes(activeQuery))) return true;
+             // Address match: try both fuzzy-transformed AND original cleaned query (fixes location searches like สยามพารากอน)
+             if (s.a.toLowerCase().includes(activeQuery)) return true;
+             if (clean && s.a.toLowerCase().includes(clean)) return true;
+             return false;
           }
+          // If no specific query left after cleaning, show all stores that passed intent filters above
+          return true;
         }
       }
       return true;
@@ -982,7 +1473,7 @@ function App() {
   useEffect(() => { setSelBranchId(null); setBrQ(""); }, [det]);
 
   const suggestedBrand = (dispCount === 0 && q.trim() !== "" && !currentMatchedModel) ? getFuzzySuggestion(q) : null;
-  const hasFilter = cond !== "all" || selBr.length > 0 || q || nearbyOn;
+  const hasFilter = cond.new || cond.pre || cond.fav || (selBr.watch.length + selBr.bag.length) > 0 || q || nearbyOn;
 
   return e('div', { className: 'layout' },
 
@@ -1029,7 +1520,7 @@ function App() {
           !q ? e('div', null,
             e('div', { className: 's-lbl' }, e(TrendIc, {s:14}), "คำค้นหายอดฮิต"),
             e('div', { className: 't-tag-wrap' },
-              ["Rolex Daytona", "Hermès Birkin", "สยามพารากอน", "นาฬิกามือสอง", "กระเป๋าแบรนด์เนม"].map(t =>
+              ["Rolex", "Hermès", "นาฬิกามือสอง", "กระเป๋าแบรนด์เนม", "สยามพารากอน"].map(t =>
                 e('button', { key: t, className: 't-tag', onClick: () => selectSuggestion(t) }, e(SearchIc, {s:12}), t)
               )
             )
@@ -1053,15 +1544,15 @@ function App() {
     // FILTERS
     e('div', { className: 'f-row' },
       e('div', { className: 'f-wrap' },
-        e('button', { className: `f-pill ${cond==='all'&&!nearbyOn?'on':''}`, onClick:()=>{triggerHaptic(); setCond('all');} }, "ทั้งหมด"),
-        e('button', { className: `f-pill ${cond==='new'?'on':''}`, onClick:()=>{triggerHaptic(); setCond(cond==='new'?'all':'new');} }, e(TimeIc,{s:15}), "มือ 1"),
-        e('button', { className: `f-pill ${cond==='pre'?'on':''}`, onClick:()=>{triggerHaptic(); setCond(cond==='pre'?'all':'pre');} }, e(UsersIc,{s:15}), "มือ 2"),
-        e('button', { className: `f-pill ${selBr.length>0?'on':''}`, onClick:()=>{triggerHaptic(); setSheet(true);} },
+        e('button', { className: `f-pill ${!cond.new && !cond.pre && !cond.fav && !nearbyOn ? 'on' : ''}`, onClick:()=>{triggerHaptic(); setCond({new:false, pre:false, fav:false});} }, "ทั้งหมด"),
+        e('button', { className: `f-pill ${cond.new?'on':''}`, onClick:()=>{triggerHaptic(); setCond(p=>({...p, new:!p.new}));} }, e(TimeIc,{s:15}), "มือ 1"),
+        e('button', { className: `f-pill ${cond.pre?'on':''}`, onClick:()=>{triggerHaptic(); setCond(p=>({...p, pre:!p.pre}));} }, e(UsersIc,{s:15}), "มือ 2"),
+        e('button', { className: `f-pill ${(selBr.watch.length+selBr.bag.length)>0?'on':''}`, onClick:()=>{triggerHaptic(); setSheet(true);} },
           e(FolderIc,{s:15}), "เลือกแบรนด์",
-          selBr.length > 0 && e('span', {style:{background:'#8F6D44',color:'white',padding:'2px 8px',borderRadius:12,fontSize:11,marginLeft:4}}, selBr.length)),
+          (selBr.watch.length+selBr.bag.length) > 0 && e('span', {style:{background:'#8F6D44',color:'white',padding:'2px 8px',borderRadius:12,fontSize:11,marginLeft:4}}, (selBr.watch.length+selBr.bag.length))),
         // Favorites
-        e('button', { className: `f-pill ${cond==='fav'?'on':''}`, onClick:()=>{triggerHaptic(); setCond(cond==='fav'?'all':'fav');} },
-          e(HeartFilledIc, {s:14, c: cond==='fav' ? '#8F6D44' : '#C0B3A6'}), "ร้านโปรด",
+        e('button', { className: `f-pill ${cond.fav?'on':''}`, onClick:()=>{triggerHaptic(); setCond(p=>({...p, fav:!p.fav}));} },
+          e(HeartFilledIc, {s:14, c: cond.fav ? '#8F6D44' : '#C0B3A6'}), "ร้านโปรด",
           favs.length > 0 && e('span', {style:{opacity:0.6,fontSize:11,marginLeft:2}}, `(${favs.length})`)
         ),
         // Nearby
@@ -1074,7 +1565,7 @@ function App() {
         )
       ),
       e('div', { className: 'f-right' },
-        hasFilter && e('button', { className: 'f-clear', onClick:()=>{triggerHaptic(); setSelBr([]);setCond("all");setQ("");setMR(null);setNearbyOn(false);setUserPos(null);showToast("ล้างตัวกรองแล้ว");} }, "ล้างทั้งหมด"),
+        hasFilter && e('button', { className: 'f-clear', onClick:()=>{triggerHaptic(); setSelBr({watch:[], bag:[]});setCond({new:false, pre:false, fav:false});setQ("");setMR(null);setNearbyOn(false);setUserPos(null);showToast("ล้างตัวกรองแล้ว");} }, "ล้างทั้งหมด"),
         e('div', { className: 'f-total' }, `ทั้งหมด ${dispCount} ร้านค้า`) 
       )
     ),
@@ -1100,29 +1591,29 @@ function App() {
     // STORE LISTS (WITH SEPARATED ALL TAB LOGIC)
     tab === "all" ? e('div', null,
       fuzzyBanner,
-      ws.length > 0 && e(RenderSection, { title:"ร้านนาฬิกา", count:ws.length, stores:ws, type:"watch", bf:mR?[mR.brand]:selBr, view, onOpen:(st,ty)=>setDet({store:st,type:ty}), onToast:showToast, isAllView:true, userPos:nearbyOn?userPos:null, locating, favs, toggleFav }),
-      bs.length > 0 && e(RenderSection, { title:"ร้านกระเป๋า", count:bs.length, stores:bs, type:"bag", bf:mR?[mR.brand]:selBr, view, onOpen:(st,ty)=>setDet({store:st,type:ty}), onToast:showToast, isAllView:true, userPos:nearbyOn?userPos:null, locating, favs, toggleFav }),
+      ws.length > 0 && e(RenderSection, { title:"ร้านนาฬิกา", count:ws.length, stores:ws, type:"watch", bf:mR?[mR.brand]:selBr.watch, view, onOpen:(st,ty)=>setDet({store:st,type:ty}), onToast:showToast, isAllView:true, userPos:nearbyOn?userPos:null, locating, favs, toggleFav }),
+      bs.length > 0 && e(RenderSection, { title:"ร้านกระเป๋า", count:bs.length, stores:bs, type:"bag", bf:mR?[mR.brand]:selBr.bag, view, onOpen:(st,ty)=>setDet({store:st,type:ty}), onToast:showToast, isAllView:true, userPos:nearbyOn?userPos:null, locating, favs, toggleFav }),
       
       // EMPTY STATE
       dispCount === 0 && !locating && e('div', {style:{padding:'60px 20px',textAlign:'center'}},
-        e('div', {style:{color:'#EFE4D8',fontSize:18,marginBottom:16,fontWeight:300}}, cond === 'fav' ? "ยังไม่มีร้านค้าโปรดที่บันทึกไว้" : "ไม่พบร้านค้าที่ตรงกับเงื่อนไขการค้นหา"),
-        suggestedBrand && cond !== 'fav' && e('div', {style:{background:'#FFF',borderRadius:20,padding:24,boxShadow:'0 16px 40px rgba(90,60,30,0.12)',display:'inline-block',maxWidth:400,width:'100%',border:'1px solid #EFE4D8'}},
+        e('div', {style:{color:'#EFE4D8',fontSize:18,marginBottom:16,fontWeight:300}}, cond.fav ? "ยังไม่มีร้านค้าโปรดที่บันทึกไว้" : "ไม่พบร้านค้าที่ตรงกับเงื่อนไขการค้นหา"),
+        suggestedBrand && !cond.fav && e('div', {style:{background:'#FFF',borderRadius:20,padding:24,boxShadow:'0 16px 40px rgba(90,60,30,0.12)',display:'inline-block',maxWidth:400,width:'100%',border:'1px solid #EFE4D8'}},
           e('div', {style:{color:'#5A4A3D',fontSize:15,marginBottom:8}}, "คุณหมายถึงสิ่งนี้หรือเปล่า?"),
           e('div', {style:{fontSize:24,fontWeight:700,color:'var(--pri)',marginBottom:20}}, suggestedBrand),
-          e('button', {className:'c-cta', style:{width:'100%',justifyContent:'center',height:48,fontSize:15,borderRadius:24}, onClick:()=>{triggerHaptic(); setQ(suggestedBrand);}}, "ดูร้านค้าทั้งหมด", e(ChevRightIc,{s:18}))
+          e('button', {className:'c-cta', style:{width:'100%',justifyContent:'center',height:48,fontSize:15,borderRadius:24}, onClick:()=>{triggerHaptic(); setSelBr({watch:[],bag:[]}); setCond({new:false,pre:false,fav:false}); setMR(null); setNearbyOn(false); setUserPos(null); setQ(suggestedBrand);}}, "ดูร้านค้าทั้งหมด", e(ChevRightIc,{s:18}))
         )
       )
     ) : e('div', null,
       fuzzyBanner,
-      e(RenderSection, { title: tab==="watch"?"ร้านนาฬิกา":"ร้านกระเป๋า", count:(tab==="watch"?ws:bs).length, stores:(tab==="watch"?ws:bs), type:tab, bf:mR?[mR.brand]:selBr, view, onOpen:(st,ty)=>setDet({store:st,type:ty}), onToast:showToast, isAllView:false, userPos:nearbyOn?userPos:null, locating, favs, toggleFav }),
+      e(RenderSection, { title: tab==="watch"?"ร้านนาฬิกา":"ร้านกระเป๋า", count:(tab==="watch"?ws:bs).length, stores:(tab==="watch"?ws:bs), type:tab, bf:mR?[mR.brand]:(tab==="watch"?selBr.watch:selBr.bag), view, onOpen:(st,ty)=>setDet({store:st,type:ty}), onToast:showToast, isAllView:false, userPos:nearbyOn?userPos:null, locating, favs, toggleFav }),
       
       // EMPTY STATE
       dispCount === 0 && !locating && e('div', {style:{padding:'60px 20px',textAlign:'center'}},
-        e('div', {style:{color:'#EFE4D8',fontSize:18,marginBottom:16,fontWeight:300}}, cond === 'fav' ? "ยังไม่มีร้านค้าโปรดที่บันทึกไว้" : "ไม่พบร้านค้าที่ตรงกับเงื่อนไขการค้นหา"),
-        suggestedBrand && cond !== 'fav' && e('div', {style:{background:'#FFF',borderRadius:20,padding:24,boxShadow:'0 16px 40px rgba(90,60,30,0.12)',display:'inline-block',maxWidth:400,width:'100%',border:'1px solid #EFE4D8'}},
+        e('div', {style:{color:'#EFE4D8',fontSize:18,marginBottom:16,fontWeight:300}}, cond.fav ? "ยังไม่มีร้านค้าโปรดที่บันทึกไว้" : "ไม่พบร้านค้าที่ตรงกับเงื่อนไขการค้นหา"),
+        suggestedBrand && !cond.fav && e('div', {style:{background:'#FFF',borderRadius:20,padding:24,boxShadow:'0 16px 40px rgba(90,60,30,0.12)',display:'inline-block',maxWidth:400,width:'100%',border:'1px solid #EFE4D8'}},
           e('div', {style:{color:'#5A4A3D',fontSize:15,marginBottom:8}}, "คุณหมายถึงสิ่งนี้หรือเปล่า?"),
           e('div', {style:{fontSize:24,fontWeight:700,color:'var(--pri)',marginBottom:20}}, suggestedBrand),
-          e('button', {className:'c-cta', style:{width:'100%',justifyContent:'center',height:48,fontSize:15,borderRadius:24}, onClick:()=>{triggerHaptic(); setQ(suggestedBrand);}}, "ดูร้านค้าทั้งหมด", e(ChevRightIc,{s:18}))
+          e('button', {className:'c-cta', style:{width:'100%',justifyContent:'center',height:48,fontSize:15,borderRadius:24}, onClick:()=>{triggerHaptic(); setSelBr({watch:[],bag:[]}); setCond({new:false,pre:false,fav:false}); setMR(null); setNearbyOn(false); setUserPos(null); setQ(suggestedBrand);}}, "ดูร้านค้าทั้งหมด", e(ChevRightIc,{s:18}))
         )
       )
     ),
@@ -1150,8 +1641,23 @@ function App() {
           e('div', {className:'d-loc'}, e(LocIc,{s:14}), activeBranch ? activeBranch.a : detStore.a),
           e('div', {className:'d-tags'},
             detStore.c && detStore.c.map(c => e('span', {key:c, className:`t-cond ${c}`}, c==="new"?"สินค้าใหม่มือ 1":"สินค้ามือสอง")),
-            e('span', {className:`t-cond ${detStore.stock==='ready'?'rdy':detStore.stock==='preorder'?'po':'ask'}`}, detStore.stock==='ready'?'พร้อมส่ง':detStore.stock==='preorder'?'Pre-Order':'ต้องสอบถามสต็อก')
+            e('span', {className:`t-cond ${detStore.stock==='ready'?'rdy':detStore.stock==='preorder'?'po':'ask'}`}, detStore.stock==='ready'?'พร้อมส่ง':detStore.stock==='preorder'?'Pre-Order':'สอบถามสต็อก')
           ),
+          // Opening hours
+          detStore.hours && (() => {
+            const now = new Date();
+            const curH = now.getHours() + now.getMinutes() / 60;
+            const isOpen = curH >= detStore.hours.o && curH < detStore.hours.c;
+            const openStr = `${String(detStore.hours.o).padStart(2,'0')}:00`;
+            const closeStr = `${String(detStore.hours.c).padStart(2,'0')}:00`;
+            return e('div', { className:'d-hours-chip' },
+              isOpen ? e('span', { className:'c-open-dot' }) : e('span', { className:'c-closed-dot' }),
+              e('span', { className:`d-h-status-lbl ${isOpen?'d-h-open':'d-h-closed'}` }, isOpen ? 'เปิดให้บริการ' : 'ปิดทำการแล้ว'),
+              e('span', { className:'d-h-divider' }),
+              e('span', { className:'d-h-time' }, `${openStr} – ${closeStr} น.`),
+              detStore.hours.d && e('span', { className:'d-h-days' }, `· ${detStore.hours.d}`)
+            );
+          })(),
           e('div', { className:'d-socs' },
             dSocKeys.map(k => e('a', { key:k, className:'d-soc', href: socUrl(k, activeSoc[k]), target: k !== 'tel' ? '_blank' : undefined, rel: k !== 'tel' ? 'noopener noreferrer' : undefined, onClick: () => { triggerHaptic(); if (k !== 'tel') showToast(`กำลังเปิด ${SOC[k].label}`); } },
               e('div', {className:'d-s-ic'}, e(Ico, {k, s:18, color:"currentColor"})),
@@ -1167,17 +1673,28 @@ function App() {
             e('div', {className:'d-tag-wrap'}, detStore.b.map(b => e('span',{key:b,className:'m-tag'},b)))
           ),
           otherBranches.length > 0 && e('div', {className:'d-sec', style:{borderTop:'1px solid #EBEBEB',paddingTop:16}},
-            e('div', {className:'d-st'}, e(FolderIc,{s:14,c:"currentColor"}), "เลือกดูข้อมูลสาขาอื่น"),
+            e('div', {className:'d-st'}, e(FolderIc,{s:14,c:"currentColor"}), `สาขาทั้งหมด (${otherBranches.length + 1} สาขา)`),
             e('div', {className:'d-br-srch'}, e(SearchIc,{s:14}), e('input', {placeholder:"ค้นหาสาขา...", value:brQ, onChange:ev=>setBrQ(ev.target.value)})),
             e('div', {className:'d-br-list'},
-              otherBranches.filter(br => !brQ || br.n.toLowerCase().includes(brQ.toLowerCase()) || br.a.toLowerCase().includes(brQ.toLowerCase()))
-                .map(br => e('div', { key:br.id, style:{ background:'#FAFAFA', border:'1px solid #EAEAEA', padding:'10px 12px', borderRadius:'12px', display:'flex', justifyContent:'space-between', alignItems:'center', cursor:'pointer', transition:'all 0.3s ease', ...(selBranchId===br.id ? {borderColor:'var(--pri)', background:'#FFFBF5', boxShadow:'0 4px 12px rgba(162,123,82,0.1)'} : {}) }, onClick:()=>{ triggerHaptic(); setSelBranchId(selBranchId===br.id ? null : br.id); showToast(selBranchId===br.id ? "ยกเลิกเลือกสาขา" : `เลือกสาขา: ${br.n}`); } },
-                  e('div', {style:{flex:1,minWidth:0}},
-                    e('div', {style:{fontSize:13,fontWeight:600,color:'#222',whiteSpace:'nowrap',overflow:'hidden',textOverflow:'ellipsis'}}, br.n),
-                    e('div', {style:{fontSize:11,color:'#888',display:'flex',alignItems:'center',gap:4,marginTop:2}}, e(LocIc,{s:10}), br.a)
-                  ),
-                  selBranchId===br.id && e('span', {style:{fontSize:12,color:'var(--pri)',fontWeight:600,display:'flex',alignItems:'center',gap:4,flexShrink:0}}, e(CheckIc,{s:14,stroke:"currentColor"}))
-                ))
+              // Main branch appears first in the list, marked with a "สาขาหลัก" badge
+              (() => {
+                const mainItem = { id: 0, n: "สาขาหลัก", a: detStore.a, soc: detStore.soc, isMain: true };
+                const allBranches = [mainItem, ...otherBranches];
+                const filtered = allBranches.filter(br => !brQ || br.n.toLowerCase().includes(brQ.toLowerCase()) || br.a.toLowerCase().includes(brQ.toLowerCase()));
+                return filtered.map(br => {
+                  const isActive = br.isMain ? selBranchId === null : selBranchId === br.id;
+                  return e('div', { key: br.id, style:{ background: isActive?'#FFF7EA':'#FFFFFF', border: `1px solid ${isActive?'#EFDCBA':'#F3ECE0'}`, padding:'10px 12px', borderRadius:'12px', display:'flex', justifyContent:'space-between', alignItems:'center', cursor:'pointer', outline:'none', transition:'background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease', ...(isActive ? {boxShadow:'0 2px 8px rgba(162,123,82,0.08)'} : {}) }, onClick: () => { triggerHaptic(); if (br.isMain) { setSelBranchId(null); showToast("ดูข้อมูลสาขาหลัก"); } else { setSelBranchId(selBranchId===br.id ? null : br.id); showToast(selBranchId===br.id ? "ยกเลิกเลือกสาขา" : `เลือกสาขา: ${br.n}`); } } },
+                    e('div', {style:{flex:1,minWidth:0}},
+                      e('div', {style:{fontSize:13,fontWeight:600,color:'#5A3F28',whiteSpace:'nowrap',overflow:'hidden',textOverflow:'ellipsis',display:'flex',alignItems:'center',gap:6}},
+                        br.isMain ? detStore.a.split(',')[0].trim() : br.n,
+                        br.isMain && e('span', {style:{fontSize:9,fontWeight:700,color:'#8F6D44',background:'#F7E5C3',padding:'2px 7px',borderRadius:10,letterSpacing:0.3,flexShrink:0}}, "HQ")
+                      ),
+                      e('div', {style:{fontSize:11,color:'#A8896B',display:'flex',alignItems:'center',gap:4,marginTop:2}}, e(LocIc,{s:10}), br.a)
+                    ),
+                    ((br.isMain && selBranchId === null) || (!br.isMain && selBranchId===br.id)) && e('span', {style:{fontSize:12,color:'#A27B52',fontWeight:600,display:'flex',alignItems:'center',gap:4,flexShrink:0}}, e(CheckIc,{s:14,stroke:"currentColor"}))
+                  );
+                });
+              })()
             )
           ),
           e('div', { className:'d-acts' },
@@ -1198,9 +1715,11 @@ function App() {
           voiceListening && e('div', {className:'voice-pulse'}), voiceListening && e('div', {className:'voice-pulse'}), voiceListening && e('div', {className:'voice-pulse'}),
           e('button', { className:`voice-mic-btn ${voiceListening ? '' : 'idle'}`, onClick: voiceListening ? null : startListening, disabled: voiceListening }, e(MicIc, {s:44}))
         ),
-        e('div', {className:`voice-text ${voiceText ? '' : 'placeholder'}`}, voiceText || (voiceListening ? "กำลังฟังเสียงของคุณ..." : "กรุณาพูดชื่อแบรนด์ รุ่น หรือร้านค้า...") ),
+        e('div', {className:`voice-text ${voiceText ? '' : 'placeholder'}`}, 
+          voiceText || (!voiceListening ? "กรุณาพูดชื่อแบรนด์ รุ่น หรือร้านค้า..." : "")
+        ),
         voiceListening && e('div', {className:'voice-waveform'}, [1,2,3,4,5,6,7,8,9].map(i => e('div', {key:i, className:'voice-bar'})) ),
-        !voiceListening && !voiceText && !voiceError && e('div', {className:'voice-hint'}, 'ตัวอย่างเช่น: "Rolex", "Hermès", "ทองปาเต๊ะ", หรือ "พารากอน"' ),
+        !voiceListening && !voiceText && !voiceError && e('div', {className:'voice-hint'}, 'ตัวอย่างเช่น: "Rolex", "Hermès", "ทง", หรือ "พารากอน"' ),
         voiceError && e('div', {className:'voice-err'}, voiceError),
         e('div', {className:'voice-actions'},
           e('button', {className:'voice-btn ghost', onClick:closeVoice}, "ยกเลิก"),
@@ -1210,7 +1729,7 @@ function App() {
       )
     ),
 
-    toast && e('div', {className:'toast'}, e('div', {className:'toast-ic'}, e(CheckIc,{s:14, stroke:"white"})), toast )
+    toast && e('div', {className:'toast'}, toast )
   );
 }
 
